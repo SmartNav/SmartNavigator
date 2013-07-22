@@ -3,9 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<title>智慧导航管理登录</title>
+	<%@ include file="/common/global.jsp"%>
+	<%@ include file="/common/meta.jsp"%>
+	<%@ include file="/common/common.jsp"%>
+	<title>智慧导航管理登录</title>
+	<style>
+		body{margin:auto;}
+		.main-container{margin:200px auto 0px 200px;}
+	</style>
 </head>
 <body>
 	<form method="post" action="">
