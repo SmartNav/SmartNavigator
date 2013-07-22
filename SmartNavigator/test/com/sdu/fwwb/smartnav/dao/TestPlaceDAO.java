@@ -32,7 +32,18 @@ public class TestPlaceDAO extends SpringContextTestCase{
 	public void testFindByUserName(){
 	}
 	@Test
-	public void testFindByEmail(){
+	public void testFindByLatitudeAndLongtitudeAndLevelBetween(){
+		System.out.println(placeDao.findByLatitudeAndLongtitudeAndLevelBetween
+				(36.6800, 36.67500, 117.140, 117.135, 17));
+		System.out.println(placeDao.findByLatitudeAndLongtitudeAndLevelBetween
+				(36.6800, 36.67500, 117.140, 117.135, 7));
+
+		System.out.println(placeDao.findByLatitudeAndLongtitudeAndLevelBetween
+				(37.00, 37.900, 117.140, 117.135, 13));
+		
+
+		System.out.println(placeDao.findByLatitudeAndLongtitudeAndLevelBetween
+				(36.6800, 36.67500, 144.140, 144.135, 13));
 	}
 	
 	@Test

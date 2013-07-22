@@ -14,7 +14,7 @@ import com.sdu.fwwb.smartnav.admin.util.AdminSessionManager;
 
 @Controller
 @RequestMapping(value ="/admin")
-public class LoginController {
+public class AdminLoginController {
 	
 	@Autowired
 	AdminAccountService adminAccountService;

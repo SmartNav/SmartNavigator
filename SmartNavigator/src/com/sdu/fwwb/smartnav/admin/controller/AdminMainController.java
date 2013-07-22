@@ -12,9 +12,9 @@ import com.sdu.fwwb.smartnav.service.PlaceService;
 
 @Controller
 @RequestMapping(value="/admin")
-public class MainController {
+public class AdminMainController {
 	
-	private static final Logger log = Logger.getLogger(MainController.class);
+	private static final Logger log = Logger.getLogger(AdminMainController.class);
 
 	@RequestMapping(value="/index")
 	public String index(){

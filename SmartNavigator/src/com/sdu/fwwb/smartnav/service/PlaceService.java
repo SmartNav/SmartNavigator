@@ -2,6 +2,8 @@ package com.sdu.fwwb.smartnav.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.sdu.fwwb.smartnav.dao.PlaceDAO;
@@ -20,6 +22,10 @@ public class PlaceService {
 		Place place = new Place(name,level,type,description,latitude,longitude);
 		placeDao.save(place);
 		log.debug("add a new place:"+place);
+	}
+	
+	public Page<Place> listAll(int page,int size){
+		return placeDao.findAll(new PageRequest(page, size));
 	}
 
 }
