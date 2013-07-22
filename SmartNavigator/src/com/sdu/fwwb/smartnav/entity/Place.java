@@ -23,6 +23,19 @@ public class Place implements Serializable{
 	private String description;
 	private double latitude;
 	private double longitude;
+	
+	public Place(){};
+	
+	public Place(String name, int level, int type, String description,
+			double latitude, double longitude) {
+		super();
+		this.name = name;
+		this.level = level;
+		this.type = type;
+		this.description = description;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
 	@Id
 	@Column(name="id")
 	public long getId() {

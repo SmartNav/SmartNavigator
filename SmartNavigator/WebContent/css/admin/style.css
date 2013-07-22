@@ -1,2 +1,7 @@
+body{background:#EBEBEB;}
 .no-float{clear:both;}
+#user-show{float:right;}
+.top-nav-ul{background:#30A4B1; line-height:3rem;}
 .top-nav-ul li{float:left; padding:10px;}
+.top-nav-ul li a{line-height:3rem;}
+.top-nav-ul li a:hover{background:30A4B1;}

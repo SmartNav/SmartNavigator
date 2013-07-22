@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<ul class="top-nav-ul">
-			<li><a href="${ctx }/admin/place/add">兴趣点管理</a></li>
+			<li><a href="#">兴趣点管理</a></li>
 			<li><a href="#">交通信息管理</a></li>
 			<li><a href="#">酒店管理</a></li>
 			<li><a href="#">餐厅管理</a></li>
@@ -30,7 +30,18 @@
 	</div>
 	
 	<div class="main-container">
-	
+		<div class="place-add-container">
+			<div id="place-add-form">
+				<form method="post" action="${ctx }/admin/place/add/handle">
+					<div><label>地点名</label><input name="name" type="text"></div>
+					<div><label>显示最低级别</label><input name="level" type="number"></div>
+					<div><label>类型</label><input name="type" type="number"></div>
+					<div><label>描述</label><input name="descript" type="text"></div>
+					<div><label>经纬度</label><input name="lalong" type="text"></div>
+					<div><input type="submit"></div>
+				</form>
+			</div>
+		</div>
 	</div>
 </div>
 </body>
