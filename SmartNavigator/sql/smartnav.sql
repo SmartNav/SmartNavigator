@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2013-07-22 10:13:57
+Date: 2013-07-22 19:33:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -158,6 +158,43 @@ CREATE TABLE `sn_place_scenic` (
 -- ----------------------------
 -- Records of sn_place_scenic
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `sn_point`
+-- ----------------------------
+DROP TABLE IF EXISTS `sn_point`;
+CREATE TABLE `sn_point` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `point_name` varchar(50) NOT NULL,
+  `point_latitude` double NOT NULL,
+  `point_longitude` double NOT NULL,
+  `adj_points` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sn_point
+-- ----------------------------
+INSERT INTO `sn_point` VALUES ('1', 'v1', '36.665689', '117.117739', 'v2');
+INSERT INTO `sn_point` VALUES ('2', 'v2', '36.666398', '117.132939', 'v1,v3');
+INSERT INTO `sn_point` VALUES ('3', 'v3', '36.665269', '117.141455', 'v2,v4');
+INSERT INTO `sn_point` VALUES ('4', 'v4', '36.667382', '117.148533', 'v3,v5,v6');
+INSERT INTO `sn_point` VALUES ('5', 'v5', '36.673085', '117.167146', 'v4');
+INSERT INTO `sn_point` VALUES ('6', 'v6', '36.676283', '117.141832', 'v4,v7,v8');
+INSERT INTO `sn_point` VALUES ('7', 'v7', '36.676341', '117.139389', 'v6,v9');
+INSERT INTO `sn_point` VALUES ('8', 'v8', '36.678223', '117.143162', 'v6,v10');
+INSERT INTO `sn_point` VALUES ('9', 'v9', '36.677687', '117.137574', 'v7,v11,v13');
+INSERT INTO `sn_point` VALUES ('10', 'v10', '36.680032', '117.142281', 'v8,v12,v14');
+INSERT INTO `sn_point` VALUES ('11', 'v11', '36.679699', '117.137628', 'v9,v15');
+INSERT INTO `sn_point` VALUES ('12', 'v12', '36.680828', '117.140233', 'v10,v16');
+INSERT INTO `sn_point` VALUES ('13', 'v13', '36.679844', '117.133639', 'v9,v15,v18');
+INSERT INTO `sn_point` VALUES ('14', 'v14', '36.683852', '117.142155', 'v10,v16,v20');
+INSERT INTO `sn_point` VALUES ('15', 'v15', '36.68132', '117.13664', 'v11,v13,v17');
+INSERT INTO `sn_point` VALUES ('16', 'v16', '36.68242', '117.139155', 'v12,v14,v17');
+INSERT INTO `sn_point` VALUES ('17', 'v17', '36.682014', '117.137933', 'v15,v16,v19');
+INSERT INTO `sn_point` VALUES ('18', 'v18', '36.683823', '117.130729', 'v13,v19');
+INSERT INTO `sn_point` VALUES ('19', 'v19', '36.68582', '117.135041', 'v18,v20,v17');
+INSERT INTO `sn_point` VALUES ('20', 'v20', '36.687716', '117.139209', 'v14,v19');
 
 -- ----------------------------
 -- Table structure for `sn_user`
