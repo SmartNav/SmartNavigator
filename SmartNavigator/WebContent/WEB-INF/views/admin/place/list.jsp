@@ -7,35 +7,22 @@
 	<%@ include file="/common/meta.jsp"%>
 	<%@ include file="/common/common.jsp"%>
 	<link rel="stylesheet" type="text/css" href="${ctx }/css/admin/style.css">
+	<style>
+		#place-list-table{padding-top:30px;}
+	</style>
 	<title>控制台首页</title>
 </head>
 <body>
 <div class="container">
-	<div class="top-part">
-		<div class="top-user">
-			<div id="user-show">
-				${admin.name }
-				<a href="${ctx }/admin/logout">登出</a>
-			</div>
-		</div>
-		<ul class="top-nav-ul">
-			<li><a href="#">兴趣点管理</a></li>
-			<li><a href="#">交通信息管理</a></li>
-			<li><a href="#">酒店管理</a></li>
-			<li><a href="#">餐厅管理</a></li>
-			<li><a href="#">活动管理</a></li>
-			<li><a href="#">账户设置</a></li>
-		</ul>
-		<div class="no-float"></div>
-	</div>
+	<c:set var="topnavselect" value="1"/>
+	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
+	
 	
 	<div class="main-container">
-		<div class="left-nav">
-			<ul class="left-nav-ul">
-				<li><a href="#"></a></li>
-			</ul>
-		</div>
-		<div class="place-list-container">
+		<c:set var="leftnavselect" value="1"/>
+		<%@include file="/WEB-INF/views/admin/place/menu.jsp" %>
+		
+		<div class="content-container">
 			<table id="place-list-table">
 				<tr>
 					<th>名称</th>
