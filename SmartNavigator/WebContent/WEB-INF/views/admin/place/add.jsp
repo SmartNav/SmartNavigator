@@ -33,12 +33,15 @@
 					$("#place-add-form-form").attr("action",actionList[0]);
 					break;
 				case "11":
+					$("#form-restaurant-show").css({"display":"block"});
 					$("#place-add-form-form").attr("action",actionList[1]);
 					break;
 				case "12":
+					$("#form-scenic-show").css({"display":"block"});
 					$("#place-add-form-form").attr("action",actionList[2]);
 					break;
 				case "13":
+					$("#form-entertainment-show").css({"display":"block"});
 					$("#place-add-form-form").attr("action",actionList[3]);
 					break;
 				case "14":
@@ -85,13 +88,17 @@
 						<div><label>地址</label><input name="hotel-local" type="text"></div>
 					</div>
 					<div id="form-restaurant-show" class="form-show-option">
-						
+						<div><label>人均消费</label><input name="rest-avg-price" type="text"></div>
+						<div><label>联系方式</label><input name="rest-phone" type="number"></div>
+						<div><label>地址</label><input name="rest-local" type="text"></div>
 					</div>
 					<div id="form-scenic-show" class="form-show-option">
-						
+						<div><label>星级</label><input name="scenic-star" type="number"></div>
+						<div><label>地址</label><input name="scenic-local" type="text"></div>
 					</div>
 					<div id="form-entertainment-show" class="form-show-option">
-						
+						<div><label>联系方式</label><input name="enter-phone" type="number"></div>
+						<div><label>地址</label><input name="enter-local" type="text"></div>
 					</div>
 					<div><input type="submit"></div>
 				</form>

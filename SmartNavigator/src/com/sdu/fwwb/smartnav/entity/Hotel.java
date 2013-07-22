@@ -27,12 +27,17 @@ public class Hotel implements Serializable {
 	private String tel;
 	private String place;
 	private String description;
+	private int level;
+	private double latitude;
+	private double longitude;
 
 	public Hotel(){}
 	
 	public Hotel(long id, String name, int star_level, String min_price,
 			String max_price, int empty_room, int valuation, String notice,
-			String tel, String place, String description) {
+			String tel, String place, String description, int level,
+			double latitude, double longitude) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.star_level = star_level;
@@ -44,7 +49,12 @@ public class Hotel implements Serializable {
 		this.tel = tel;
 		this.place = place;
 		this.description = description;
+		this.level = level;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
+
+
 
 	@Id
 	@Column(name = "id")
@@ -146,14 +156,39 @@ public class Hotel implements Serializable {
 		this.description = description;
 	}
 
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
 	@Override
 	public String toString() {
 		return "Hotel [id=" + id + ", name=" + name + ", star_level="
 				+ star_level + ", min_price=" + min_price + ", max_price="
 				+ max_price + ", empty_room=" + empty_room + ", valuation="
 				+ valuation + ", notice=" + notice + ", tel=" + tel
-				+ ", place=" + place + ", description=" + description + "]";
-
+				+ ", place=" + place + ", description=" + description
+				+ ", level=" + level + ", latitude=" + latitude
+				+ ", longitude=" + longitude + "]";
 	}
 
 }

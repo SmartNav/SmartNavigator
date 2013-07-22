@@ -27,5 +27,9 @@ public class PlaceService {
 	public Page<Place> listAll(int page,int size){
 		return placeDao.findAll(new PageRequest(page, size));
 	}
+	
+	public Page<Place> listByType(int type,int page,int size){
+		return placeDao.findByType(type,new PageRequest(page,size));
+	}
 
 }

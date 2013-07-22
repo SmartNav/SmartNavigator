@@ -15,16 +15,16 @@
 	<div id="top-nav-ul-wrapper">
 		<ul id="top-nav-ul">
 			<c:if test="${topnavselect eq 1 }">
-				<li><a href="#" id="top-nav-ul-selected">兴趣点管理</a></li>
+				<li><a href="${ctx }/admin/place/add" id="top-nav-ul-selected">兴趣点管理</a></li>
 			</c:if>
 			<c:if test="${topnavselect ne 1 }">
-				<li><a href="#" >兴趣点管理</a></li>
+				<li><a href="${ctx }/admin/place/add" >兴趣点管理</a></li>
 			</c:if>
 			<c:if test="${topnavselect eq 2 }">
-				<li><a href="#" id="top-nav-ul-selected">酒店管理</a></li>
+				<li><a href="${ctx }/admin/hotel/list" id="top-nav-ul-selected">酒店管理</a></li>
 			</c:if>
 			<c:if test="${topnavselect ne 2 }">
-				<li><a href="#">酒店管理</a></li>
+				<li><a href="${ctx }/admin/hotel/list">酒店管理</a></li>
 			</c:if>
 			
 			<c:if test="${topnavselect eq 3 }">

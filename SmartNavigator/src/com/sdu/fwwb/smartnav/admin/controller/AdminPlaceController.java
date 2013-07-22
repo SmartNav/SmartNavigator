@@ -45,6 +45,12 @@ public class AdminPlaceController {
 		mav.addObject("totalPages",page.getTotalPages());
 		return mav;
 	}
+
+	@RequestMapping(value="/modify")
+	public ModelAndView placeModify(HttpServletRequest request){
+		ModelAndView mav = new ModelAndView("admin/place/modify");
+		return mav;
+	}
 	
 	@RequestMapping(value="/add/handle",method=RequestMethod.POST)
 	public String placeAddHandle(@RequestParam("name")String name,@RequestParam("level") int level,
@@ -55,4 +61,16 @@ public class AdminPlaceController {
 		placeService.add(name, level, type, descript, latitude, longitude);
 		return "admin/place/add";
 	}
+	
+	@RequestMapping(value="/remove/handle",method=RequestMethod.POST)
+	public String placeRemoveHandle(HttpServletRequest request){
+		String path = request.getRequestURI();
+		return "redirect:"+path;
+	}
+	
+	@RequestMapping(value="/modify/handle",method=RequestMethod.POST)
+	public String placeModifyHandle(@RequestParam("id")String id){
+		return "redirect";
+	}
+	
 }

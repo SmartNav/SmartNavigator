@@ -26,6 +26,20 @@ public class Place implements Serializable{
 	
 	public Place(){};
 	
+	public Place(long id, String name, int level, int type, String description,
+			double latitude, double longitude) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.level = level;
+		this.type = type;
+		this.description = description;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+
+
+
 	public Place(String name, int level, int type, String description,
 			double latitude, double longitude) {
 		super();
