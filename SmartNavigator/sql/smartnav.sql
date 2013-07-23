@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2013-07-22 19:33:39
+Date: 2013-07-23 16:43:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,6 +31,46 @@ CREATE TABLE `sn_admin` (
 -- Records of sn_admin
 -- ----------------------------
 INSERT INTO `sn_admin` VALUES ('1', 'admin', 'admin@smartnav.com', 'admin');
+
+-- ----------------------------
+-- Table structure for `sn_dist`
+-- ----------------------------
+DROP TABLE IF EXISTS `sn_dist`;
+CREATE TABLE `sn_dist` (
+  `id` int(10) NOT NULL,
+  `start` int(2) NOT NULL,
+  `end` int(2) NOT NULL,
+  `weight` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sn_dist
+-- ----------------------------
+INSERT INTO `sn_dist` VALUES ('1', '1', '2', '1357.80697');
+INSERT INTO `sn_dist` VALUES ('2', '2', '3', '769.75116');
+INSERT INTO `sn_dist` VALUES ('3', '3', '4', '673.50285');
+INSERT INTO `sn_dist` VALUES ('4', '4', '5', '1776.77474');
+INSERT INTO `sn_dist` VALUES ('5', '4', '6', '1156.00433');
+INSERT INTO `sn_dist` VALUES ('6', '6', '7', '217.93004');
+INSERT INTO `sn_dist` VALUES ('7', '6', '8', '246.13699');
+INSERT INTO `sn_dist` VALUES ('8', '7', '9', '220.41912');
+INSERT INTO `sn_dist` VALUES ('9', '8', '10', '215.91636');
+INSERT INTO `sn_dist` VALUES ('10', '9', '11', '223.74089');
+INSERT INTO `sn_dist` VALUES ('11', '9', '13', '424.98441');
+INSERT INTO `sn_dist` VALUES ('12', '10', '12', '202.91859');
+INSERT INTO `sn_dist` VALUES ('13', '10', '14', '424.84652');
+INSERT INTO `sn_dist` VALUES ('14', '11', '15', '200.59656');
+INSERT INTO `sn_dist` VALUES ('15', '12', '16', '201.40806');
+INSERT INTO `sn_dist` VALUES ('16', '13', '15', '313.88604');
+INSERT INTO `sn_dist` VALUES ('17', '13', '18', '512.84859');
+INSERT INTO `sn_dist` VALUES ('18', '14', '16', '311.27231');
+INSERT INTO `sn_dist` VALUES ('19', '14', '20', '503.52166');
+INSERT INTO `sn_dist` VALUES ('20', '15', '17', '138.722');
+INSERT INTO `sn_dist` VALUES ('21', '16', '17', '117.93354');
+INSERT INTO `sn_dist` VALUES ('22', '17', '19', '495.51263');
+INSERT INTO `sn_dist` VALUES ('23', '18', '19', '443.94979');
+INSERT INTO `sn_dist` VALUES ('24', '19', '20', '427.22096');
 
 -- ----------------------------
 -- Table structure for `sn_place_entertainment`
@@ -88,7 +128,7 @@ CREATE TABLE `sn_place_meta` (
   `place_longitude` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sn_place_meta
