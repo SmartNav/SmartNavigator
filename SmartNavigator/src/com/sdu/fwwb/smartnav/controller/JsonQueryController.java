@@ -17,17 +17,17 @@ import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.service.PlaceService;
 
 @Controller
-@RequestMapping(value="/json/place")
-public class JsonPlaceController {
+@RequestMapping(value="/json/query")
+public class JsonQueryController {
 	
-	private static final Logger log = Logger.getLogger(JsonPlaceController.class);
+	private static final Logger log = Logger.getLogger(JsonQueryController.class);
 	
 	@Autowired
 	PlaceService placeService;
 	
-	@RequestMapping("/query")
+	@RequestMapping("/place")
 	@ResponseBody
-	public String query(HttpServletResponse response,@RequestParam("laup")double latitudeUp,@RequestParam("ladown") double latitudeDown,
+	public String placeQuery(HttpServletResponse response,@RequestParam("laup")double latitudeUp,@RequestParam("ladown") double latitudeDown,
 			@RequestParam("loup") double longitudeUp,@RequestParam("lodown") double longitudeDown,@RequestParam("level") int level){
 		List<Place> places = placeService.queryByBoundsAndLevel(latitudeUp, latitudeDown, longitudeUp, longitudeDown, level);
 		log.debug("places:"+places);
