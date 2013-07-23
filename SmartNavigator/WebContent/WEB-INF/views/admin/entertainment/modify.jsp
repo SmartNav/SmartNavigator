@@ -41,6 +41,7 @@
 							<img src="${ctx }${entertainment.img}" width="100px;">
 						</c:if>
 						<input name="img" type="file">
+						<input name="deleteimg" type="checkbox">删除图片
 					</div>
 					<input name="id" value="${entertainment.id }" type="hidden">
 					<div><input type="submit"></div>

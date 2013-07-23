@@ -106,7 +106,8 @@ public class AdminScenicController {
 	@RequestMapping(value="/modify/handle")
 	public String modifyHandle(@RequestParam("id") long id,@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
-			@RequestParam("scenic-star") int star,@RequestParam("scenic-local")String location,@RequestParam("img") MultipartFile mFile){
+			@RequestParam("scenic-star") int star,@RequestParam("scenic-local")String location,
+			@RequestParam("img") MultipartFile mFile,HttpServletRequest request){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
 		double longitude = Double.parseDouble(lalongs[1]);
@@ -118,7 +119,7 @@ public class AdminScenicController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		scenicService.modify(id, name, level, type, description, latitude, longitude, star, location,imgPath);
+		scenicService.modify(id, name, level, type, description, latitude, longitude, star, location,imgPath,request.getParameter("deleteimg") != null);
 		return "redirect:/admin/scenic/list";
 	}
 	

@@ -2,6 +2,8 @@ package com.sdu.fwwb.smartnav.controller;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,6 +41,9 @@ public class JsonQueryController {
 	@Autowired
 	ScenicService scenicService;
 	
+	@Autowired
+	ServletContext sc;
+	
 	@RequestMapping("/place")
 	@ResponseBody
 	public String placeQuery(@RequestParam("laup")double latitudeUp,@RequestParam("ladown") double latitudeDown,
@@ -54,6 +59,8 @@ public class JsonQueryController {
 	@ResponseBody
 	public String hotelQuery(@RequestParam("id")long id){
 		Hotel hotel = hotelService.getHotel(id);
+		String img = hotel.getImg();
+		if(img != null)hotel.setImg(sc.getContextPath()+img);
 		log.debug("hotel:"+hotel);
 		return gson.toJson(hotel);
 	}
@@ -62,6 +69,8 @@ public class JsonQueryController {
 	@ResponseBody
 	public String restaurantQuery(@RequestParam("id")long id){
 		Restaurant restaurant = restaurantService.getRestaurant(id);
+		String img = restaurant.getImg();
+		if(img != null) restaurant.setImg(sc.getContextPath()+restaurant.getImg());
 		log.debug("restaurant:"+restaurant);
 		return gson.toJson(restaurant);
 	}
@@ -70,6 +79,8 @@ public class JsonQueryController {
 	@ResponseBody
 	public String scenicQuery(@RequestParam("id")long id){
 		Scenic scenic = scenicService.getScenic(id);
+		String img = scenic.getImg();
+		if(img != null) scenic.setImg(sc.getContextPath()+scenic.getImg());
 		log.debug("scenic:"+scenic);
 		return gson.toJson(scenic);
 	}

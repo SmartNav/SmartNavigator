@@ -37,12 +37,15 @@ public class HotelService {
 	}
 	
 	@Transactional
-	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,int star,String maxPrice,String minPrice,int leftRooms,String tel,String location,String img){
+	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,int star,String maxPrice,String minPrice,int leftRooms,String tel,String location,String img,boolean deleteImg){
 		Place place = new Place(id,name, level, type, description, latitude, longitude);
 		placeDao.save(place);
 		placeDao.save(place);
-		Hotel ho = hotelDao.findOne(id);
-		Hotel hotel = new Hotel(id, name, star, minPrice, maxPrice, leftRooms, 0,null, tel, location, description,level,latitude,longitude,img==null?ho.getImg():img);
+		if(!deleteImg){
+			Hotel ho = hotelDao.findOne(id);
+			img = (img==null)?ho.getImg():img;
+		}else img = null;
+		Hotel hotel = new Hotel(id, name, star, minPrice, maxPrice, leftRooms, 0,null, tel, location, description,level,latitude,longitude,img);
 		hotelDao.save(hotel);
 		log.debug("modify hotel:"+hotel);
 	}

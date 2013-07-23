@@ -37,12 +37,15 @@ public class RestaurantService {
 	}
 	
 	@Transactional
-	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,String avgPrice,String tel,String location,String img){
+	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,String avgPrice,String tel,String location,String img,boolean deleteImg){
 		Place place = new Place(id,name, level, type, description, latitude, longitude);
 		placeDao.save(place);
 		placeDao.save(place);
-		Restaurant re = restaurantDao.findOne(id);
-		Restaurant restaurant = new Restaurant(id, name, avgPrice, null, 0, null, tel, location, description, level, latitude, longitude,img == null?re.getImg():img);
+		if(!deleteImg){
+			Restaurant re = restaurantDao.findOne(id);
+			img = (img == null)?re.getImg():img;
+		}else img = null;
+		Restaurant restaurant = new Restaurant(id, name, avgPrice, null, 0, null, tel, location, description, level, latitude, longitude,img);
 		restaurantDao.save(restaurant);
 		log.debug("modify restaurant:"+restaurant);
 	}

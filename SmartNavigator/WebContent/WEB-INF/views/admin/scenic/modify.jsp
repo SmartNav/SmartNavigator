@@ -34,14 +34,14 @@
 					<input name="type" value="11" type="hidden">
 					<div><label>描述</label><input name="descript" type="text" value="${scenic.description }"></div>
 					<div><label>经纬度</label><input name="lalong" type="text" value="${scenic.latitude },${scenic.longitude}"></div>
-					<div><label>人均消费</label><input name="rest-avg-price" type="text" value="${scenic.avg_price }"></div>
-					<div><label>联系方式</label><input name="rest-phone" type="number" value="${scenic.tel }"></div>
-					<div><label>地址</label><input name="rest-local" type="text" value="${scenic.place }"></div>
+					<div><label>星级</label><input name="scenic-star" type="number" value="${scenic.star }"></div>
+					<div><label>地址</label><input name="scenic-local" type="text" value="${scenic.place }"></div>
 					<div><label>图片</label>
 						<c:if test="${not empty scenic.img }">
 							<img src="${ctx }${scenic.img}" width="100px;">
 						</c:if>
 						<input name="img" type="file">
+						<input name="deleteimg" type="checkbox" >删除图片
 					</div>
 					<input name="id" value="${scenic.id }" type="hidden">
 					<div><input type="submit"></div>

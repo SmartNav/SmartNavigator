@@ -37,12 +37,15 @@ public class EntertainmentService {
 	}
 	
 	@Transactional
-	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,String tel,String location,String img){
+	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,String tel,String location,String img,boolean deleteImg){
 		Place place = new Place(id,name, level, type, description, latitude, longitude);
 		placeDao.save(place);
 		placeDao.save(place);
-		Entertainment en = entertainmentDao.findOne(id);
-		Entertainment entertainment = new Entertainment(id, name, tel, location, 0, null, description, level, latitude, longitude, img == null?en.getImg():img);
+		if(!deleteImg){
+			Entertainment en = entertainmentDao.findOne(id);
+			img = (img == null)?en.getImg():img;
+		}else img = null;
+		Entertainment entertainment = new Entertainment(id, name, tel, location, 0, null, description, level, latitude, longitude, img);
 		entertainmentDao.save(entertainment);
 		log.debug("modify entertainment:"+entertainment);
 	}

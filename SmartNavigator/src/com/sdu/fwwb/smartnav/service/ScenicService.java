@@ -37,12 +37,15 @@ public class ScenicService {
 	}
 	
 	@Transactional
-	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,int star,String location,String img){
+	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,int star,String location,String img,boolean deleteImg){
 		Place place = new Place(id,name, level, type, description, latitude, longitude);
 		placeDao.save(place);
 		placeDao.save(place);
-		Scenic sc = scenicDao.findOne(id);
-		Scenic scenic = new Scenic(id, name, star, location, 0, description, level, latitude, longitude,img==null?sc.getImg():img);
+		if(!deleteImg){
+			Scenic sc = scenicDao.findOne(id);	
+			img = (img==null)?sc.getImg():img;
+		}else img = null;
+		Scenic scenic = new Scenic(id, name, star, location, 0, description, level, latitude, longitude,img);
 		scenicDao.save(scenic);
 		log.debug("modify scenic:"+scenic);
 	}
