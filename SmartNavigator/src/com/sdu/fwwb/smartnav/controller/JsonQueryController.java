@@ -73,4 +73,8 @@ public class JsonQueryController {
 		log.debug("scenic:"+scenic);
 		return gson.toJson(scenic);
 	}
+	
+	public String discountQuery(@RequestParam("latitude")double latitude,@RequestParam("longitude") double longitude){
+		return null;
+	}
 }
