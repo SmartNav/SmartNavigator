@@ -24,11 +24,17 @@ public class Entertainment implements Serializable{
 	private int valuation;
 	private String notice;
 	private String description;
+	private int level;
+	private double latitude;
+	private double longitude;
 	
 	public Entertainment(){}
 	
+	
+
 	public Entertainment(long id, String name, String tel, String place,
-			int valuation, String notice, String description) {
+			int valuation, String notice, String description, int level,
+			double latitude, double longitude) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -37,6 +43,9 @@ public class Entertainment implements Serializable{
 		this.valuation = valuation;
 		this.notice = notice;
 		this.description = description;
+		this.level = level;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
 	@Id
@@ -89,12 +98,33 @@ public class Entertainment implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	@Override
-	public String toString() {
-		return "Entertainment [id=" + id + ", name=" + name + ", tel=" + tel
-				+ ", place=" + place + ", valuation=" + valuation + ", notice="
-				+ notice + ", description=" + description + "]";
+
+	@Column(name="level")
+	public int getLevel() {
+		return level;
 	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	@Column(name="latitude")
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	@Column(name="longitude")
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
 	
 }

@@ -24,34 +24,30 @@
 		<c:set var="leftnavselect" value="1"/>
 		<%@include file="/WEB-INF/views/admin/hotel/menu.jsp" %>
 		<div class="content-container">
-		<form method="get" action="${ctx }/admin/hotel/delete/handle">
+		<form method="get" action="${ctx }/admin/discount/delete/handle">
 			<table id="place-list-table">
 				<tr>
 					<th>选择</th>
-					<th>名称</th>
-					<th>显示等级</th>
-					<th>描述</th>
-					<th>经度</th>
-					<th>纬度</th>
+					<th>标题</th>
+					<th>优先级</th>
+					<th>内容</th>
 					<th>修改</th>
-					<th>优惠信息</th>
 				</tr>
-				<c:forEach items="${list}" var="hotel">
+				<c:forEach items="${discounts}" var="discount">
 				<tr>
-					<td><input type="checkbox" name="${hotel.id }"></td>
-					<td>${hotel.name }</td>
-					<td>${hotel.level }</td>
-					<td>${hotel.description }</td>
-					<td>${hotel.latitude }</td>
-					<td>${hotel.longitude }</td>
-					<td><a href="${ctx }/admin/hotel/modify?id=${hotel.id}">修改</a></td>
-					<td><a href="${ctx }/admin/discount/list?placeid=${hotel.id}">优惠</a></td>
+					<td><input type="checkbox" name="${discount.id }"></td>
+					<td>${discount.title }</td>
+					<td>${discount.priority }</td>
+					<td>${discount.content }</td>
+					<td><a href="${ctx }/admin/discount/modify?id=${discount.id}">修改</a></td>
 				</tr>
 				</c:forEach>
 			</table>
 			<div id="table-menu">
+				<input name="placeid" type="hidden" value="${placeid }">
 				<ul>
 					<li><input type="submit" value="删除"></li>
+					<li><a href="${ctx }/admin/discount/add?placeid=${placeid}">增加</a></li>
 				</ul>
 			</div>
 			</form>

@@ -26,12 +26,16 @@ public class Restaurant implements Serializable{
 	private String tel;
 	private String place;
 	private String description;
+
+	private int level;
+	private double latitude;
+	private double longitude;
 	
 	public Restaurant(){}
 	
 	public Restaurant(long id, String name, String avg_price, String flavor,
 			int valuation, String notice, String tel, String place,
-			String description) {
+			String description, int level, double latitude, double longitude) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -42,6 +46,9 @@ public class Restaurant implements Serializable{
 		this.tel = tel;
 		this.place = place;
 		this.description = description;
+		this.level = level;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
 	@Id
@@ -120,12 +127,40 @@ public class Restaurant implements Serializable{
 		this.description = description;
 	}
 
+	@Column(name="level")
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	@Column(name="latitude")
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	@Column(name="longitude")
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
 	@Override
 	public String toString() {
 		return "Restaurant [id=" + id + ", name=" + name + ", avg_price="
 				+ avg_price + ", flavor=" + flavor + ", valuation=" + valuation
 				+ ", notice=" + notice + ", tel=" + tel + ", place=" + place
-				+ ", description=" + description + "]";
+				+ ", description=" + description + ", level=" + level
+				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
-	
+
 }
