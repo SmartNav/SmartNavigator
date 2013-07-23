@@ -28,7 +28,7 @@
 		
 		<div class="content-container">
 			<div id="place-add-form">
-				<form method="post" action="${ctx }/admin/hotel/modify/handle" id="place-add-form-form">
+				<form method="post" action="${ctx }/admin/hotel/modify/handle" id="place-add-form-form" enctype="multipart/form-data">
 					<div><label>地点名</label><input name="name" type="text" value="${hotel.name }"></div>
 					<div><label>显示最低级别</label><input name="level" type="number" value="${hotel.level }"></div>
 					<input name="type" value="10" type="hidden">
@@ -40,6 +40,12 @@
 					<div><label>剩余房间</label><input name="hotel-rest-rooms" type="number" value="${hotel.empty_room }"></div>
 					<div><label>联系方式</label><input name="hotel-phone" type="number" value="${hotel.tel }"></div>
 					<div><label>地址</label><input name="hotel-local" type="text" value="${hotel.place }"></div>
+					<div><label>图片</label>
+						<c:if test="${not empty hotel.img }">
+							<img src="${ctx }${hotel.img}" width="100px;">
+						</c:if>
+						<input name="img" type="file">
+					</div>
 					<input name="id" value="${hotel.id }" type="hidden">
 					<div><input type="submit"></div>
 				</form>

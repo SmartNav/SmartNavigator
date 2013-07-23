@@ -16,6 +16,18 @@ public class FileUtils {
 	
 	public static final String PLACE_UPLOAD_PATH = "/up/place/";
 	
+	public static boolean isImg(String fileName){
+		log.debug("fileName:"+fileName);
+		String names[] = fileName.split("[.]");
+		log.debug("names:"+names);
+		log.debug("nameslength:"+names.length);
+		String suffix = names[names.length-1];
+		if(suffix.equalsIgnoreCase("png") || suffix.equalsIgnoreCase("jpg") || suffix.equalsIgnoreCase("jpeg") || suffix.equalsIgnoreCase("gif")){
+			return true;
+		}
+		return false;
+	}
+	
 	 /**
      * 写文件到本地
      * @param in 输入的文件流

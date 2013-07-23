@@ -30,13 +30,14 @@ public class Hotel implements Serializable {
 	private int level;
 	private double latitude;
 	private double longitude;
+	private String img;
 
 	public Hotel(){}
 	
 	public Hotel(long id, String name, int star_level, String min_price,
 			String max_price, int empty_room, int valuation, String notice,
 			String tel, String place, String description, int level,
-			double latitude, double longitude) {
+			double latitude, double longitude, String img) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -52,9 +53,8 @@ public class Hotel implements Serializable {
 		this.level = level;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.img = img;
 	}
-
-
 
 	@Id
 	@Column(name = "id")
@@ -156,6 +156,7 @@ public class Hotel implements Serializable {
 		this.description = description;
 	}
 
+	@Column(name = "level")
 	public int getLevel() {
 		return level;
 	}
@@ -164,6 +165,7 @@ public class Hotel implements Serializable {
 		this.level = level;
 	}
 
+	@Column(name = "latitude")
 	public double getLatitude() {
 		return latitude;
 	}
@@ -172,12 +174,22 @@ public class Hotel implements Serializable {
 		this.latitude = latitude;
 	}
 
+	@Column(name = "longitude")
 	public double getLongitude() {
 		return longitude;
 	}
 
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
+	}
+
+	@Column(name = "img")
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	@Override
@@ -188,7 +200,8 @@ public class Hotel implements Serializable {
 				+ valuation + ", notice=" + notice + ", tel=" + tel
 				+ ", place=" + place + ", description=" + description
 				+ ", level=" + level + ", latitude=" + latitude
-				+ ", longitude=" + longitude + "]";
+				+ ", longitude=" + longitude + ", img=" + img + "]";
 	}
+
 
 }

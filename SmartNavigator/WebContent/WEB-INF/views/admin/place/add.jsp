@@ -66,7 +66,7 @@
 		
 		<div class="content-container">
 			<div id="place-add-form">
-				<form method="post" action="${ctx }/admin/place/add/handle" id="place-add-form-form">
+				<form method="post" action="${ctx }/admin/hotel/add/handle" id="place-add-form-form" enctype="multipart/form-data">
 					<div><label>地点名</label><input name="name" type="text"></div>
 					<div><label>显示最低级别</label><input name="level" type="number"></div>
 					<div><label>类型</label>
@@ -101,6 +101,7 @@
 						<div><label>联系方式</label><input name="enter-phone" type="number"></div>
 						<div><label>地址</label><input name="enter-local" type="text"></div>
 					</div>
+					<div><label>图片</label><input name="img" type="file"></div>
 					<div><input type="submit"></div>
 				</form>
 			</div>

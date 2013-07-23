@@ -1,10 +1,12 @@
 package com.sdu.fwwb.smartnav.admin.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -14,12 +16,14 @@ import org.springframework.orm.hibernate3.TypeDefinitionBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sdu.fwwb.smartnav.entity.Hotel;
 import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.service.HotelService;
 import com.sdu.fwwb.smartnav.service.PlaceService;
+import com.sdu.fwwb.smartnav.util.FileUtils;
 import com.sdu.fwwb.smartnav.util.TypeDefinitions;
 
 @Controller
@@ -33,16 +37,28 @@ public class AdminHotelController {
 	
 	@Autowired
 	PlaceService placeService;
+	
+	@Autowired
+	ServletContext sc;
 
 	@RequestMapping(value="/add/handle")
 	public String addHandle(@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("hotel-star") int star,@RequestParam("hotel-max-price") String maxPrice,@RequestParam("hotel-min-price") String minPrice,
-			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("hotel-local")String location){
+			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("hotel-local")String location,@RequestParam("img")MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
 		double longitude = Double.parseDouble(lalongs[1]);
-		hotelService.add(name, level, type, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location);
+
+		String imgPath = null;
+		try {
+			if(mFile.isEmpty()) imgPath = null;
+			else imgPath = FileUtils.copyFile(sc, mFile.getInputStream(),mFile.getOriginalFilename());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		hotelService.add(name, level, type, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location,imgPath);
 		return "redirect:/admin/place/add";
 	}
 	
@@ -97,11 +113,18 @@ public class AdminHotelController {
 	public String modifyHandle(@RequestParam("id")long id,@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("hotel-star") int star,@RequestParam("hotel-max-price") String maxPrice,@RequestParam("hotel-min-price") String minPrice,
-			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("hotel-local")String location){
+			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("hotel-local")String location,@RequestParam("img") MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
 		double longitude = Double.parseDouble(lalongs[1]);
-		hotelService.modify(id,name, level, type, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location);
+		String imgPath = null;
+		try {
+			if(mFile.isEmpty()) imgPath = null;
+			else imgPath = FileUtils.copyFile(sc, mFile.getInputStream(),mFile.getOriginalFilename());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		hotelService.modify(id,name, level, type, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location,imgPath);
 		return "redirect:/admin/hotel/list";
 	}
 	
