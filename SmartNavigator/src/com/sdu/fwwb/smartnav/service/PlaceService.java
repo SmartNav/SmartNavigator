@@ -1,5 +1,7 @@
 package com.sdu.fwwb.smartnav.service;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,6 +32,10 @@ public class PlaceService {
 	
 	public Page<Place> listByType(int type,int page,int size){
 		return placeDao.findByType(type,new PageRequest(page,size));
+	}
+	
+	public List<Place> queryByBoundsAndLevel(double latitudeUp,double latitudeDown,double longitudeUp,double longitudeDown,int level){
+		return placeDao.findByLatitudeAndLongtitudeAndLevelBetween(latitudeUp, latitudeDown, longitudeUp, longitudeDown, level);
 	}
 
 }
