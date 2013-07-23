@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="container">
-	<c:set var="topnavselect" value="4"/>
+	<c:set var="topnavselect" value="3"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
 	
@@ -36,16 +36,16 @@
 					<th>修改</th>
 					<th>优惠信息</th>
 				</tr>
-				<c:forEach items="${list}" var="restaurant">
+				<c:forEach items="${list}" var="scenic">
 				<tr>
-					<td><input type="checkbox" name="${restaurant.id }"></td>
-					<td>${restaurant.name }</td>
-					<td>${restaurant.level }</td>
-					<td>${restaurant.description }</td>
-					<td>${restaurant.latitude }</td>
-					<td>${restaurant.longitude }</td>
-					<td><a href="${ctx }/admin/restaurant/modify?id=${restaurant.id}">修改</a></td>
-					<td><a href="${ctx }/admin/discount/list?placeid=${restaurant.id}">优惠</a></td>
+					<td><input type="checkbox" name="${scenic.id }"></td>
+					<td>${scenic.name }</td>
+					<td>${scenic.level }</td>
+					<td>${scenic.description }</td>
+					<td>${scenic.latitude }</td>
+					<td>${scenic.longitude }</td>
+					<td><a href="${ctx }/admin/scenic/modify?id=${scenic.id}">修改</a></td>
+					<td><a href="${ctx }/admin/discount/list?placeid=${scenic.id}">优惠</a></td>
 				</tr>
 				</c:forEach>
 			</table>

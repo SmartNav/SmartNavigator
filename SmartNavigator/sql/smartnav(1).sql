@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 07 月 23 日 12:04
+-- 生成日期: 2013 年 07 月 23 日 13:32
 -- 服务器版本: 5.1.58
 -- PHP 版本: 5.3.6-13ubuntu3.6
 
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `sn_discount` (
   `content` text NOT NULL,
   `priority` int(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- 转存表中的数据 `sn_discount`
@@ -63,7 +63,10 @@ CREATE TABLE IF NOT EXISTS `sn_discount` (
 INSERT INTO `sn_discount` (`id`, `place_id`, `title`, `content`, `priority`) VALUES
 (1, 12, 'te', 'wqeq', 10),
 (4, 12, 'test', 'wqeq', 90),
-(5, 12, 'tewrtw', 'rewrw', 233);
+(5, 12, 'tewrtw', 'rewrw', 233),
+(6, 13, 'terte', 'dsadasd', 12),
+(7, 14, 'tetr', 'dada', 22),
+(8, 15, 'ds', 'dsada', 11);
 
 -- --------------------------------------------------------
 
@@ -132,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `sn_place_meta` (
   `place_longitude` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- 转存表中的数据 `sn_place_meta`
@@ -149,7 +152,10 @@ INSERT INTO `sn_place_meta` (`id`, `place_name`, `place_level`, `place_type`, `p
 (8, ' 济南奥体中心', 12, 12, '全运会举办地，健身运动首选', 36.66321, 117.129126),
 (9, '雨滴广场', 18, 13, '集娱乐美食于一身', 36.678357, 117.136748),
 (10, '山东一卡通', 18, 14, '便利全民', 36.678031, 117.143364),
-(12, 'test', 15, 10, 'tete', 1231.3232, 1232.134);
+(12, 'test', 15, 10, 'tete', 1231.3232, 1232.134),
+(14, '喜洋洋', 121, 11, '121', 222.32, 43252.4324),
+(15, 'scenic', 33, 12, '没什么', 213.3342, 453.3213),
+(16, 'scenicsdsa', 231, 12, '43234', 32.3221, 3232.12);
 
 -- --------------------------------------------------------
 
@@ -188,7 +194,14 @@ CREATE TABLE IF NOT EXISTS `sn_place_restaurant` (
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+--
+-- 转存表中的数据 `sn_place_restaurant`
+--
+
+INSERT INTO `sn_place_restaurant` (`id`, `name`, `avg_price`, `flavor`, `valuation`, `notice`, `tel`, `place`, `description`, `level`, `latitude`, `longitude`) VALUES
+(14, '喜洋洋', '2222', NULL, 0, NULL, '3342', '34242', '121', 121, 222.32, 43252.4324);
 
 -- --------------------------------------------------------
 
@@ -199,12 +212,23 @@ CREATE TABLE IF NOT EXISTS `sn_place_restaurant` (
 CREATE TABLE IF NOT EXISTS `sn_place_scenic` (
   `id` int(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `level` int(1) unsigned DEFAULT NULL,
+  `star` int(1) unsigned DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
   `valuation` int(1) unsigned DEFAULT NULL,
   `description` text,
+  `level` int(11) NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+
+--
+-- 转存表中的数据 `sn_place_scenic`
+--
+
+INSERT INTO `sn_place_scenic` (`id`, `name`, `star`, `place`, `valuation`, `description`, `level`, `latitude`, `longitude`) VALUES
+(15, 'scenic', 21, 'DASDAS', 0, '没什么', 0, 0, 0),
+(16, 'scenicsdsa', 3, '313', 0, '43234', 231, 32.3221, 3232.12);
 
 -- --------------------------------------------------------
 

@@ -18,26 +18,32 @@ public class Scenic implements Serializable{
 	
 	private long id;
 	private String name;
-	private int level;
+	private int star;
 	private String place;
 	private int valuation;
 	private String description;
+
+	private int level;
+	private double latitude;
+	private double longitude;
 	
 	
 	public Scenic() {}
 
-	public Scenic(long id, String name, int level, String place, int valuation,
-			String description) {
+	public Scenic(long id, String name, int star, String place, int valuation,
+			String description, int level, double latitude, double longitude) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.level = level;
+		this.star = star;
 		this.place = place;
 		this.valuation = valuation;
 		this.description = description;
+		this.level = level;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
-	
 	@Id
 	@Column(name="id")
 	public long getId() {
@@ -88,11 +94,39 @@ public class Scenic implements Serializable{
 		this.description = description;
 	}
 
+	@Column(name="star")
+	public int getStar() {
+		return star;
+	}
+
+	public void setStar(int star) {
+		this.star = star;
+	}
+
+	@Column(name="latitude")
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	@Column(name="longitude")
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
 	@Override
 	public String toString() {
-		return "Scenic [id=" + id + ", name=" + name + ", level=" + level
+		return "Scenic [id=" + id + ", name=" + name + ", star=" + star
 				+ ", place=" + place + ", valuation=" + valuation
-				+ ", description=" + description + "]";
+				+ ", description=" + description + ", level=" + level
+				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
-	
+
 }

@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sdu.fwwb.smartnav.dao.PlaceDAO;
 import com.sdu.fwwb.smartnav.dao.RestaurantDAO;
-import com.sdu.fwwb.smartnav.entity.Hotel;
 import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.entity.Restaurant;
 
@@ -34,7 +33,7 @@ public class RestaurantService {
 		long id = places.get(places.size()-1).getId();
 		Restaurant restaurant = new Restaurant(id, name, avgPrice, null, 0, null, tel, location, description, level, latitude, longitude);
 		restaurantDao.save(restaurant);
-		log.debug("add hotel:"+restaurant);
+		log.debug("add restaurant:"+restaurant);
 	}
 	
 	@Transactional
@@ -44,7 +43,7 @@ public class RestaurantService {
 		placeDao.save(place);
 		Restaurant restaurant = new Restaurant(id, name, avgPrice, null, 0, null, tel, location, description, level, latitude, longitude);
 		restaurantDao.save(restaurant);
-		log.debug("modify hotel:"+restaurant);
+		log.debug("modify restaurant:"+restaurant);
 	}
 	
 	public Page<Restaurant> list(int page,int size){
