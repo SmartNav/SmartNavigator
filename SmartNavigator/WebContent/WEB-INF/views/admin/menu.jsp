@@ -28,22 +28,29 @@
 			</c:if>
 			
 			<c:if test="${topnavselect eq 3 }">
-				<li><a href="#" id="top-nav-ul-selected">餐厅管理</a></li>
+				<li><a href="${ctx }/admin/restaurant/list" id="top-nav-ul-selected">餐厅管理</a></li>
 			</c:if>
 			<c:if test="${topnavselect ne 3 }">
-				<li><a href="#">餐厅管理</a></li>
+				<li><a href="${ctx }/admin/restaurant/list">餐厅管理</a></li>
 			</c:if>
 			
 			<c:if test="${topnavselect eq 4 }">
-				<li><a href="#" id="top-nav-ul-selected">活动管理</a></li>
+				<li><a href="${ctx }/admin/scenic/list" id="top-nav-ul-selected">景点管理</a></li>
 			</c:if>
 			<c:if test="${topnavselect ne 4 }">
-				<li><a href="#">活动管理</a></li>
+				<li><a href="${ctx }/admin/scenic/list">景点管理</a></li>
 			</c:if>
+			
 			<c:if test="${topnavselect eq 5 }">
-				<li><a href="#" id="top-nav-ul-selected">账户设置</a></li>
+				<li><a href="${ctx }/admin/activity/list" id="top-nav-ul-selected">活动管理</a></li>
 			</c:if>
 			<c:if test="${topnavselect ne 5 }">
+				<li><a href="${ctx }/admin/activity/list">活动管理</a></li>
+			</c:if>
+			<c:if test="${topnavselect eq 6 }">
+				<li><a href="#" id="top-nav-ul-selected">账户设置</a></li>
+			</c:if>
+			<c:if test="${topnavselect ne 6 }">
 				<li><a href="#">账户设置</a></li>
 			</c:if>
 		</ul>

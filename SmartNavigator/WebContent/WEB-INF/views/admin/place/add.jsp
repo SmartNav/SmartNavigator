@@ -14,6 +14,7 @@
 	</style>
 	<script type="text/javascript">
 		$(document).ready(function (){
+			$("#form-hotel-show").css({"display":"block"});
 			listenChanges();
 		});
 		
