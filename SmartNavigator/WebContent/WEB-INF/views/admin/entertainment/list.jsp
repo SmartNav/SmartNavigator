@@ -15,16 +15,16 @@
 </head>
 <body>
 <div class="container">
-	<c:set var="topnavselect" value="4"/>
+	<c:set var="topnavselect" value="5"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
 	
 	<div class="main-container">
 		
 		<c:set var="leftnavselect" value="1"/>
-		<%@include file="/WEB-INF/views/admin/restaurant/menu.jsp" %>
+		<%@include file="/WEB-INF/views/admin/entertainment/menu.jsp" %>
 		<div class="content-container">
-		<form method="get" action="${ctx }/admin/restaurant/delete/handle">
+		<form method="get" action="${ctx }/admin/entertainment/delete/handle">
 			<table id="place-list-table">
 				<tr>
 					<th>选择</th>
@@ -36,16 +36,16 @@
 					<th>修改</th>
 					<th>优惠信息</th>
 				</tr>
-				<c:forEach items="${list}" var="scenic">
+				<c:forEach items="${list}" var="entertainment">
 				<tr>
-					<td><input type="checkbox" name="${scenic.id }"></td>
-					<td>${scenic.name }</td>
-					<td>${scenic.level }</td>
-					<td>${scenic.description }</td>
-					<td>${scenic.latitude }</td>
-					<td>${scenic.longitude }</td>
-					<td><a href="${ctx }/admin/scenic/modify?id=${scenic.id}">修改</a></td>
-					<td><a href="${ctx }/admin/discount/list?placeid=${scenic.id}">优惠</a></td>
+					<td><input type="checkbox" name="${entertainment.id }"></td>
+					<td>${entertainment.name }</td>
+					<td>${entertainment.level }</td>
+					<td>${entertainment.description }</td>
+					<td>${entertainment.latitude }</td>
+					<td>${entertainment.longitude }</td>
+					<td><a href="${ctx }/admin/entertainment/modify?id=${entertainment.id}">修改</a></td>
+					<td><a href="${ctx }/admin/discount/list?placeid=${entertainment.id}">优惠</a></td>
 				</tr>
 				</c:forEach>
 			</table>

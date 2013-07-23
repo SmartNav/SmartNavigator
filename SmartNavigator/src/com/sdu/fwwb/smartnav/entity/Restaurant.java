@@ -30,12 +30,14 @@ public class Restaurant implements Serializable{
 	private int level;
 	private double latitude;
 	private double longitude;
+	private String img;
 	
 	public Restaurant(){}
-	
+
 	public Restaurant(long id, String name, String avg_price, String flavor,
 			int valuation, String notice, String tel, String place,
-			String description, int level, double latitude, double longitude) {
+			String description, int level, double latitude, double longitude,
+			String img) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -49,6 +51,7 @@ public class Restaurant implements Serializable{
 		this.level = level;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.img = img;
 	}
 
 	@Id
@@ -153,6 +156,14 @@ public class Restaurant implements Serializable{
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
+	@Column(name="img")
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
 
 	@Override
 	public String toString() {
@@ -160,7 +171,8 @@ public class Restaurant implements Serializable{
 				+ avg_price + ", flavor=" + flavor + ", valuation=" + valuation
 				+ ", notice=" + notice + ", tel=" + tel + ", place=" + place
 				+ ", description=" + description + ", level=" + level
-				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
+				+ ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", img=" + img + "]";
 	}
-
+	
 }

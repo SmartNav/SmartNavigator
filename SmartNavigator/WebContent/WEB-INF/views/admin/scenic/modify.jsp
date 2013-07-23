@@ -24,20 +24,26 @@
 	
 	<div class="main-container">
 		<c:set var="leftnavselect" value="2"/>
-		<%@include file="/WEB-INF/views/admin/restaurant/menu.jsp" %>
+		<%@include file="/WEB-INF/views/admin/scenic/menu.jsp" %>
 		
 		<div class="content-container">
 			<div id="place-add-form">
-				<form method="post" action="${ctx }/admin/restaurant/modify/handle" id="place-add-form-form">
-					<div><label>地点名</label><input name="name" type="text" value="${restaurant.name }"></div>
-					<div><label>显示最低级别</label><input name="level" type="number" value="${restaurant.level }"></div>
+				<form method="post" action="${ctx }/admin/scenic/modify/handle" id="place-add-form-form"  enctype="multipart/form-data">
+					<div><label>地点名</label><input name="name" type="text" value="${scenic.name }"></div>
+					<div><label>显示最低级别</label><input name="level" type="number" value="${scenic.level }"></div>
 					<input name="type" value="11" type="hidden">
-					<div><label>描述</label><input name="descript" type="text" value="${restaurant.description }"></div>
-					<div><label>经纬度</label><input name="lalong" type="text" value="${restaurant.latitude },${restaurant.longitude}"></div>
-					<div><label>人均消费</label><input name="rest-avg-price" type="text" value="${restaurant.avg_price }"></div>
-					<div><label>联系方式</label><input name="rest-phone" type="number" value="${restaurant.tel }"></div>
-					<div><label>地址</label><input name="rest-local" type="text" value="${restaurant.place }"></div>
-					<input name="id" value="${restaurant.id }" type="hidden">
+					<div><label>描述</label><input name="descript" type="text" value="${scenic.description }"></div>
+					<div><label>经纬度</label><input name="lalong" type="text" value="${scenic.latitude },${scenic.longitude}"></div>
+					<div><label>人均消费</label><input name="rest-avg-price" type="text" value="${scenic.avg_price }"></div>
+					<div><label>联系方式</label><input name="rest-phone" type="number" value="${scenic.tel }"></div>
+					<div><label>地址</label><input name="rest-local" type="text" value="${scenic.place }"></div>
+					<div><label>图片</label>
+						<c:if test="${not empty scenic.img }">
+							<img src="${ctx }${scenic.img}" width="100px;">
+						</c:if>
+						<input name="img" type="file">
+					</div>
+					<input name="id" value="${scenic.id }" type="hidden">
 					<div><input type="submit"></div>
 				</form>
 			</div>

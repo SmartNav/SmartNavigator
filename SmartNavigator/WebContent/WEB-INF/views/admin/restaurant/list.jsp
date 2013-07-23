@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="container">
-	<c:set var="topnavselect" value="4"/>
+	<c:set var="topnavselect" value="3"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
 	

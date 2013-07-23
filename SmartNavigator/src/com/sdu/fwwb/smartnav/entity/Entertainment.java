@@ -27,14 +27,12 @@ public class Entertainment implements Serializable{
 	private int level;
 	private double latitude;
 	private double longitude;
+	private String img;
 	
 	public Entertainment(){}
-	
-	
-
 	public Entertainment(long id, String name, String tel, String place,
 			int valuation, String notice, String description, int level,
-			double latitude, double longitude) {
+			double latitude, double longitude, String img) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -46,8 +44,8 @@ public class Entertainment implements Serializable{
 		this.level = level;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.img = img;
 	}
-
 	@Id
 	@Column(name="id")
 	public long getId() {
@@ -124,6 +122,22 @@ public class Entertainment implements Serializable{
 
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
+	}
+	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
+	@Override
+	public String toString() {
+		return "Entertainment [id=" + id + ", name=" + name + ", tel=" + tel
+				+ ", place=" + place + ", valuation=" + valuation + ", notice="
+				+ notice + ", description=" + description + ", level=" + level
+				+ ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", img=" + img + "]";
 	}
 
 	

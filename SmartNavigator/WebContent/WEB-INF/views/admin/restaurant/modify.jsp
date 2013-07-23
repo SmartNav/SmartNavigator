@@ -28,7 +28,7 @@
 		
 		<div class="content-container">
 			<div id="place-add-form">
-				<form method="post" action="${ctx }/admin/restaurant/modify/handle" id="place-add-form-form">
+				<form method="post" action="${ctx }/admin/restaurant/modify/handle" id="place-add-form-form"  enctype="multipart/form-data">
 					<div><label>地点名</label><input name="name" type="text" value="${restaurant.name }"></div>
 					<div><label>显示最低级别</label><input name="level" type="number" value="${restaurant.level }"></div>
 					<input name="type" value="11" type="hidden">
@@ -37,6 +37,12 @@
 					<div><label>人均消费</label><input name="rest-avg-price" type="text" value="${restaurant.avg_price }"></div>
 					<div><label>联系方式</label><input name="rest-phone" type="number" value="${restaurant.tel }"></div>
 					<div><label>地址</label><input name="rest-local" type="text" value="${restaurant.place }"></div>
+					<div><label>图片</label>
+						<c:if test="${not empty restaurant.img }">
+							<img src="${ctx }${restaurant.img}" width="100px;">
+						</c:if>
+						<input name="img" type="file">
+					</div>
 					<input name="id" value="${restaurant.id }" type="hidden">
 					<div><input type="submit"></div>
 				</form>

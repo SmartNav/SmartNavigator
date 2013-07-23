@@ -1,9 +1,11 @@
 package com.sdu.fwwb.smartnav.admin.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -12,11 +14,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sdu.fwwb.smartnav.entity.Scenic;
 import com.sdu.fwwb.smartnav.service.PlaceService;
 import com.sdu.fwwb.smartnav.service.ScenicService;
+import com.sdu.fwwb.smartnav.util.FileUtils;
 
 @Controller
 @RequestMapping(value="/admin/scenic")
@@ -30,14 +34,25 @@ public class AdminScenicController {
 	@Autowired
 	PlaceService placeService;
 
+	@Autowired
+	ServletContext sc;
+	
 	@RequestMapping(value="/add/handle")
 	public String addHandle(@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
-			@RequestParam("scenic-star") int star,@RequestParam("scenic-local")String location){
+			@RequestParam("scenic-star") int star,@RequestParam("scenic-local")String location,@RequestParam("img")MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
 		double longitude = Double.parseDouble(lalongs[1]);
-		scenicService.add(name, level, type, description, latitude, longitude, star, location);
+
+		String imgPath = null;
+		try {
+			if(mFile.isEmpty()) imgPath = null;
+			else imgPath = FileUtils.copyFile(sc, mFile.getInputStream(),mFile.getOriginalFilename());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		scenicService.add(name, level, type, description, latitude, longitude, star, location,imgPath);
 		return "redirect:/admin/place/add";
 	}
 	
@@ -91,11 +106,19 @@ public class AdminScenicController {
 	@RequestMapping(value="/modify/handle")
 	public String modifyHandle(@RequestParam("id") long id,@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
-			@RequestParam("scenic-star") int star,@RequestParam("scenic-local")String location){
+			@RequestParam("scenic-star") int star,@RequestParam("scenic-local")String location,@RequestParam("img") MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
 		double longitude = Double.parseDouble(lalongs[1]);
-		scenicService.modify(id, name, level, type, description, latitude, longitude, star, location);
+
+		String imgPath = null;
+		try {
+			if(mFile.isEmpty()) imgPath = null;
+			else imgPath = FileUtils.copyFile(sc, mFile.getInputStream(),mFile.getOriginalFilename());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		scenicService.modify(id, name, level, type, description, latitude, longitude, star, location,imgPath);
 		return "redirect:/admin/scenic/list";
 	}
 	

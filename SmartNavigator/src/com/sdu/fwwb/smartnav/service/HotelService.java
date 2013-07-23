@@ -41,7 +41,8 @@ public class HotelService {
 		Place place = new Place(id,name, level, type, description, latitude, longitude);
 		placeDao.save(place);
 		placeDao.save(place);
-		Hotel hotel = new Hotel(id, name, star, minPrice, maxPrice, leftRooms, 0,null, tel, location, description,level,latitude,longitude,img);
+		Hotel ho = hotelDao.findOne(id);
+		Hotel hotel = new Hotel(id, name, star, minPrice, maxPrice, leftRooms, 0,null, tel, location, description,level,latitude,longitude,img==null?ho.getImg():img);
 		hotelDao.save(hotel);
 		log.debug("modify hotel:"+hotel);
 	}

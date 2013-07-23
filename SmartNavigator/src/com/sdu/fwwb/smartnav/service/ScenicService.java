@@ -26,22 +26,23 @@ public class ScenicService {
 	PlaceDAO placeDao;
 	
 	@Transactional
-	public void add(String name,int level,int type,String description,double latitude,double longitude,int star,String location){
+	public void add(String name,int level,int type,String description,double latitude,double longitude,int star,String location,String img){
 		Place place = new Place(name, level, type, description, latitude, longitude);
 		placeDao.save(place);
 		List<Place> places = placeDao.findByLatitudeAndLongitude(latitude, longitude);
 		long id = places.get(places.size()-1).getId();
-		Scenic scenic = new Scenic(id, name, star, location, 0, description, level, latitude, longitude);
+		Scenic scenic = new Scenic(id, name, star, location, 0, description, level, latitude, longitude,img);
 		scenicDao.save(scenic);
 		log.debug("add scenic:"+scenic);
 	}
 	
 	@Transactional
-	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,int star,String location){
+	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,int star,String location,String img){
 		Place place = new Place(id,name, level, type, description, latitude, longitude);
 		placeDao.save(place);
 		placeDao.save(place);
-		Scenic scenic = new Scenic(id, name, star, location, 0, description, level, latitude, longitude);
+		Scenic sc = scenicDao.findOne(id);
+		Scenic scenic = new Scenic(id, name, star, location, 0, description, level, latitude, longitude,img==null?sc.getImg():img);
 		scenicDao.save(scenic);
 		log.debug("modify scenic:"+scenic);
 	}

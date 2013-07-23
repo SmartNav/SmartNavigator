@@ -26,12 +26,13 @@ public class Scenic implements Serializable{
 	private int level;
 	private double latitude;
 	private double longitude;
-	
+	private String img;
 	
 	public Scenic() {}
 
 	public Scenic(long id, String name, int star, String place, int valuation,
-			String description, int level, double latitude, double longitude) {
+			String description, int level, double latitude, double longitude,
+			String img) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -42,6 +43,7 @@ public class Scenic implements Serializable{
 		this.level = level;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.img = img;
 	}
 
 	@Id
@@ -121,12 +123,22 @@ public class Scenic implements Serializable{
 		this.longitude = longitude;
 	}
 
+	@Column(name="img")
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	@Override
 	public String toString() {
 		return "Scenic [id=" + id + ", name=" + name + ", star=" + star
 				+ ", place=" + place + ", valuation=" + valuation
 				+ ", description=" + description + ", level=" + level
-				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
+				+ ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", img=" + img + "]";
 	}
 
 }
