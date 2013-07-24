@@ -71,7 +71,7 @@ public class AdminPlaceController {
 		String imgPath;
 		try {
 			if(mFile.isEmpty()) imgPath = null;
-			else imgPath = FileUtils.copyFile(sc, mFile.getInputStream(),mFile.getOriginalFilename());
+			else imgPath = FileUtils.copyFileToPlace(sc, mFile.getInputStream(),mFile.getOriginalFilename());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

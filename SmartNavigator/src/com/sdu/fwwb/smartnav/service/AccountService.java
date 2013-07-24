@@ -16,12 +16,20 @@ public class AccountService {
 	@Autowired
 	UserDAO userDao;
 	
-	public void createAccount(String email,String password,String userName) throws SmartNavException{
-		if(!ValidateUtil.isEmail(email) || !password.isEmpty() || userName.isEmpty()){
+	public void createAccount(String email,String password,String userName,String avatar,String sex) throws SmartNavException{
+		if(!ValidateUtil.isEmail(email) || password.isEmpty() || userName.isEmpty()){
 			throw new SmartNavException(new SmartNavError(ErrorCodeDefinitions.CODE_INVALID_INPUT));
 		}
-		User user = new User(userName,email,password);
+		User user = new User(userName,email,password,avatar,sex);
 		userDao.save(user);
+	}
+	
+	public boolean login(String email,String password){
+		return userDao.findByEmailAndPassword(email,password) == null;
+	}
+	
+	public User get(String email){
+		return userDao.findByEmail(email);
 	}
 	
 }

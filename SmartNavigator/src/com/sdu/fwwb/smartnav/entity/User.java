@@ -20,14 +20,20 @@ public class User implements Serializable{
 	private String userName;
 	private String email;
 	private String password;
+	private String avatar;
+	private String sex;
 	
 	public User(){}
 	
-	public User(String userName, String email, String password) {
+	public User(String userName, String email, String password,
+			String avatar, String sex) {
 		this.userName = userName;
 		this.email = email;
 		this.password = password;
+		this.avatar = avatar;
+		this.sex = sex;
 	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="user_id")
@@ -38,10 +44,10 @@ public class User implements Serializable{
 		this.id = id;
 	}
 	@Column(name="user_name")
-	public String getuserName() {
+	public String getUserName() {
 		return userName;
 	}
-	public void setuserName(String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 	@Column(name="user_email")
@@ -58,12 +64,30 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Column(name="user_avatar")
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	@Column(name="user_sex")
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", email=" + email
-				+ ", password=" + password + "]";
+				+ ", password=" + password + ", avatar=" + avatar + ", sex="
+				+ sex + "]";
 	}
-	
+
 	
 }

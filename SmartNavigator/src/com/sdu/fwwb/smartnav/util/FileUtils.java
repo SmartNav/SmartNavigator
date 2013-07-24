@@ -15,6 +15,7 @@ public class FileUtils {
 	private static final Logger log = Logger.getLogger(FileUtils.class);
 	
 	public static final String PLACE_UPLOAD_PATH = "/up/place/";
+	public static final String AVATAR_UPLOAD_PATH = "up/avatar/";
 	
 	public static boolean isImg(String fileName){
 		log.debug("fileName:"+fileName);
@@ -28,6 +29,14 @@ public class FileUtils {
 		return false;
 	}
 	
+	public static String copyFileToPlace(ServletContext sc,InputStream in, String fileName) throws IOException {
+        return copyFile(sc,in,fileName,PLACE_UPLOAD_PATH);
+	}
+	
+	public static String copyFileToAvatar(ServletContext sc,InputStream in, String fileName) throws IOException {
+		return copyFile(sc,in,fileName,AVATAR_UPLOAD_PATH);
+	}
+	
 	 /**
      * 写文件到本地
      * @param in 输入的文件流
@@ -35,9 +44,9 @@ public class FileUtils {
      * @throws IOException
      * @return 文件的相对路径
      */
-    public static String copyFile(ServletContext sc,InputStream in, String fileName) throws IOException {
+    private static String copyFile(ServletContext sc,InputStream in, String fileName,String basePath) throws IOException {
         // 取得当前的路径
-        String path = sc.getRealPath("")+PLACE_UPLOAD_PATH;
+        String path = sc.getRealPath("")+basePath;
          log.debug("path:"+path);
 
          File pathFile = new File(path);

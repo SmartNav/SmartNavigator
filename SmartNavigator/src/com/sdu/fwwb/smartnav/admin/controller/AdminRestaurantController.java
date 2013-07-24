@@ -50,7 +50,7 @@ public class AdminRestaurantController {
 		String imgPath = null;
 		try {
 			if(mFile.isEmpty()) imgPath = null;
-			else imgPath = FileUtils.copyFile(sc, mFile.getInputStream(),mFile.getOriginalFilename());
+			else imgPath = FileUtils.copyFileToPlace(sc, mFile.getInputStream(),mFile.getOriginalFilename());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -117,7 +117,7 @@ public class AdminRestaurantController {
 		String imgPath = null;
 		try {
 			if(mFile.isEmpty()) imgPath = null;
-			else imgPath = FileUtils.copyFile(sc, mFile.getInputStream(),mFile.getOriginalFilename());
+			else imgPath = FileUtils.copyFileToPlace(sc, mFile.getInputStream(),mFile.getOriginalFilename());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

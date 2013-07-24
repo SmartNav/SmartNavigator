@@ -12,5 +12,27 @@
 		<input type="file" name="file">
 		<input type="submit">
 	</form>
+	
+	<form action="../account/register" method="post" enctype="multipart/form-data">
+		<input type="text" name="email">
+		<input type="password" name="password">
+		<input type="text" name="name">
+		<input type="text" name="sex">
+		<input type="file" name="avatar">
+		<input type="submit">
+	</form>
+	
+	<form action="../account/comment/add" method="post" enctype="multipart/form-data">
+		<input type="text" name="placeid">
+		<input type="text" name="content">
+		<input type="text" name="star">
+		<input type="submit">
+	</form>
+	
+	<form action="../account/login" method="post" enctype="multipart/form-data">
+		<input type="text" name="email">
+		<input type="text" name="password">
+		<input type="submit">
+	</form>
 </body>
 </html>

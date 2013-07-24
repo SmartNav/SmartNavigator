@@ -44,7 +44,7 @@ public class TestController {
         System.out.println("上传文件：" + mFile.getOriginalFilename());
         if (!mFile.isEmpty()) {
             try {
-				FileUtils.copyFile(sc,mFile.getInputStream(), mFile.getOriginalFilename());
+				FileUtils.copyFileToPlace(sc,mFile.getInputStream(), mFile.getOriginalFilename());
 			} catch (IOException e) {
 				e.printStackTrace();
 				return "failed";
