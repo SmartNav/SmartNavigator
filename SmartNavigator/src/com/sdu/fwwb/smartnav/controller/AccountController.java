@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.sdu.fwwb.smartnav.entity.Comment;
 import com.sdu.fwwb.smartnav.entity.User;
 import com.sdu.fwwb.smartnav.exception.SmartNavException;
@@ -102,6 +103,15 @@ public class AccountController {
 		}else{
 			return "failed";
 		}
+	}
+	
+	@RequestMapping("/query")
+	@ResponseBody
+	public String query(HttpSession session){
+		User user = UserSessionManager.getUserFromSession(session);
+		User thiUser = accountService.get(user.getId());
+		thiUser.setPassword(null);
+		return new Gson().toJson(thiUser);
 	}
 	
 	@RequestMapping("/comment/add")
