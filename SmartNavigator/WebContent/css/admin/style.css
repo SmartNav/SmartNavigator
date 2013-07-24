@@ -12,5 +12,14 @@ html{background: #F4F4F4;}
 #left-nav-ul li a{padding-left: 10px; text-decoration: none;color: #0F0F0F; display:block;}
 #left-nav-ul li a:hover,#left-nav-ul-selected{color: #ffffff !important; border-left: solid #3679D7 5px;cursor: pointer;background: #699BE1;}
 .main-container{width: 80%;margin: 0px auto;}
-
+.content-container{overflow: auto;float:left;max-width:80%;margin-top:1.5rem;}
+#place-list-table{font-size: 0.85rem; }
+#place-list-table td{border:1px solid #ccc;}
+#place-list-table th{background:#75A7D5; line-height: 2rem;border:1px solid #fff;}
+#place-list-table tr td{padding:5px;max-width:12%;}
+#place-list-table a{text-align:center;text-decoration: none;background: #4C87DB; line-height: 1.5rem;display:block;color:#fff; margin:3px;padding:2px 5px;}
+#place-list-table a:hover{background:#75A7D5;cursor:pointer;}
+.page-div a{text-align:center;text-decoration: none;background: #4C87DB; line-height: 1.5rem;display:block;color:#fff; margin:3px;padding:2px 5px;}
+.page-div a:hover{background:#75A7D5;cursor:pointer;}
+.page-div *,#input-page-div *{float:left;}
 .content-container{float:left;}

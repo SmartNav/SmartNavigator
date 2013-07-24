@@ -8,24 +8,21 @@
 <%@ include file="/common/common.jsp"%>
 <title>智慧导航管理登录</title>
 
-<link rel="stylesheet" type="text/css" href="${ctx }/css/common/style.css" />
+<link rel="stylesheet" type="text/css" href="${ctx }/css/admin/login.css" />
 </head>
 
 <body>
-	<form id="login-form" action="http://www.865171.cn" method="post">
+	<form id="login-form" action="" method="post">
   <fieldset>
-  <legend>Log in</legend>
-  <label for="login">Email</label>
-  <input type="text" id="login" name="login"/>
-  <div class="clear"></div>
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password"/>
-  <div class="clear"></div>
-  <label for="remember_me" style="padding: 0;">Remember me?</label>
-  <input type="checkbox" id="remember_me" style="position: relative; top: 3px; margin: 0; " name="remember_me"/>
-  <div class="clear"></div>
-  <br />
-  <input type="submit" style="margin: -20px 0 0 287px;" class="button" name="commit" value="Log in"/>
+	  <legend>登录</legend>
+	  <label for="login">用户名</label>
+	  <input type="text" id="login" name="name"/>
+	  <div class="clear"></div>
+	  <label for="password">密码</label>
+	  <input type="password" id="password" name="password"/>
+	  <div class="clear"></div>
+	  <br />
+	  <input type="submit" style="margin: -20px 0 0 287px;" class="button" name="commit" value="登录"/>
   </fieldset>
 </form>
 </body>
