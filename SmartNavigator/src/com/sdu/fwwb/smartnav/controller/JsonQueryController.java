@@ -14,14 +14,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.sdu.fwwb.smartnav.entity.Comment;
+import com.sdu.fwwb.smartnav.entity.Discount;
+import com.sdu.fwwb.smartnav.entity.Entertainment;
 import com.sdu.fwwb.smartnav.entity.Hotel;
 import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.entity.Restaurant;
 import com.sdu.fwwb.smartnav.entity.Scenic;
 import com.sdu.fwwb.smartnav.entity.User;
 import com.sdu.fwwb.smartnav.json.model.CommentAndUser;
+import com.sdu.fwwb.smartnav.json.model.EntertainmentAndDiscount;
+import com.sdu.fwwb.smartnav.json.model.HotelAndDiscount;
+import com.sdu.fwwb.smartnav.json.model.RestaurantAndDiscount;
 import com.sdu.fwwb.smartnav.service.AccountService;
 import com.sdu.fwwb.smartnav.service.CommentService;
+import com.sdu.fwwb.smartnav.service.DiscountService;
+import com.sdu.fwwb.smartnav.service.EntertainmentService;
 import com.sdu.fwwb.smartnav.service.HotelService;
 import com.sdu.fwwb.smartnav.service.PlaceService;
 import com.sdu.fwwb.smartnav.service.RestaurantService;
@@ -48,10 +55,16 @@ public class JsonQueryController {
 	ScenicService scenicService;
 	
 	@Autowired
+	EntertainmentService entertainmentService;
+	
+	@Autowired
 	CommentService commentService;
 	
 	@Autowired
 	AccountService accountService;
+	
+	@Autowired
+	DiscountService discountService;
 	
 	@Autowired
 	ServletContext sc;
@@ -73,8 +86,10 @@ public class JsonQueryController {
 		Hotel hotel = hotelService.getHotel(id);
 		String img = hotel.getImg();
 		if(img != null)hotel.setImg(sc.getContextPath()+img);
+		List<Discount> discounts = discountService.getDiscountByPlaceId(hotel.getId());
+		HotelAndDiscount had = new HotelAndDiscount(hotel, discounts);
 		log.debug("hotel:"+hotel);
-		return gson.toJson(hotel);
+		return gson.toJson(had);
 	}
 	
 	@RequestMapping("/restaurant")
@@ -83,8 +98,24 @@ public class JsonQueryController {
 		Restaurant restaurant = restaurantService.getRestaurant(id);
 		String img = restaurant.getImg();
 		if(img != null) restaurant.setImg(sc.getContextPath()+restaurant.getImg());
+		
+		List<Discount> discounts = discountService.getDiscountByPlaceId(restaurant.getId());
+		RestaurantAndDiscount rad = new RestaurantAndDiscount(restaurant, discounts);
 		log.debug("restaurant:"+restaurant);
-		return gson.toJson(restaurant);
+		return gson.toJson(rad);
+	}
+	
+	@RequestMapping("/entertainment")
+	@ResponseBody
+	public String entertainmentQuery(@RequestParam("id")long id){
+		Entertainment entertainment = entertainmentService.getEntertainment(id);
+		String img = entertainment.getImg();
+		if(img != null) entertainment.setImg(sc.getContextPath()+entertainment.getImg());
+		
+		List<Discount> discounts = discountService.getDiscountByPlaceId(entertainment.getId());
+		EntertainmentAndDiscount ead = new EntertainmentAndDiscount(entertainment, discounts);
+		log.debug("entertainment:"+entertainment);
+		return gson.toJson(ead);
 	}
 	
 	@RequestMapping("/scenic")

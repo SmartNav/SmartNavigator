@@ -1,6 +1,7 @@
 package com.sdu.fwwb.smartnav.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -202,6 +203,5 @@ public class Hotel implements Serializable {
 				+ ", level=" + level + ", latitude=" + latitude
 				+ ", longitude=" + longitude + ", img=" + img + "]";
 	}
-
-
+	
 }

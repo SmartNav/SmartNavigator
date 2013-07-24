@@ -46,4 +46,8 @@ public class DiscountService {
 		return discountDao.findOne(id);
 	}
 	
+	public List<Discount> getDiscountByPlaceId(long placeId){
+		return discountDao.findByPlaceId(placeId);
+	}
+	
 }
