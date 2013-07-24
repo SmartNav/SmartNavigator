@@ -63,10 +63,10 @@
 			</c:if>
 			</c:if>
 			<c:if test="${topnavselect eq 8 }">
-				<li><a href="#" id="top-nav-ul-selected">账户设置</a></li>
+				<li><a href="${ctx }/admin/modify" id="top-nav-ul-selected">账户设置</a></li>
 			</c:if>
 			<c:if test="${topnavselect ne 8 }">
-				<li><a href="#">账户设置</a></li>
+				<li><a href="${ctx }/admin/modify">账户设置</a></li>
 			</c:if>
 		</ul>
 	</div>

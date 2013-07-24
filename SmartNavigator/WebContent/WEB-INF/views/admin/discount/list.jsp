@@ -75,7 +75,7 @@
 				<input name="placeid" type="hidden" value="${place.id }">
 				<ul>
 					<li><input type="submit" value="删除"></li>
-					<li><a href="${ctx }/admin/discount/add?placeid=${placeid}">增加</a></li>
+					<li><a href="${ctx }/admin/discount/add?placeid=${place.id}">增加</a></li>
 				</ul>
 			</div>
 			</form>

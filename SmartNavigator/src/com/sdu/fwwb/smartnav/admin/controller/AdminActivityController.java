@@ -1,5 +1,6 @@
 package com.sdu.fwwb.smartnav.admin.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
@@ -48,6 +49,7 @@ public class AdminActivityController {
 	public String modifyHandle(@RequestParam("id") long id,@RequestParam("placeid") long placeId,
 			@RequestParam("title")String title,@RequestParam("content") String content,
 			@RequestParam("short-des")String shortDes,@RequestParam("start-time")long startTime,@RequestParam("end-time") long endTime){
+		SimpleDateFormat sdf = new SimpleDateFormat("YY/MM/DD");
 		Activity activity = new Activity(id,placeId, title, shortDes, content, new Date(startTime), new Date(endTime));
 		activityService.saveActivity(activity);
 		return "redirect:/admin/activity/list?placeid="+placeId;

@@ -42,4 +42,9 @@ public class AdminLoginController {
 		AdminSessionManager.writeAdminToSession(session, null);
 		return "admin/login";
 	}
+	
+	@RequestMapping("/modify")
+	public String modify(){
+		return "admin/modify";
+	}
 }
