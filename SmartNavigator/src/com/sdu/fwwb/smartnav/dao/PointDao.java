@@ -12,4 +12,6 @@ import com.sdu.fwwb.smartnav.entity.Point;
 public interface PointDao extends CrudRepository<Point, Long>{
 	
 	public Point findByName(String name);
+	
+	public Point findByLatitudeAndLongitude(double latitude, double longitude);
 }

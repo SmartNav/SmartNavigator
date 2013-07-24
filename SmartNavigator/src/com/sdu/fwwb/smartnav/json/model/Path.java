@@ -34,5 +34,10 @@ public class Path implements Serializable{
 	public void setDis(double dis) {
 		this.dis = dis;
 	}
+
+	@Override
+	public String toString() {
+		return "Path [plist=" + plist + ", dis=" + dis + "]";
+	}
 	
 }
