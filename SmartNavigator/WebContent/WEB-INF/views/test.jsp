@@ -34,5 +34,11 @@
 		<input type="text" name="password">
 		<input type="submit">
 	</form>
+	
+	
+	<form action="../account/comment/delete" method="post" enctype="multipart/form-data">
+		<input type="text" name="id">
+		<input type="submit">
+	</form>
 </body>
 </html>
