@@ -56,7 +56,7 @@ public class floyd {
 		e = Integer.parseInt(end.getName().substring(1));	
 		
 		double dis = map[s][e];
-System.out.println("fuck");
+
 		result = Double.toString(dis);
 		
 		result +="@"+ e;
