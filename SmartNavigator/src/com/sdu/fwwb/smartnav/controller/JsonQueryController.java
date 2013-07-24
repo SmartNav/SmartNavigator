@@ -17,6 +17,7 @@ import com.sdu.fwwb.smartnav.entity.Comment;
 import com.sdu.fwwb.smartnav.entity.Discount;
 import com.sdu.fwwb.smartnav.entity.Entertainment;
 import com.sdu.fwwb.smartnav.entity.Hotel;
+import com.sdu.fwwb.smartnav.entity.OtherPlace;
 import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.entity.Restaurant;
 import com.sdu.fwwb.smartnav.entity.Scenic;
@@ -30,6 +31,7 @@ import com.sdu.fwwb.smartnav.service.CommentService;
 import com.sdu.fwwb.smartnav.service.DiscountService;
 import com.sdu.fwwb.smartnav.service.EntertainmentService;
 import com.sdu.fwwb.smartnav.service.HotelService;
+import com.sdu.fwwb.smartnav.service.OtherPlaceService;
 import com.sdu.fwwb.smartnav.service.PlaceService;
 import com.sdu.fwwb.smartnav.service.RestaurantService;
 import com.sdu.fwwb.smartnav.service.ScenicService;
@@ -65,6 +67,9 @@ public class JsonQueryController {
 	
 	@Autowired
 	DiscountService discountService;
+	
+	@Autowired
+	OtherPlaceService otherPlaceService;
 	
 	@Autowired
 	ServletContext sc;
@@ -116,6 +121,16 @@ public class JsonQueryController {
 		EntertainmentAndDiscount ead = new EntertainmentAndDiscount(entertainment, discounts);
 		log.debug("entertainment:"+entertainment);
 		return gson.toJson(ead);
+	}
+	
+	@RequestMapping("/other")
+	@ResponseBody
+	public String otherQuery(@RequestParam("id")long id){
+		OtherPlace otherPlace = otherPlaceService.getOtherPlace(id);
+		String img = otherPlace.getImg();
+		if(img != null)otherPlace.setImg(sc.getContextPath()+img);
+		log.debug("otherPlace:"+otherPlace);
+		return gson.toJson(otherPlace);
 	}
 	
 	@RequestMapping("/scenic")
