@@ -1,5 +1,6 @@
 package com.sdu.fwwb.smartnav.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -12,10 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.sdu.fwwb.smartnav.entity.Comment;
 import com.sdu.fwwb.smartnav.entity.Hotel;
 import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.entity.Restaurant;
 import com.sdu.fwwb.smartnav.entity.Scenic;
+import com.sdu.fwwb.smartnav.entity.User;
+import com.sdu.fwwb.smartnav.json.model.CommentAndUser;
+import com.sdu.fwwb.smartnav.service.AccountService;
+import com.sdu.fwwb.smartnav.service.CommentService;
 import com.sdu.fwwb.smartnav.service.HotelService;
 import com.sdu.fwwb.smartnav.service.PlaceService;
 import com.sdu.fwwb.smartnav.service.RestaurantService;
@@ -40,6 +46,12 @@ public class JsonQueryController {
 	
 	@Autowired
 	ScenicService scenicService;
+	
+	@Autowired
+	CommentService commentService;
+	
+	@Autowired
+	AccountService accountService;
 	
 	@Autowired
 	ServletContext sc;
@@ -87,5 +99,20 @@ public class JsonQueryController {
 	
 	public String discountQuery(@RequestParam("latitude")double latitude,@RequestParam("longitude") double longitude){
 		return null;
+	}
+	
+	@RequestMapping("/comments")
+	@ResponseBody
+	public String commentQuery(@RequestParam("placeid")long placeId){
+		List<Comment> comments = commentService.listByPlaceId(placeId);
+		List<CommentAndUser> commentsAndUsers = new ArrayList<CommentAndUser>();
+		for(Comment com:comments){
+			User user = accountService.get(com.getUserId());
+			//clear password
+			user.setPassword(null);
+			CommentAndUser cau = new CommentAndUser(com, user);
+			commentsAndUsers.add(cau);
+		}
+		return gson.toJson(commentsAndUsers);
 	}
 }

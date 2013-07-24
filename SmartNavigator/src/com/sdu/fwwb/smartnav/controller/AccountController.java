@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sdu.fwwb.smartnav.entity.Comment;
 import com.sdu.fwwb.smartnav.entity.User;
+import com.sdu.fwwb.smartnav.exception.SmartNavException;
 import com.sdu.fwwb.smartnav.service.AccountService;
 import com.sdu.fwwb.smartnav.service.CommentService;
 import com.sdu.fwwb.smartnav.util.FileUtils;
@@ -52,6 +53,40 @@ public class AccountController {
 				ex.printStackTrace();
 				return "failed";
 			}
+		}
+		return "success";
+	}
+	
+	@RequestMapping("/modify/profile")
+	@ResponseBody
+	public String modifyProfile(@RequestParam("name")String userName,@RequestParam("sex")String sex,@RequestParam("avatar") MultipartFile mFile,HttpSession session){
+		User user = UserSessionManager.getUserFromSession(session);
+		String avatar;
+		if(FileUtils.isImg(mFile.getOriginalFilename())){
+			try {
+				avatar = FileUtils.copyFileToAvatar(sc, mFile.getInputStream(), mFile.getOriginalFilename());
+				accountService.updateAccount(user.getEmail(), userName, avatar, sex);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return "failed";
+			} catch(Exception ex){
+				ex.printStackTrace();
+				return "failed";
+			}
+		}
+		return "success";
+	}
+	
+	@RequestMapping("/modify/password")
+	@ResponseBody
+	public String modifyPassword(@RequestParam("oldpassword")String oldPassword,
+			@RequestParam("newpassword")String newPassword,HttpSession session){
+		User user = UserSessionManager.getUserFromSession(session);
+		try {
+			accountService.updatePassword(user.getEmail(), oldPassword, newPassword);
+		} catch (SmartNavException e) {
+			e.printStackTrace();
+			return "failed";
 		}
 		return "success";
 	}

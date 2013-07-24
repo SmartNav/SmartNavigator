@@ -1,5 +1,7 @@
 package com.sdu.fwwb.smartnav.service;
 
+import java.util.List;
+
 import com.sdu.fwwb.smartnav.dao.CommentDAO;
 import com.sdu.fwwb.smartnav.entity.Comment;
 
@@ -14,6 +16,10 @@ public class CommentService {
 	
 	@Autowired
 	CommentDAO commentDao;
+	
+	public List<Comment> listByPlaceId(long placeId){
+		return commentDao.findByPlaceId(placeId);
+	}
 	
 	public void save(Comment comment){
 		commentDao.save(comment);

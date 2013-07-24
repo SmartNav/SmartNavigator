@@ -2,6 +2,7 @@ package com.sdu.fwwb.smartnav.dao;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,10 @@ public interface UserDAO extends CrudRepository<User, Long>{
 	
 	public User findByEmail(String email);
 	public User findByEmailAndPassword(String email,String password);
+	
+	@Modifying
+	@Query("update User set password = ?2 where email = ?1")
+	public void updatePasssword(String email,String password);
 	
 	
 }
