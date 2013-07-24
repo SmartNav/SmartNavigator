@@ -41,7 +41,8 @@ public class AdminRestaurantController {
 	@RequestMapping(value="/add/handle")
 	public String addHandle(@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
-			@RequestParam("rest-avg-price") String avgPrice,@RequestParam("rest-phone") String tel,@RequestParam("local")String location,
+			@RequestParam("rest-flavor")String flavor,@RequestParam("rest-avg-price") String avgPrice,
+			@RequestParam("rest-phone") String tel,@RequestParam("local")String location,
 			@RequestParam("img") MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
@@ -54,7 +55,7 @@ public class AdminRestaurantController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		restaurantService.add(name, level, type, description, latitude, longitude, avgPrice, tel, location,imgPath);
+		restaurantService.add(name, level, type,flavor, description, latitude, longitude, avgPrice, tel, location,imgPath);
 		return "redirect:/admin/place/add";
 	}
 	
@@ -108,7 +109,8 @@ public class AdminRestaurantController {
 	@RequestMapping(value="/modify/handle")
 	public String modifyHandle(@RequestParam("id") long id,@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
-			@RequestParam("rest-avg-price") String avgPrice,@RequestParam("rest-phone") String tel,@RequestParam("ocal")String location,
+			@RequestParam("rest-flavor") String flavor,@RequestParam("rest-avg-price") String avgPrice,
+			@RequestParam("rest-phone") String tel,@RequestParam("ocal")String location,
 			@RequestParam("img")MultipartFile mFile,HttpServletRequest request){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
@@ -121,7 +123,7 @@ public class AdminRestaurantController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		restaurantService.modify(id, name, level, type, description, latitude, longitude, avgPrice, tel, location,imgPath,request.getParameter("deleteimg") != null);
+		restaurantService.modify(id, name, level, type,flavor, description, latitude, longitude, avgPrice, tel, location,imgPath,request.getParameter("deleteimg") != null);
 		return "redirect:/admin/restaurant/list";
 	}
 	

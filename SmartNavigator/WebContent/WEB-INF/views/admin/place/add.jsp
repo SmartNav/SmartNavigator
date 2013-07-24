@@ -90,6 +90,7 @@
 						
 					</div>
 					<div id="form-restaurant-show" class="form-show-option">
+						<div><label>口味</label><input name="rest-flavor" type="text"></div>
 						<div><label>人均消费</label><input name="rest-avg-price" type="text"></div>
 						<div><label>联系方式</label><input name="rest-phone" type="number"></div>
 					</div>

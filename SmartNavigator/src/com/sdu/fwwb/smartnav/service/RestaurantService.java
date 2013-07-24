@@ -26,18 +26,18 @@ public class RestaurantService {
 	PlaceDAO placeDao;
 	
 	@Transactional
-	public void add(String name,int level,int type,String description,double latitude,double longitude,String avgPrice,String tel,String location,String img){
+	public void add(String name,int level,int type,String flavor,String description,double latitude,double longitude,String avgPrice,String tel,String location,String img){
 		Place place = new Place(name, level, type, description, latitude, longitude);
 		placeDao.save(place);
 		List<Place> places = placeDao.findByLatitudeAndLongitude(latitude, longitude);
 		long id = places.get(places.size()-1).getId();
-		Restaurant restaurant = new Restaurant(id, name, avgPrice, null, 0, null, tel, location, description, level, latitude, longitude,img);
+		Restaurant restaurant = new Restaurant(id, name, avgPrice, flavor, 0, null, tel, location, description, level, latitude, longitude,img);
 		restaurantDao.save(restaurant);
 		log.debug("add restaurant:"+restaurant);
 	}
 	
 	@Transactional
-	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,String avgPrice,String tel,String location,String img,boolean deleteImg){
+	public void modify(long id,String name,int level,int type,String flavor,String description,double latitude,double longitude,String avgPrice,String tel,String location,String img,boolean deleteImg){
 		Place place = new Place(id,name, level, type, description, latitude, longitude);
 		placeDao.save(place);
 		placeDao.save(place);
@@ -45,7 +45,7 @@ public class RestaurantService {
 			Restaurant re = restaurantDao.findOne(id);
 			img = (img == null)?re.getImg():img;
 		}else img = null;
-		Restaurant restaurant = new Restaurant(id, name, avgPrice, null, 0, null, tel, location, description, level, latitude, longitude,img);
+		Restaurant restaurant = new Restaurant(id, name, avgPrice, flavor, 0, null, tel, location, description, level, latitude, longitude,img);
 		restaurantDao.save(restaurant);
 		log.debug("modify restaurant:"+restaurant);
 	}
