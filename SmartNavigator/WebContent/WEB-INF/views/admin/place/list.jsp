@@ -31,6 +31,7 @@
 					<th>描述</th>
 					<th>经度</th>
 					<th>纬度</th>
+					<th>操作</th>
 				</tr>
 				<c:forEach items="${list}" var="place">
 				<tr>
@@ -40,6 +41,7 @@
 					<td>${place.description }</td>
 					<td>${place.latitude }</td>
 					<td>${place.longitude }</td>
+					<td><a href="${ctx }/admin/activity/list?placeid=${place.id}">活动管理</a></td>
 				</tr>
 				</c:forEach>
 			</table>
