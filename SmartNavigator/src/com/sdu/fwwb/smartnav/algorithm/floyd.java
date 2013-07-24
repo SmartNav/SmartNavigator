@@ -1,66 +1,71 @@
 package com.sdu.fwwb.smartnav.algorithm;
 
+import java.util.List;
 import java.util.Scanner;
 
-public class floyd {
-	private static int inf = (1 << 29);
-	private static int n;
-	private static int map[][] = new int[50][50];
-	private static int path[][] = new int[50][50];
-	private int start;
-	private int end;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.sdu.fwwb.smartnav.dao.PointDao;
+import com.sdu.fwwb.smartnav.entity.Point;
+
+public class floyd {
+	private static double inf = Double.MAX_VALUE;
+	private static int path[][] = new int[50][50];
+	private int s;
+	private int e;
+	
 	Scanner scan = new Scanner(System.in);
 
-	public void cal() {
-		for (int k = 0; k < n; k++)
-			for (int i = 0; i < n; i++)
-				for (int j = 0; j < n; j++)
+	public void f(int n, double map[][]) {
+		// 初始化路线
+		for (int i = 1; i <= n; i++)
+			for (int j = 1; j <= n; j++)
+				if (map[i][j] == inf)
+					path[i][j] = -1;
+				else
+					path[i][j] = i;
+		for (int i = 1; i <= n; i++)
+			path[i][i] = i;
+		
+		
+		for (int k = 1; k <= n; k++)
+			for (int i = 1; i <= n; i++)
+				for (int j = 1; j <= n; j++)
 					if (map[i][k] + map[k][j] < map[i][j]) {
 						map[i][j] = map[i][k] + map[k][j];
 						path[i][j] = path[k][j];
 					}
 	}
 
-	public void init() {
-		n = scan.nextInt();
-		// 初始化map
-		for (int i = 0; i < 50; i++)
-			for (int j = 0; j < 50; j++)
-				map[i][j] = inf;
-		for (int i = 0; i < n; i++)
-			for (int j = 0; j < n; j++)
-				map[i][j] = scan.nextInt();
-		// 初始化路线
-		for (int i = 0; i < n; i++)
-			for (int j = 0; j < n; j++)
-				if (map[i][j] == inf)
-					path[i][j] = -1;
-				else
-					path[i][j] = i;
-		for (int i = 0; i < n; i++)
-			path[i][i] = i;
-	}
+//	public String out(int s, int e){
+//		String myPath = e + "";
+//		while (path[s][e] != s) {
+//			myPath = path[s][e] + " -> " + myPath;
+//			e = path[s][e];
+//		}
+//		myPath = s + " -> " + myPath;
+//		return myPath;
+//	}
+
 	
-	public String out(int s, int e){
-		String myPath = e + "";
+	public String run(int n, double map[][], Point start, Point end) {	
+		String result;
+		f(n, map);	
+		s = Integer.parseInt(start.getName().substring(1));
+		e = Integer.parseInt(end.getName().substring(1));	
+		
+		double dis = map[s][e];
+System.out.println("fuck");
+		result = Double.toString(dis);
+		
+		result +="@"+ e;
 		while (path[s][e] != s) {
-			myPath = path[s][e] + " -> " + myPath;
+			result += "@" + path[s][e];
 			e = path[s][e];
 		}
-		myPath = s + " -> " + myPath;
-		return myPath;
+		
+		result += "@" + s;
+		return result;
 	}
-
-	public void run() {
-		init();
-		cal();
-		start = scan.nextInt();
-		end = scan.nextInt();
-		out(start, end);
-	}
-
-//	public static void main(String[] args) {
-//		new floyd().run();
-//	}
 }
