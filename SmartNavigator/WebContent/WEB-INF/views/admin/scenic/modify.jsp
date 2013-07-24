@@ -23,7 +23,7 @@
 	
 	
 	<div class="main-container">
-		<c:set var="leftnavselect" value="2"/>
+		<c:set var="leftnavselect" value="3"/>
 		<%@include file="/WEB-INF/views/admin/scenic/menu.jsp" %>
 		
 		<div class="content-container">

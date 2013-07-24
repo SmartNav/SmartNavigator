@@ -15,14 +15,42 @@
 </head>
 <body>
 <div class="container">
-	<c:set var="topnavselect" value="2"/>
+	<c:if test="${place.type == 10 }">
+		<c:set var="topnavselect" value="2"/>
+	</c:if>
+	<c:if test="${place.type == 11 }">
+		<c:set var="topnavselect" value="3"/>
+	</c:if>
+	<c:if test="${place.type == 12 }">
+		<c:set var="topnavselect" value="4"/>
+	</c:if>
+	<c:if test="${place.type == 13 }">
+		<c:set var="topnavselect" value="5"/>
+	</c:if>
+	<c:if test="${place.type == 14 }">
+		<c:set var="topnavselect" value="6"/>
+	</c:if>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
 	
 	<div class="main-container">
 		
-		<c:set var="leftnavselect" value="1"/>
-		<%@include file="/WEB-INF/views/admin/hotel/menu.jsp" %>
+		<c:set var="leftnavselect" value="2"/>
+		<c:if test="${place.type == 10 }">
+			<%@include file="/WEB-INF/views/admin/hotel/menu.jsp" %>
+		</c:if>
+		<c:if test="${place.type == 11 }">
+			<%@include file="/WEB-INF/views/admin/restaurant/menu.jsp" %>
+		</c:if>
+		<c:if test="${place.type == 12 }">
+			<%@include file="/WEB-INF/views/admin/scenic/menu.jsp" %>
+		</c:if>
+		<c:if test="${place.type == 13 }">
+			<%@include file="/WEB-INF/views/admin/entertainment/menu.jsp" %>
+		</c:if>
+		<c:if test="${place.type == 14 }">
+			<%@include file="/WEB-INF/views/admin/other/menu.jsp" %>
+		</c:if>
 		<div class="content-container">
 		<form method="get" action="${ctx }/admin/discount/delete/handle">
 			<table id="place-list-table">
@@ -44,7 +72,7 @@
 				</c:forEach>
 			</table>
 			<div id="table-menu">
-				<input name="placeid" type="hidden" value="${placeid }">
+				<input name="placeid" type="hidden" value="${place.id }">
 				<ul>
 					<li><input type="submit" value="删除"></li>
 					<li><a href="${ctx }/admin/discount/add?placeid=${placeid}">增加</a></li>

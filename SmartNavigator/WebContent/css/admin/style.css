@@ -7,7 +7,7 @@ html{background: #F4F4F4;}
 .user-show{float:right; line-height: 5rem;}
 #top-nav-ul li a{ display:block;float: left;padding:0px 10px; list-style: none; line-height: 3rem;font-size: 1rem;color: #ffffff; text-decoration: none;}
 #top-nav-ul li a:hover,#top-nav-ul-selected{ background: #75A7D5;cursor: pointer;}
-.left-part{float: left; width: 200px; margin: 20px 20px 0px 0px;}
+.left-part{float: left; width: 150px; margin: 20px 20px 0px 0px;}
 #left-nav-ul{color: #0F0F0F; font-size: 1.2rem; line-height: 2rem;}
 #left-nav-ul li a{padding-left: 10px; text-decoration: none;color: #0F0F0F; display:block;}
 #left-nav-ul li a:hover,#left-nav-ul-selected{color: #ffffff !important; border-left: solid #3679D7 5px;cursor: pointer;background: #699BE1;}

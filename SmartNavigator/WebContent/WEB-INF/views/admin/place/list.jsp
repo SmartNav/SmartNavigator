@@ -37,11 +37,45 @@
 				<tr>
 					<td>${place.name }</td>
 					<td>${place.level }</td>
-					<td>${place.type }</td>
+					<c:if test="${place.type ==10 }">
+						<td>酒店</td>
+					</c:if>
+					<c:if test="${place.type ==11 }">
+						<td>餐馆</td>
+					</c:if>
+					<c:if test="${place.type ==12 }">
+						<td>景点</td>
+					</c:if>
+					<c:if test="${place.type ==13 }">
+						<td>娱乐场所</td>
+					</c:if>
+					<c:if test="${place.type ==14 }">
+						<td>其他</td>
+					</c:if>
 					<td>${place.description }</td>
 					<td>${place.latitude }</td>
 					<td>${place.longitude }</td>
-					<td><a href="${ctx }/admin/activity/list?placeid=${place.id}">活动管理</a></td>
+					<td>
+						<c:if test="${place.type==10 }">
+							<a href="${ctx }/admin/hotel/modify?id=${place.id}">修改</a>
+						</c:if>
+						<c:if test="${place.type==11 }">
+							<a href="${ctx }/admin/restaurant/modify?id=${place.id}">修改</a>
+						</c:if>
+						<c:if test="${place.type==12 }">
+							<a href="${ctx }/admin/scenic/modify?id=${place.id}">修改</a>
+						</c:if>
+						<c:if test="${place.type==13 }">
+							<a href="${ctx }/admin/entertainment/modify?id=${place.id}">修改</a>
+						</c:if>
+						<c:if test="${place.type==14 }">
+							<a href="${ctx }/admin/other/modify?id=${place.id}">修改</a>
+						</c:if>
+						<a href="${ctx }/admin/activity/list?placeid=${place.id}">活动管理</a>
+						<c:if test="${place.type==10 or place.type==11 or place.type==13}">
+							<a href="${ctx }/admin/discount/list?placeid=${place.id}">优惠</a>
+						</c:if>
+					</td>
 				</tr>
 				</c:forEach>
 			</table>

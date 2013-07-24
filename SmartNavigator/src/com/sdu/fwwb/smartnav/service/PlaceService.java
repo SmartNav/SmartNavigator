@@ -38,4 +38,7 @@ public class PlaceService {
 		return placeDao.findByLatitudeAndLongtitudeAndLevelBetween(latitudeUp, latitudeDown, longitudeUp, longitudeDown, level);
 	}
 
+	public Place get(long id){
+		return placeDao.findOne(id);
+	}
 }

@@ -15,14 +15,14 @@
 </head>
 <body>
 <div class="container">
-	<c:set var="topnavselect" value="2"/>
+	<c:set var="topnavselect" value="7"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
 	
 	<div class="main-container">
 		
 		<c:set var="leftnavselect" value="1"/>
-		<%@include file="/WEB-INF/views/admin/hotel/menu.jsp" %>
+		<%@include file="/WEB-INF/views/admin/activity/menu.jsp" %>
 		<div class="content-container">
 		<form method="get" action="${ctx }/admin/activity/delete/handle">
 			<table id="place-list-table">
