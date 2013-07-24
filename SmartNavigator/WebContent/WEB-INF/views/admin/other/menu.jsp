@@ -11,11 +11,23 @@
 		</c:if>
 		
 		<c:if test="${leftnavselect eq 2 }">
+		<c:if test="${leftnavselect eq 2 }">
 			<li><a href="${ctx }/admin/place/add" id="left-nav-ul-selected">添加优惠</a></li>
 		</c:if>
 		
 		<c:if test="${leftnavselect ne 2 }">
 			<li><a href="${ctx }/admin/place/add">添加优惠</a></li>
+		</c:if>
+		</c:if>
+		
+		<c:if test="${leftnavselect eq 3 }">
+			<c:if test="${leftnavselect eq 3 }">
+				<li><a href="#" id="left-nav-ul-selected">修改地点</a></li>
+			</c:if>
+			
+			<c:if test="${leftnavselect ne 3 }">
+				<li><a href="#">修改地点</a></li>
+			</c:if>
 		</c:if>
 	</ul>
 </div>

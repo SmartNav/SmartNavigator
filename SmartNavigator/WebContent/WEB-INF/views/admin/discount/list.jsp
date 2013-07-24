@@ -35,8 +35,22 @@
 	
 	<div class="main-container">
 		
-		<c:set var="leftnavselect" value="1"/>
-		<%@include file="/WEB-INF/views/admin/hotel/menu.jsp" %>
+		<c:set var="leftnavselect" value="2"/>
+		<c:if test="${place.type == 10 }">
+			<%@include file="/WEB-INF/views/admin/hotel/menu.jsp" %>
+		</c:if>
+		<c:if test="${place.type == 11 }">
+			<%@include file="/WEB-INF/views/admin/restaurant/menu.jsp" %>
+		</c:if>
+		<c:if test="${place.type == 12 }">
+			<%@include file="/WEB-INF/views/admin/scenic/menu.jsp" %>
+		</c:if>
+		<c:if test="${place.type == 13 }">
+			<%@include file="/WEB-INF/views/admin/entertainment/menu.jsp" %>
+		</c:if>
+		<c:if test="${place.type == 14 }">
+			<%@include file="/WEB-INF/views/admin/other/menu.jsp" %>
+		</c:if>
 		<div class="content-container">
 		<form method="get" action="${ctx }/admin/discount/delete/handle">
 			<table id="place-list-table">

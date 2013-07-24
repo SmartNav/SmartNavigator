@@ -18,12 +18,12 @@
 </head>
 <body>
 <div class="container">
-	<c:set var="topnavselect" value="4"/>
+	<c:set var="topnavselect" value="5"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
 	
 	<div class="main-container">
-		<c:set var="leftnavselect" value="2"/>
+		<c:set var="leftnavselect" value="3"/>
 		<%@include file="/WEB-INF/views/admin/entertainment/menu.jsp" %>
 		
 		<div class="content-container">
