@@ -44,12 +44,14 @@ public class AdminPlaceController {
 		try{
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
-			num = 0;
+			num = 1;
 		}
+		//num start with 1
+		num--;
 		Page<Place> page = placeService.listAll(num, size);
 		List<Place> list = page.getContent();
 		mav.addObject("list", list);
-		mav.addObject("totalPages",page.getTotalPages());
+		mav.addObject("page",page);
 		return mav;
 	}
 
@@ -76,7 +78,7 @@ public class AdminPlaceController {
 			e.printStackTrace();
 		}
 		placeService.add(name, level, type, descript, latitude, longitude);
-		return "admin/place/add";
+		return "redirect:/admin/place/add";
 	}
 	
 	@RequestMapping(value="/remove/handle",method=RequestMethod.POST)

@@ -23,7 +23,7 @@
 		}
 		
 		function listenSelector(){
-			var actionList = new Array("${ctx}/admin/hotel/add/handle","${ctx}/admin/restaurant/add/handle","${ctx}/admin/scenic/add/handle","${ctx}/admin/entertainment/add/handle","${ctx}/admin/place/add/handle");
+			var actionList = new Array("${ctx}/admin/hotel/add/handle","${ctx}/admin/restaurant/add/handle","${ctx}/admin/scenic/add/handle","${ctx}/admin/entertainment/add/handle","${ctx}/admin/other/add/handle");
 			$("#type-select").change(function(){
 				$(".form-show-option").css({"display":"none"});
 				var select = $("#type-select").val();
@@ -80,26 +80,24 @@
 					</div>
 					<div><label>描述</label><input name="descript" type="text"></div>
 					<div><label>经纬度</label><input name="lalong" type="text"></div>
+					<div><label>地址</label><input name="local" type="text"></div>
 					<div id="form-hotel-show" class="form-show-option">
 						<div><label>星级</label><input name="hotel-star" type="number"></div>
 						<div><label>最高价格</label><input name="hotel-max-price" type="text"></div>
 						<div><label>最低价格</label><input name="hotel-min-price" type="text"></div>
 						<div><label>剩余房间</label><input name="hotel-rest-rooms" type="number"></div>
 						<div><label>联系方式</label><input name="hotel-phone" type="number"></div>
-						<div><label>地址</label><input name="hotel-local" type="text"></div>
+						
 					</div>
 					<div id="form-restaurant-show" class="form-show-option">
 						<div><label>人均消费</label><input name="rest-avg-price" type="text"></div>
 						<div><label>联系方式</label><input name="rest-phone" type="number"></div>
-						<div><label>地址</label><input name="rest-local" type="text"></div>
 					</div>
 					<div id="form-scenic-show" class="form-show-option">
 						<div><label>星级</label><input name="scenic-star" type="number"></div>
-						<div><label>地址</label><input name="scenic-local" type="text"></div>
 					</div>
 					<div id="form-entertainment-show" class="form-show-option">
 						<div><label>联系方式</label><input name="enter-phone" type="number"></div>
-						<div><label>地址</label><input name="enter-local" type="text"></div>
 					</div>
 					<div><label>图片</label><input name="img" type="file"></div>
 					<div><input type="submit"></div>

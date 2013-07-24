@@ -49,15 +49,21 @@
 			</c:if>
 			
 			<c:if test="${topnavselect eq 6 }">
-				<li><a href="${ctx }/admin/activity/list" id="top-nav-ul-selected">活动管理</a></li>
+				<li><a href="${ctx }/admin/other/list" id="top-nav-ul-selected">其他兴趣点管理</a></li>
 			</c:if>
 			<c:if test="${topnavselect ne 6 }">
-				<li><a href="${ctx }/admin/activity/list">活动管理</a></li>
+				<li><a href="${ctx }/admin/other/list">其他兴趣点管理</a></li>
 			</c:if>
 			<c:if test="${topnavselect eq 7 }">
-				<li><a href="#" id="top-nav-ul-selected">账户设置</a></li>
+				<li><a href="${ctx }/admin/activity/list" id="top-nav-ul-selected">活动管理</a></li>
 			</c:if>
 			<c:if test="${topnavselect ne 7 }">
+				<li><a href="${ctx }/admin/activity/list">活动管理</a></li>
+			</c:if>
+			<c:if test="${topnavselect eq 8 }">
+				<li><a href="#" id="top-nav-ul-selected">账户设置</a></li>
+			</c:if>
+			<c:if test="${topnavselect ne 8 }">
 				<li><a href="#">账户设置</a></li>
 			</c:if>
 		</ul>

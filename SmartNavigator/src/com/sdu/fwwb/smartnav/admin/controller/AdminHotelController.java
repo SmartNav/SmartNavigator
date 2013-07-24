@@ -45,7 +45,7 @@ public class AdminHotelController {
 	public String addHandle(@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("hotel-star") int star,@RequestParam("hotel-max-price") String maxPrice,@RequestParam("hotel-min-price") String minPrice,
-			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("hotel-local")String location,@RequestParam("img")MultipartFile mFile){
+			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("local")String location,@RequestParam("img")MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
 		double longitude = Double.parseDouble(lalongs[1]);
@@ -113,7 +113,7 @@ public class AdminHotelController {
 	public String modifyHandle(@RequestParam("id")long id,@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("hotel-star") int star,@RequestParam("hotel-max-price") String maxPrice,@RequestParam("hotel-min-price") String minPrice,
-			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("hotel-local")String location,
+			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("local")String location,
 			@RequestParam("img") MultipartFile mFile,HttpServletRequest request){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);

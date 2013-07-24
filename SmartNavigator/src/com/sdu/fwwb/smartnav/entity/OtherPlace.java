@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="sn_place_other")
-public class other implements Serializable{
+public class OtherPlace implements Serializable{
 
 	/**
 	 * 
@@ -20,15 +20,24 @@ public class other implements Serializable{
 	private String name;
 	private String place;
 	private String description;
+	private int level;
+	private double latitude;
+	private double longitude;
+	private String img;
 	
-	public other() {}
-
-	public other(long id, String name, String place, String description) {
+	public OtherPlace(){};
+	
+	public OtherPlace(long id, String name, String place, String description,
+			int level, double latitude, double longitude, String img) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.place = place;
 		this.description = description;
+		this.level = level;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.img = img;
 	}
 
 	@Id
@@ -65,11 +74,46 @@ public class other implements Serializable{
 		this.description = description;
 	}
 
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	@Override
 	public String toString() {
-		return "other [id=" + id + ", name=" + name + ", place=" + place
-				+ ", description=" + description + "]";
+		return "OtherPlace [id=" + id + ", name=" + name + ", place=" + place
+				+ ", description=" + description + ", level=" + level
+				+ ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", img=" + img + "]";
 	}
+
 	
 	
 }

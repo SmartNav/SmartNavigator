@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -18,19 +17,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sdu.fwwb.smartnav.entity.Restaurant;
+import com.sdu.fwwb.smartnav.entity.OtherPlace;
+import com.sdu.fwwb.smartnav.service.OtherPlaceService;
 import com.sdu.fwwb.smartnav.service.PlaceService;
-import com.sdu.fwwb.smartnav.service.RestaurantService;
 import com.sdu.fwwb.smartnav.util.FileUtils;
 
 @Controller
-@RequestMapping(value="/admin/restaurant")
-public class AdminRestaurantController {
+@RequestMapping(value="/admin/other")
+public class AdminOtherPlaceController {
 	
-	private static final Logger log = Logger.getLogger(AdminRestaurantController.class);
+	private static final Logger log = Logger.getLogger(AdminOtherPlaceController.class);
 	
 	@Autowired
-	RestaurantService restaurantService;
+	OtherPlaceService otherPlaceService;
 	
 	@Autowired
 	PlaceService placeService;
@@ -41,8 +40,7 @@ public class AdminRestaurantController {
 	@RequestMapping(value="/add/handle")
 	public String addHandle(@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
-			@RequestParam("rest-avg-price") String avgPrice,@RequestParam("rest-phone") String tel,@RequestParam("local")String location,
-			@RequestParam("img") MultipartFile mFile){
+			@RequestParam("local")String location,@RequestParam("img")MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
 		double longitude = Double.parseDouble(lalongs[1]);
@@ -54,21 +52,22 @@ public class AdminRestaurantController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		restaurantService.add(name, level, type, description, latitude, longitude, avgPrice, tel, location,imgPath);
+		
+		otherPlaceService.add(name, level, type, description, latitude, longitude, location, imgPath);
 		return "redirect:/admin/place/add";
 	}
 	
 	@RequestMapping(value="/list")
 	public ModelAndView list(HttpServletRequest request){
 		int size = 30,num;
-		ModelAndView mav = new ModelAndView("admin/restaurant/list");
+		ModelAndView mav = new ModelAndView("admin/other/list");
 		try{
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
 			num = 0;
 		}
-		Page<Restaurant> page = restaurantService.list(num, size);
-		List<Restaurant> list = page.getContent();
+		Page<OtherPlace> page = otherPlaceService.list(num, size);
+		List<OtherPlace> list = page.getContent();
 		
 		mav.addObject("list", list);
 		mav.addObject("totalPages",page.getTotalPages());
@@ -93,27 +92,25 @@ public class AdminRestaurantController {
 			}
 			
 		}
-		restaurantService.delete(ids);
-		return "redirect:/admin/restaurant/list";
+		otherPlaceService.delete(ids);
+		return "redirect:/admin/other/list";
 	}
 	
 	@RequestMapping(value="/modify")
 	public ModelAndView modify(@RequestParam("id") long id){
-		ModelAndView mav = new ModelAndView("admin/restaurant/modify");
-		Restaurant restaurant = restaurantService.getRestaurant(id);
-		mav.addObject("restaurant",restaurant);
+		ModelAndView mav = new ModelAndView("admin/other/modify");
+		OtherPlace otherPlace = otherPlaceService.getOtherPlace(id);
+		mav.addObject("otherPlace",otherPlace);
 		return mav;
 	}
 	
 	@RequestMapping(value="/modify/handle")
-	public String modifyHandle(@RequestParam("id") long id,@RequestParam("name")String name,@RequestParam("level") int level,
+	public String modifyHandle(@RequestParam("id")long id,@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
-			@RequestParam("rest-avg-price") String avgPrice,@RequestParam("rest-phone") String tel,@RequestParam("ocal")String location,
-			@RequestParam("img")MultipartFile mFile,HttpServletRequest request){
+			@RequestParam("local")String location,@RequestParam("img") MultipartFile mFile,HttpServletRequest request){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
 		double longitude = Double.parseDouble(lalongs[1]);
-
 		String imgPath = null;
 		try {
 			if(mFile.isEmpty()) imgPath = null;
@@ -121,8 +118,8 @@ public class AdminRestaurantController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		restaurantService.modify(id, name, level, type, description, latitude, longitude, avgPrice, tel, location,imgPath,request.getParameter("deleteimg") != null);
-		return "redirect:/admin/restaurant/list";
+		otherPlaceService.modify(id, name, level, type, description, latitude, longitude, location, imgPath, request.getParameter("deleteimg") !=null);
+		return "redirect:/admin/other/list";
 	}
 	
 }

@@ -15,16 +15,16 @@
 </head>
 <body>
 <div class="container">
-	<c:set var="topnavselect" value="4"/>
+	<c:set var="topnavselect" value="6"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
 	
 	<div class="main-container">
 		
 		<c:set var="leftnavselect" value="1"/>
-		<%@include file="/WEB-INF/views/admin/restaurant/menu.jsp" %>
+		<%@include file="/WEB-INF/views/admin/other/menu.jsp" %>
 		<div class="content-container">
-		<form method="get" action="${ctx }/admin/restaurant/delete/handle">
+		<form method="get" action="${ctx }/admin/other/delete/handle">
 			<table id="place-list-table">
 				<tr>
 					<th>选择</th>
@@ -35,15 +35,15 @@
 					<th>纬度</th>
 					<th>修改</th>
 				</tr>
-				<c:forEach items="${list}" var="scenic">
+				<c:forEach items="${list}" var="other">
 				<tr>
-					<td><input type="checkbox" name="${scenic.id }"></td>
-					<td>${scenic.name }</td>
-					<td>${scenic.level }</td>
-					<td>${scenic.description }</td>
-					<td>${scenic.latitude }</td>
-					<td>${scenic.longitude }</td>
-					<td><a href="${ctx }/admin/scenic/modify?id=${scenic.id}">修改</a></td>
+					<td><input type="checkbox" name="${other.id }"></td>
+					<td>${other.name }</td>
+					<td>${other.level }</td>
+					<td>${other.description }</td>
+					<td>${other.latitude }</td>
+					<td>${other.longitude }</td>
+					<td><a href="${ctx }/admin/other/modify?id=${other.id}">修改</a></td>
 				</tr>
 				</c:forEach>
 			</table>

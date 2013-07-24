@@ -43,6 +43,20 @@
 				</tr>
 				</c:forEach>
 			</table>
+			${page.number } ${page.totalPages }
+			<div class="page-div">
+				<c:if test="${page.number > 0 }">
+					<a href="${ctx }/admin/place/list?num=${page.number}">上一页</a>
+				</c:if>
+				<div id="input-page-div">
+					<input type="number" id="input-page" value="${page.number+1 }">
+					<a>跳转</a>
+					<div>第${page.number+1 }页[共有${page.totalPages }页]</div>
+				</div>
+				<c:if test="${page.number+1 <  page.totalPages}">
+					<a href="${ctx }/admin/place/list?num=${page.number+2}">下一页</a>
+				</c:if>
+			</div>
 		</div>
 	</div>
 </div>
