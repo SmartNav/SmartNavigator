@@ -1,6 +1,7 @@
 package com.sdu.fwwb.smartnav.admin.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,4 +35,11 @@ public class AdminLoginController {
 		return "admin/login";
 	}
 	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session){
+		Admin admin = AdminSessionManager.getAdminFromSession(session);
+		admin = null;
+		AdminSessionManager.writeAdminToSession(session, null);
+		return "admin/login";
+	}
 }

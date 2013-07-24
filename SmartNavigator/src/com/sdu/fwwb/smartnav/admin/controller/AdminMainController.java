@@ -18,7 +18,12 @@ public class AdminMainController {
 
 	@RequestMapping(value="/index")
 	public String index(){
-		return "admin/index";
+		return "redirect:/admin/place/list";
+	}
+	
+	@RequestMapping(value="/")
+	public String index2(){
+		return "redirect:/admin/place/list";
 	}
 	
 }

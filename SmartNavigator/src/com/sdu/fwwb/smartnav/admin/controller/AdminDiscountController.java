@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sdu.fwwb.smartnav.entity.Discount;
+import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.service.DiscountService;
+import com.sdu.fwwb.smartnav.service.PlaceService;
 
 @Controller
 @RequestMapping("/admin/discount")
@@ -25,12 +27,16 @@ public class AdminDiscountController {
 	@Autowired
 	DiscountService discountService;
 	
+	@Autowired
+	PlaceService placeService;
+	
 	@RequestMapping("/list")
 	public ModelAndView list(@RequestParam("placeid")long placeId){
 		ModelAndView mav = new ModelAndView("/admin/discount/list");
 		List<Discount> discounts = discountService.listDiscountByPlaceId(placeId);
 		mav.addObject("discounts",discounts);
-		mav.addObject("placeid",placeId);
+		Place place = placeService.get(placeId);
+		mav.addObject("place",place);
 		return mav;
 	}
 	
