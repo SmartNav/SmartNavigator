@@ -1,5 +1,6 @@
 package com.sdu.fwwb.smartnav.service;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ import com.sdu.fwwb.smartnav.util.ValidateUtil;
 @Service
 public class AccountService {
 
+	private static final Logger log = Logger.getLogger(AccountService.class);
+	
 	@Autowired
 	UserDAO userDao;
 	
@@ -25,7 +28,9 @@ public class AccountService {
 	}
 	
 	public boolean login(String email,String password){
-		return userDao.findByEmailAndPassword(email,password) == null;
+		User user = userDao.findByEmailAndPassword(email,password);
+		log.debug("user:"+user);
+		return  user != null;
 	}
 	
 	public User get(String email){

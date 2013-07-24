@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,8 @@ import com.sdu.fwwb.smartnav.util.UserSessionManager;
 @RequestMapping("/account")
 public class AccountController {
 
+	private static final Logger log = Logger.getLogger(AccountController.class);
+	
 	@Autowired
 	AccountService accountService;
 	
@@ -56,6 +59,7 @@ public class AccountController {
 	@RequestMapping("/login")
 	@ResponseBody
 	public String login(@RequestParam("email")String email,@RequestParam("password") String password,HttpSession session){
+		log.debug("email:"+email+",password:"+password);
 		if(accountService.login(email,password)){
 			User user = accountService.get(email);
 			UserSessionManager.saveUserToSession(session, user);
