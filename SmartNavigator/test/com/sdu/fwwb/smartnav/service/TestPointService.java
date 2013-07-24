@@ -34,8 +34,13 @@ public class TestPointService extends SpringContextTestCase{
 	
 	@Test
 	public void testFloyd(){
-		Point p1 = pointDao.findByName("v1");
-		Point p2 = pointDao.findByName("v3");
+		Point p1 = new Point();
+		Point p2 = new Point();
+		p1.setLatitude(36.665689);
+		p1.setLongitude(117.117739);
+		p2.setLatitude(36.665269);
+		p2.setLongitude(117.141455);
+		
 		Path p = pointService.getinitPoint(p1, p2);
 		System.out.println(p.getDis());
 		for(int i=0;i<p.getPlist().size();i++){
