@@ -111,6 +111,8 @@ public class AccountController {
 		User user = UserSessionManager.getUserFromSession(session);
 		User thiUser = accountService.get(user.getId());
 		thiUser.setPassword(null);
+		String avatar = thiUser.getAvatar();
+		if(avatar != null) thiUser.setAvatar(sc.getContextPath()+avatar);
 		return new Gson().toJson(thiUser);
 	}
 	

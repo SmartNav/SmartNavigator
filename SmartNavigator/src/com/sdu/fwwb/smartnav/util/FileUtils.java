@@ -15,7 +15,7 @@ public class FileUtils {
 	private static final Logger log = Logger.getLogger(FileUtils.class);
 	
 	public static final String PLACE_UPLOAD_PATH = "/up/place/";
-	public static final String AVATAR_UPLOAD_PATH = "up/avatar/";
+	public static final String AVATAR_UPLOAD_PATH = "/up/avatar/";
 	
 	public static boolean isImg(String fileName){
 		log.debug("fileName:"+fileName);
