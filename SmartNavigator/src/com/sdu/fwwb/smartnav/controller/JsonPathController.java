@@ -28,8 +28,12 @@ public class JsonPathController {
 	public String caculatePath(@RequestParam("la1") double la1,@RequestParam("lo1") double lo1,
 			@RequestParam("la2") double la2,@RequestParam("lo2") double lo2){
 		
-		Point p1 = pointDao.findByLatitudeAndLongitude(la1, lo1);
-		Point p2 = pointDao.findByLatitudeAndLongitude(la2, lo2);
+		Point p1 = new Point();
+		p1.setLatitude(la1);
+		p1.setLongitude(lo1);
+		Point p2 = new Point();
+		p2.setLatitude(la2);
+		p2.setLongitude(lo2);
 
 		return gson.toJson(pointService.getinitPoint(p1, p2));
 	}

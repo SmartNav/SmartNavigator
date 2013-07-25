@@ -108,5 +108,11 @@ public class Place implements Serializable{
 				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 	
-	
+	public boolean equals(Object obj) {   
+        if (obj instanceof Place) {   
+            Place p = (Place) obj;   
+            return this.id == p.id; 
+        }   
+        return super.equals(obj);  
+	}
 }
