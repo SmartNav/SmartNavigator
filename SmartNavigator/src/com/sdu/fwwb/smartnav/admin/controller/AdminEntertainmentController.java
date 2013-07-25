@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sdu.fwwb.smartnav.entity.Entertainment;
+import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.service.PlaceService;
 import com.sdu.fwwb.smartnav.service.EntertainmentService;
 import com.sdu.fwwb.smartnav.util.FileUtils;
@@ -40,7 +41,7 @@ public class AdminEntertainmentController {
 
 	@RequestMapping(value="/add/handle")
 	public String addHandle(@RequestParam("name")String name,@RequestParam("level") int level,
-			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
+			@RequestParam("type") int type,@RequestParam("descript")String descript,@RequestParam("description")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("enter-phone") String tel,@RequestParam("local")String location,@RequestParam("img")MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
@@ -52,7 +53,7 @@ public class AdminEntertainmentController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		entertainmentService.add(name, level, type, description, latitude, longitude, tel, location,imgPath);
+		entertainmentService.add(name, level, type, descript,description, latitude, longitude, tel, location,imgPath);
 		return "redirect:/admin/place/add";
 	}
 	
@@ -99,13 +100,15 @@ public class AdminEntertainmentController {
 	public ModelAndView modify(@RequestParam("id") long id){
 		ModelAndView mav = new ModelAndView("admin/entertainment/modify");
 		Entertainment entertainment = entertainmentService.getEntertainment(id);
+		Place place = placeService.get(id);
+		mav.addObject("place",place);
 		mav.addObject("entertainment",entertainment);
 		return mav;
 	}
 	
 	@RequestMapping(value="/modify/handle")
 	public String modifyHandle(@RequestParam("id") long id,@RequestParam("name")String name,@RequestParam("level") int level,
-			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
+			@RequestParam("type") int type,@RequestParam("descript")String descript, @RequestParam("description")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("enter-phone") String tel,@RequestParam("local")String location,
 			@RequestParam("img")MultipartFile mFile,HttpServletRequest request){
 		String[] lalongs = lalong.split(",");
@@ -118,7 +121,7 @@ public class AdminEntertainmentController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		entertainmentService.modify(id, name, level, type, description, latitude, longitude, tel, location,imgPath,request.getParameter("deleteimg") != null);
+		entertainmentService.modify(id, name, level, type, descript,description, latitude, longitude, tel, location,imgPath,request.getParameter("deleteimg") != null);
 		return "redirect:/admin/entertainment/list";
 	}
 	

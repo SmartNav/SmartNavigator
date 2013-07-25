@@ -26,8 +26,8 @@ public class EntertainmentService {
 	PlaceDAO placeDao;
 	
 	@Transactional
-	public void add(String name,int level,int type,String description,double latitude,double longitude,String tel,String location,String img){
-		Place place = new Place(name, level, type, description, latitude, longitude);
+	public void add(String name,int level,int type,String descript,String description,double latitude,double longitude,String tel,String location,String img){
+		Place place = new Place(name, level, type, descript, latitude, longitude);
 		placeDao.save(place);
 		List<Place> places = placeDao.findByLatitudeAndLongitude(latitude, longitude);
 		long id = places.get(places.size()-1).getId();
@@ -37,8 +37,8 @@ public class EntertainmentService {
 	}
 	
 	@Transactional
-	public void modify(long id,String name,int level,int type,String description,double latitude,double longitude,String tel,String location,String img,boolean deleteImg){
-		Place place = new Place(id,name, level, type, description, latitude, longitude);
+	public void modify(long id,String name,int level,int type,String descript,String description,double latitude,double longitude,String tel,String location,String img,boolean deleteImg){
+		Place place = new Place(id,name, level, type, descript, latitude, longitude);
 		placeDao.save(place);
 		placeDao.save(place);
 		if(!deleteImg){

@@ -17,7 +17,7 @@
 	<title>控制台首页</title>
 </head>
 <body>
-<div class="container">
+<div class="body-container">
 	<c:set var="topnavselect" value="2"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
@@ -32,14 +32,16 @@
 					<div><label>地点名</label><input name="name" type="text" value="${hotel.name }"></div>
 					<div><label>显示最低级别</label><input name="level" type="number" value="${hotel.level }"></div>
 					<input name="type" value="10" type="hidden">
-					<div><label>描述</label><input name="descript" type="text" value="${hotel.description }"></div>
+					
+					<div><label>短描述</label><input name="descript" type="text" value="${place.description }"></div>
+					<div><label>详细描述</label><textarea name="description" >${hotel.description }</textarea></div>
 					<div><label>经纬度</label><input name="lalong" type="text" value="${hotel.latitude },${hotel.longitude}"></div>
 					<div><label>星级</label><input name="hotel-star" type="number" value="${hotel.star_level }"></div>
 					<div><label>最高价格</label><input name="hotel-max-price" type="text" value="${hotel.max_price }"></div>
 					<div><label>最低价格</label><input name="hotel-min-price" type="text" value="${hotel.min_price }"></div>
 					<div><label>剩余房间</label><input name="hotel-rest-rooms" type="number" value="${hotel.empty_room }"></div>
 					<div><label>联系方式</label><input name="hotel-phone" type="number" value="${hotel.tel }"></div>
-					<div><label>地址</label><input name="hotel-local" type="text" value="${hotel.place }"></div>
+					<div><label>地址</label><input name="local" type="text" value="${hotel.place }"></div>
 					<div><label>图片</label>
 						<c:if test="${not empty hotel.img }">
 							<img src="${ctx }${hotel.img}" width="100px;">

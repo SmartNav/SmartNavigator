@@ -8,9 +8,6 @@
 	<%@ include file="/common/common.jsp"%>
 	<link rel="stylesheet" type="text/css" href="${ctx }/css/admin/style.css">
 	<style>
-		#place-add-form{padding-top:30px;}
-		#place-add-form div{line-height:2.5rem;}
-		.form-show-option{display:none;}
 	</style>
 	<script type="text/javascript">
 		$(document).ready(function (){
@@ -55,7 +52,7 @@
 	<title>控制台首页</title>
 </head>
 <body>
-<div class="container">
+<div class="body-container">
 	<c:set var="topnavselect" value="1"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
@@ -65,11 +62,12 @@
 		<%@include file="/WEB-INF/views/admin/place/menu.jsp" %>
 		
 		<div class="content-container">
-			<div id="place-add-form">
-				<form method="post" action="${ctx }/admin/hotel/add/handle" id="place-add-form-form" enctype="multipart/form-data">
-					<div><label>地点名</label><input name="name" type="text"></div>
-					<div><label>显示最低级别</label><input name="level" type="number"></div>
-					<div><label>类型</label>
+			<div id="place-add-form" > 
+				<form  class="form-horizontal" method="post" action="${ctx }/admin/hotel/add/handle" id="place-add-form-form" enctype="multipart/form-data">
+					<div class="control-group"><label class="control-label" >地点名</label><div class="controls"><input name="name" type="text" data-required="true"><span class="icon-asterisk"></span></div></div>
+					<div class="control-group"><label class="control-label" >显示最低级别</label><div class="controls"><input name="level" type="number" data-required="true"><span class="icon-asterisk"></span></div></div>
+					<div class="control-group"><label class="control-label" >类型</label>
+					<div class="controls">
 					<select id="type-select" name="type">
 						<option value="10">酒店</option>
 						<option value="11">餐馆</option>
@@ -78,30 +76,32 @@
 						<option value="14">其他</option>
 					</select>
 					</div>
-					<div><label>描述</label><input name="descript" type="text"></div>
-					<div><label>经纬度</label><input name="lalong" type="text"></div>
-					<div><label>地址</label><input name="local" type="text"></div>
+					</div>
+					<div class="control-group"><label class="control-label" >短描述</label><div class="controls"><input name="descript" type="text" data-required="true"><span class="icon-asterisk"></span></div></div>
+					<div class="control-group"><label class="control-label" >详细描述</label><div class="controls"><textarea name="description" rows="4" data-required="true"></textarea><span class="icon-asterisk"></span></div></div>
+					<div class="control-group"><label class="control-label" >经纬度</label><div class="controls"><input name="lalong" type="text"><span class="icon-asterisk"></span></div></div>
+					<div class="control-group"><label class="control-label" >地址</label><div class="controls"><input name="local" type="text"><span class="icon-asterisk"></span></div></div>
 					<div id="form-hotel-show" class="form-show-option">
-						<div><label>星级</label><input name="hotel-star" type="number"></div>
-						<div><label>最高价格</label><input name="hotel-max-price" type="text"></div>
-						<div><label>最低价格</label><input name="hotel-min-price" type="text"></div>
-						<div><label>剩余房间</label><input name="hotel-rest-rooms" type="number"></div>
-						<div><label>联系方式</label><input name="hotel-phone" type="number"></div>
+						<div class="control-group"><label class="control-label" >星级</label><div class="controls"><input name="hotel-star" type="number"><span class="icon-asterisk"></span></div></div>
+						<div class="control-group"><label class="control-label" >最高价格</label><div class="controls"><input name="hotel-max-price" type="text"><span class="icon-asterisk"></span></div></div>
+						<div class="control-group"><label class="control-label" >最低价格</label><div class="controls"><input name="hotel-min-price" type="text"><span class="icon-asterisk"></span></div></div>
+						<div class="control-group"><label class="control-label" >剩余房间</label><div class="controls"><input name="hotel-rest-rooms" type="number"><span class="icon-asterisk"></span></div></div>
+						<div class="control-group"><label class="control-label" >联系方式</label><div class="controls"><input name="hotel-phone" type="number"><span class="icon-asterisk"></span></div></div>
 						
 					</div>
 					<div id="form-restaurant-show" class="form-show-option">
-						<div><label>口味</label><input name="rest-flavor" type="text"></div>
-						<div><label>人均消费</label><input name="rest-avg-price" type="text"></div>
-						<div><label>联系方式</label><input name="rest-phone" type="number"></div>
+						<div class="control-group"><label class="control-label" >口味</label><div class="controls"><input name="rest-flavor" type="text"><span class="icon-asterisk"></span></div></div>
+						<div class="control-group"><label class="control-label" >人均消费</label><div class="controls"><input name="rest-avg-price" type="text"><span class="icon-asterisk"></span></div></div>
+						<div class="control-group"><label class="control-label" >联系方式</label><div class="controls"><input name="rest-phone" type="number"><span class="icon-asterisk"></span></div></div>
 					</div>
 					<div id="form-scenic-show" class="form-show-option">
-						<div><label>星级</label><input name="scenic-star" type="number"></div>
+						<div class="control-group"><label class="control-label" >星级</label><div class="controls"><input name="scenic-star" type="number"><span class="icon-asterisk"></span></div></div>
 					</div>
 					<div id="form-entertainment-show" class="form-show-option">
-						<div><label>联系方式</label><input name="enter-phone" type="number"></div>
+						<div class="control-group"><label class="control-label" >联系方式</label><div class="controls"><input name="enter-phone" type="number"><span class="icon-asterisk"></span></div></div>
 					</div>
-					<div><label>图片</label><input name="img" type="file"></div>
-					<div><input type="submit"></div>
+					<div class="control-group"><label class="control-label" >图片</label><div class="controls"><input name="img" type="file" ></div></div>
+					<div class="control-group"><div class="controls"><input type="submit" class="btn"></div></div>
 				</form>
 			</div>
 		</div>

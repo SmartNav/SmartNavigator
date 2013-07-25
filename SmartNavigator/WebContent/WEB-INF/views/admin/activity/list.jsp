@@ -14,7 +14,7 @@
 	<title>控制台首页</title>
 </head>
 <body>
-<div class="container">
+<div class="body-container">
 	<c:set var="topnavselect" value="7"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
@@ -25,7 +25,7 @@
 		<%@include file="/WEB-INF/views/admin/activity/menu.jsp" %>
 		<div class="content-container">
 		<form method="get" action="${ctx }/admin/activity/delete/handle">
-			<table id="place-list-table">
+			<table id="place-list-table" class="table">
 				<tr>
 					<th>选择</th>
 					<th>标题</th>

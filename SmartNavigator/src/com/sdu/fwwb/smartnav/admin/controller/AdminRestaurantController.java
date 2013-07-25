@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.entity.Restaurant;
 import com.sdu.fwwb.smartnav.service.PlaceService;
 import com.sdu.fwwb.smartnav.service.RestaurantService;
@@ -40,7 +41,7 @@ public class AdminRestaurantController {
 
 	@RequestMapping(value="/add/handle")
 	public String addHandle(@RequestParam("name")String name,@RequestParam("level") int level,
-			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
+			@RequestParam("type") int type,@RequestParam("descript")String descript, @RequestParam("description")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("rest-flavor")String flavor,@RequestParam("rest-avg-price") String avgPrice,
 			@RequestParam("rest-phone") String tel,@RequestParam("local")String location,
 			@RequestParam("img") MultipartFile mFile){
@@ -55,7 +56,7 @@ public class AdminRestaurantController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		restaurantService.add(name, level, type,flavor, description, latitude, longitude, avgPrice, tel, location,imgPath);
+		restaurantService.add(name, level, type,flavor,descript, description, latitude, longitude, avgPrice, tel, location,imgPath);
 		return "redirect:/admin/place/add";
 	}
 	
@@ -102,13 +103,15 @@ public class AdminRestaurantController {
 	public ModelAndView modify(@RequestParam("id") long id){
 		ModelAndView mav = new ModelAndView("admin/restaurant/modify");
 		Restaurant restaurant = restaurantService.getRestaurant(id);
+		Place place = placeService.get(id);
+		mav.addObject("place",place);
 		mav.addObject("restaurant",restaurant);
 		return mav;
 	}
 	
 	@RequestMapping(value="/modify/handle")
 	public String modifyHandle(@RequestParam("id") long id,@RequestParam("name")String name,@RequestParam("level") int level,
-			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
+			@RequestParam("type") int type,@RequestParam("descript")String descript, @RequestParam("description")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("rest-flavor") String flavor,@RequestParam("rest-avg-price") String avgPrice,
 			@RequestParam("rest-phone") String tel,@RequestParam("ocal")String location,
 			@RequestParam("img")MultipartFile mFile,HttpServletRequest request){
@@ -123,7 +126,7 @@ public class AdminRestaurantController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		restaurantService.modify(id, name, level, type,flavor, description, latitude, longitude, avgPrice, tel, location,imgPath,request.getParameter("deleteimg") != null);
+		restaurantService.modify(id, name, level, type,flavor,descript, description, latitude, longitude, avgPrice, tel, location,imgPath,request.getParameter("deleteimg") != null);
 		return "redirect:/admin/restaurant/list";
 	}
 	

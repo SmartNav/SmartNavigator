@@ -13,6 +13,10 @@
 		.form-show-option{display:none;}
 	</style>
 	<script type="text/javascript">
+	 	$(function() {
+		    $( "#start-time" ).datepicker();
+		    $( "#end-time" ).datepicker();
+		  });
 	</script>
 	<title>控制台首页</title>
 </head>
@@ -33,8 +37,8 @@
 					<div><label>短描述</label><input name="short-des" type="text"></div>
 					<div><label>内容</label><input name="content" type="text"></div>
 					<input name="placeid" value="${placeid }" type="hidden">
-					<div><label>开始时间</label><input name="start-time" type="text"></div>
-					<div><label>结束时间</label><input name="end-time" type="text"></div>
+					<div><label>开始日期</label><input name="start-time" id="start-time" type="text"></div>
+					<div><label>结束日期</label><input name="end-time" id="end-time" type="text"></div>
 					<div><input type="submit"></div>
 				</form>
 			</div>

@@ -5,7 +5,6 @@
 <head>
 <%@ include file="/common/global.jsp"%>
 <%@ include file="/common/meta.jsp"%>
-<%@ include file="/common/common.jsp"%>
 <title>智慧导航管理登录</title>
 
 <link rel="stylesheet" type="text/css" href="${ctx }/css/admin/login.css" />

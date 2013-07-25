@@ -14,7 +14,7 @@
 	<title>控制台首页</title>
 </head>
 <body>
-<div class="container">
+<div class="body-container">
 	<c:set var="topnavselect" value="3"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	

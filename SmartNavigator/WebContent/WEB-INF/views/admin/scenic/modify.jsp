@@ -17,7 +17,7 @@
 	<title>控制台首页</title>
 </head>
 <body>
-<div class="container">
+<div class="body-container">
 	<c:set var="topnavselect" value="4"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
@@ -32,10 +32,11 @@
 					<div><label>地点名</label><input name="name" type="text" value="${scenic.name }"></div>
 					<div><label>显示最低级别</label><input name="level" type="number" value="${scenic.level }"></div>
 					<input name="type" value="11" type="hidden">
-					<div><label>描述</label><input name="descript" type="text" value="${scenic.description }"></div>
+					<div><label>短描述</label><input name="descript" type="text" value="${place.description }"></div>
+					<div><label>详细描述</label><textarea name="description" >${scenic.description }</textarea></div>
 					<div><label>经纬度</label><input name="lalong" type="text" value="${scenic.latitude },${scenic.longitude}"></div>
 					<div><label>星级</label><input name="scenic-star" type="number" value="${scenic.star }"></div>
-					<div><label>地址</label><input name="scenic-local" type="text" value="${scenic.place }"></div>
+					<div><label>地址</label><input name="local" type="text" value="${scenic.place }"></div>
 					<div><label>图片</label>
 						<c:if test="${not empty scenic.img }">
 							<img src="${ctx }${scenic.img}" width="100px;">
@@ -44,7 +45,7 @@
 						<input name="deleteimg" type="checkbox" >删除图片
 					</div>
 					<input name="id" value="${scenic.id }" type="hidden">
-					<div><input type="submit"></div>
+					<div><input type="submit" class="btn"></div>
 				</form>
 			</div>
 		</div>

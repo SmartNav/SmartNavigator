@@ -17,7 +17,7 @@
 	<title>控制台首页</title>
 </head>
 <body>
-<div class="container">
+<div class="body-container">
 	<c:set var="topnavselect" value="3"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
@@ -32,12 +32,13 @@
 					<div><label>地点名</label><input name="name" type="text" value="${restaurant.name }"></div>
 					<div><label>显示最低级别</label><input name="level" type="number" value="${restaurant.level }"></div>
 					<input name="type" value="11" type="hidden">
-					<div><label>描述</label><input name="descript" type="text" value="${restaurant.description }"></div>
+					<div><label>短描述</label><input name="descript" type="text" value="${place.description }"></div>
+					<div><label>详细描述</label><textarea name="description" >${restaurant.description }</textarea></div>
 					<div><label>经纬度</label><input name="lalong" type="text" value="${restaurant.latitude },${restaurant.longitude}"></div>
 					<div><label>口味</label><input name="rest-flavor" type="text" value="${restaurant.flavor }"></div>
 					<div><label>人均消费</label><input name="rest-avg-price" type="text" value="${restaurant.avg_price }"></div>
 					<div><label>联系方式</label><input name="rest-phone" type="number" value="${restaurant.tel }"></div>
-					<div><label>地址</label><input name="rest-local" type="text" value="${restaurant.place }"></div>
+					<div><label>地址</label><input name="local" type="text" value="${restaurant.place }"></div>
 					<div><label>图片</label>
 						<c:if test="${not empty restaurant.img }">
 							<img src="${ctx }${restaurant.img}" width="100px;">

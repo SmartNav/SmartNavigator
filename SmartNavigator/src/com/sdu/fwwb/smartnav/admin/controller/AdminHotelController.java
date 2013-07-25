@@ -43,7 +43,7 @@ public class AdminHotelController {
 
 	@RequestMapping(value="/add/handle")
 	public String addHandle(@RequestParam("name")String name,@RequestParam("level") int level,
-			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
+			@RequestParam("type") int type,@RequestParam("descript")String descript, @RequestParam("description")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("hotel-star") int star,@RequestParam("hotel-max-price") String maxPrice,@RequestParam("hotel-min-price") String minPrice,
 			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("local")String location,@RequestParam("img")MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
@@ -58,7 +58,7 @@ public class AdminHotelController {
 			e.printStackTrace();
 		}
 		
-		hotelService.add(name, level, type, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location,imgPath);
+		hotelService.add(name, level, type,descript, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location,imgPath);
 		return "redirect:/admin/place/add";
 	}
 	
@@ -105,13 +105,15 @@ public class AdminHotelController {
 	public ModelAndView modify(@RequestParam("id") long id){
 		ModelAndView mav = new ModelAndView("admin/hotel/modify");
 		Hotel hotel = hotelService.getHotel(id);
+		Place place = placeService.get(id);
+		mav.addObject("place",place);
 		mav.addObject("hotel",hotel);
 		return mav;
 	}
 	
 	@RequestMapping(value="/modify/handle")
 	public String modifyHandle(@RequestParam("id")long id,@RequestParam("name")String name,@RequestParam("level") int level,
-			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
+			@RequestParam("type") int type,@RequestParam("descript")String descript, @RequestParam("description")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("hotel-star") int star,@RequestParam("hotel-max-price") String maxPrice,@RequestParam("hotel-min-price") String minPrice,
 			@RequestParam("hotel-rest-rooms") int leftRooms,@RequestParam("hotel-phone") String tel,@RequestParam("local")String location,
 			@RequestParam("img") MultipartFile mFile,HttpServletRequest request){
@@ -125,7 +127,7 @@ public class AdminHotelController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		hotelService.modify(id,name, level, type, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location,imgPath,request.getParameter("deleteimg") !=null);
+		hotelService.modify(id,name, level, type,descript, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location,imgPath,request.getParameter("deleteimg") !=null);
 		return "redirect:/admin/hotel/list";
 	}
 	

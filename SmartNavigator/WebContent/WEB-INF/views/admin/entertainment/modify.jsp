@@ -17,7 +17,7 @@
 	<title>控制台首页</title>
 </head>
 <body>
-<div class="container">
+<div class="body-container">
 	<c:set var="topnavselect" value="5"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	
@@ -32,10 +32,12 @@
 					<div><label>地点名</label><input name="name" type="text" value="${entertainment.name }"></div>
 					<div><label>显示最低级别</label><input name="level" type="number" value="${entertainment.level }"></div>
 					<input name="type" value="11" type="hidden">
-					<div><label>描述</label><input name="descript" type="text" value="${entertainment.description }"></div>
+					
+					<div><label>短描述</label><input name="descript" type="text" value="${place.description }"></div>
+					<div><label>详细描述</label><textarea name="description" >${entertainment.description }</textarea></div>
 					<div><label>经纬度</label><input name="lalong" type="text" value="${entertainment.latitude },${entertainment.longitude}"></div>
 					<div><label>联系方式</label><input name="enter-phone" type="number" value="${entertainment.tel }"></div>
-					<div><label>地址</label><input name="enter-local" type="text" value="${entertainment.place }"></div>
+					<div><label>地址</label><input name="local" type="text" value="${entertainment.place }"></div>
 					<div><label>图片</label>
 						<c:if test="${not empty entertainment.img }">
 							<img src="${ctx }${entertainment.img}" width="100px;">

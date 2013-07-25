@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sdu.fwwb.smartnav.entity.OtherPlace;
+import com.sdu.fwwb.smartnav.entity.Place;
 import com.sdu.fwwb.smartnav.service.OtherPlaceService;
 import com.sdu.fwwb.smartnav.service.PlaceService;
 import com.sdu.fwwb.smartnav.util.FileUtils;
@@ -39,7 +40,7 @@ public class AdminOtherPlaceController {
 
 	@RequestMapping(value="/add/handle")
 	public String addHandle(@RequestParam("name")String name,@RequestParam("level") int level,
-			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
+			@RequestParam("type") int type,@RequestParam("descript")String descript, @RequestParam("description")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("local")String location,@RequestParam("img")MultipartFile mFile){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
@@ -53,7 +54,7 @@ public class AdminOtherPlaceController {
 			e.printStackTrace();
 		}
 		
-		otherPlaceService.add(name, level, type, description, latitude, longitude, location, imgPath);
+		otherPlaceService.add(name, level, type,descript, description, latitude, longitude, location, imgPath);
 		return "redirect:/admin/place/add";
 	}
 	
@@ -100,13 +101,15 @@ public class AdminOtherPlaceController {
 	public ModelAndView modify(@RequestParam("id") long id){
 		ModelAndView mav = new ModelAndView("admin/other/modify");
 		OtherPlace otherPlace = otherPlaceService.getOtherPlace(id);
+		Place place = placeService.get(id);
+		mav.addObject("place",place);
 		mav.addObject("otherPlace",otherPlace);
 		return mav;
 	}
 	
 	@RequestMapping(value="/modify/handle")
 	public String modifyHandle(@RequestParam("id")long id,@RequestParam("name")String name,@RequestParam("level") int level,
-			@RequestParam("type") int type,@RequestParam("descript")String description,@RequestParam("lalong")String lalong,
+			@RequestParam("type") int type,@RequestParam("descript")String descript, @RequestParam("description")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("local")String location,@RequestParam("img") MultipartFile mFile,HttpServletRequest request){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);
@@ -118,7 +121,7 @@ public class AdminOtherPlaceController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		otherPlaceService.modify(id, name, level, type, description, latitude, longitude, location, imgPath, request.getParameter("deleteimg") !=null);
+		otherPlaceService.modify(id, name, level, type, descript,description, latitude, longitude, location, imgPath, request.getParameter("deleteimg") !=null);
 		return "redirect:/admin/other/list";
 	}
 	
