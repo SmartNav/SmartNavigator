@@ -25,7 +25,7 @@ public class PointService {
 	@Autowired
 	PointDao pointDao;
 
-	Point p1, p2;
+	
 	
 	private final double eps = 1E-8;
 
@@ -33,14 +33,12 @@ public class PointService {
 		return Math.abs(d) < 1E-8 ? 0 : d < 0 ? -1 : 1;
 	}
 
-	public Path getinitPoint(Point p1, Point p2){
-		this.p1 = p1;
-		this.p2 = p2;
-		log.debug("获取起止点：" + p1.getName() + p2.getName());
-		return calPath();
+	public Path getinitPoint(double lat1, double lng1, double lat2, double lng2){
+		log.debug("获取起止点：" + lat1 +"--" + lng1 + "--" + lat2 +"--" + lng2);
+		return calPath(lat1, lng1, lat2, lng2);
 	}
 	
-	public Point calMin(Point p) {
+	public Point calMin(double lat, double lng) {
 		double MIN = Double.MAX_VALUE;
 		Point result = new Point();
 		CalDistence d = new CalDistence();
@@ -50,9 +48,9 @@ public class PointService {
 		
 		while (i.hasNext()) {
 			Point tmp = i.next();	
-//			log.debug(d.cal(tmp,p));
-			if (sig(d.cal(tmp, p) - MIN) < 0) {
-				MIN = d.cal(tmp, p);
+
+			if (sig(d.cal(tmp.getLatitude(), tmp.getLongitude(), lat, lng) - MIN) < 0) {
+				MIN = d.cal(tmp.getLatitude(), tmp.getLongitude(), lat, lng);
 				result = tmp;
 			}
 		}
@@ -71,7 +69,7 @@ public class PointService {
 	private static int inf = (1 << 29);
 	floyd f = new floyd(); 
 	
-	public Path calPath() {
+	public Path calPath(double lat1, double lng1, double lat2, double lng2) {
 		
 		Path path = new Path();
 		ArrayList<Point> list = new ArrayList<Point>();
@@ -90,8 +88,8 @@ public class PointService {
 			map[d.getStart()][d.getEnd()] = d.getWeight();
 		}
 		
-		from = calMin(p1);
-		to = calMin(p2);
+		from = calMin(lat1, lng1);
+		to = calMin(lat2, lng2);
 		
 		log.debug("计算得到的起止点：" + from.getName() + to.getName());
 		
@@ -109,10 +107,7 @@ public class PointService {
 			Iterator<Place> iP = ii.iterator();
 			while(iP.hasNext()){
 				Place place = iP.next();
-				Point point = new Point();
-				point.setLatitude(place.getLatitude());
-				point.setLongitude(place.getLongitude());
-				if(sig(new CalDistence().cal(point, pointDao.findByName("v"+s[i])) - 0.3) < 0)
+				if(sig(new CalDistence().cal(place.getLatitude(),place.getLongitude(), pointDao.findByName("v"+s[i]).getLatitude(),pointDao.findByName("v"+s[i]).getLongitude()) - 0.3) < 0)
 					if(list1.contains(place)) continue;
 					else
 						list1.add(place);

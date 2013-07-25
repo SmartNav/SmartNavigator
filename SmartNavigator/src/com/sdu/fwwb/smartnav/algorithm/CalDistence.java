@@ -16,11 +16,8 @@ public class CalDistence {
 		return r * ang(lat1, lng1, lat2, lng2);
 	}
 	
-	public double cal(Point p1, Point p2){
-		double lat1 = p1.getLatitude();
-		double lng1 = p1.getLongitude();
-		double lat2 = p2.getLatitude();
-		double lng2 = p2.getLongitude();
+	public double cal(double lat1, double lng1, double lat2, double lng2){
+
 		lat1 = lat1 * Math.PI / 180.0;
 		lng1 = lng1 * Math.PI / 180.0;
 		lat2 = lat2 * Math.PI / 180.0;
