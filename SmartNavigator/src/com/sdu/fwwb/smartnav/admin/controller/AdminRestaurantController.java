@@ -113,7 +113,7 @@ public class AdminRestaurantController {
 	public String modifyHandle(@RequestParam("id") long id,@RequestParam("name")String name,@RequestParam("level") int level,
 			@RequestParam("type") int type,@RequestParam("descript")String descript, @RequestParam("description")String description,@RequestParam("lalong")String lalong,
 			@RequestParam("rest-flavor") String flavor,@RequestParam("rest-avg-price") String avgPrice,
-			@RequestParam("rest-phone") String tel,@RequestParam("ocal")String location,
+			@RequestParam("rest-phone") String tel,@RequestParam("local")String location,
 			@RequestParam("img")MultipartFile mFile,HttpServletRequest request){
 		String[] lalongs = lalong.split(",");
 		double latitude = Double.parseDouble(lalongs[0]);

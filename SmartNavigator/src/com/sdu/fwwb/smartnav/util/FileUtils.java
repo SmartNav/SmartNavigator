@@ -68,7 +68,7 @@ public class FileUtils {
         }
         fs.close();
         in.close();
-        return PLACE_UPLOAD_PATH+newFileName;
+        return basePath+newFileName;
     }
 	
 }
