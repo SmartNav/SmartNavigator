@@ -49,10 +49,12 @@
 			</table>
 			<div id="table-menu">
 				<input name="placeid" type="hidden" value="${placeid }">
-				<ul>
-					<li><input type="submit" value="删除"></li>
-					<li><a href="${ctx }/admin/activity/add?placeid=${placeid}">增加</a></li>
+				<ul class="menu-group">
+					<li><input type="submit" value="删除" class="btn btn-danger"></li>
+					<li><a href="${ctx }/admin/activity/add?placeid=${placeid}" class="btn btn-primary">增加</a></li>
+					<li class="no-float"></li>
 				</ul>
+				
 			</div>
 			</form>
 		</div>

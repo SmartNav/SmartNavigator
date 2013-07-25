@@ -1,0 +1,4 @@
+/*toast css*/
+._s_toast_div{margin: 30px auto 0px auto;text-align: center;width:150px;font-size: 20px;
+	background: #5B98D0; color: #fff;padding: 10px 60px; position: fixed;
+	border:2px solid #7FB9F0; display: none; z-index:-1;}

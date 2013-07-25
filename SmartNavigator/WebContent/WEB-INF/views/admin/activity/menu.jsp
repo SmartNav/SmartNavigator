@@ -4,10 +4,26 @@
 <div class="left-part">
 	<ul id="left-nav-ul">
 		<c:if test="${leftnavselect eq 1 }">
-			<li><a href="#" id="left-nav-ul-selected">列表管理</a></li>
+			<c:if test="${leftnavselect eq 2 }">
+				<li><a href="${ctx }/admin/activity/list?placeid=${activity.placeId}" id="left-nav-ul-selected">列表管理</a></li>
+			</c:if>
+			<c:if test="${leftnavselect eq 1 }">
+				<li><a href="${ctx }/admin/activity/list?placeid=${param.placeid}" id="left-nav-ul-selected">列表管理</a></li>
+			</c:if>
+			<c:if test="${leftnavselect eq 3 }">
+				<li><a href="${ctx }/admin/activity/list?placeid=${placeid}" id="left-nav-ul-selected">列表管理</a></li>
+			</c:if>
 		</c:if>
 		<c:if test="${leftnavselect ne 1 }">
-			<li><a href="#">列表管理</a></li>
+			<c:if test="${leftnavselect eq 2 }">
+				<li><a href="${ctx }/admin/activity/list?placeid=${activity.placeId}">列表管理</a></li>
+			</c:if>
+			<c:if test="${leftnavselect eq 1 }">
+				<li><a href="${ctx }/admin/activity/list?placeid=${param.placeid}" >列表管理</a></li>
+			</c:if>
+			<c:if test="${leftnavselect eq 3 }">
+				<li><a href="${ctx }/admin/activity/list?placeid=${placeid}">列表管理</a></li>
+			</c:if>
 		</c:if>
 		
 		<c:if test="${leftnavselect eq 2 }">

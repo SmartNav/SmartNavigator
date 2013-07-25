@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.sdu.fwwb.smartnav.entity.Activity;
 import com.sdu.fwwb.smartnav.entity.Comment;
 import com.sdu.fwwb.smartnav.entity.Discount;
 import com.sdu.fwwb.smartnav.entity.Entertainment;
@@ -25,8 +26,10 @@ import com.sdu.fwwb.smartnav.entity.User;
 import com.sdu.fwwb.smartnav.json.model.CommentAndUser;
 import com.sdu.fwwb.smartnav.json.model.EntertainmentAndDiscount;
 import com.sdu.fwwb.smartnav.json.model.HotelAndDiscount;
+import com.sdu.fwwb.smartnav.json.model.PlaceAndActivity;
 import com.sdu.fwwb.smartnav.json.model.RestaurantAndDiscount;
 import com.sdu.fwwb.smartnav.service.AccountService;
+import com.sdu.fwwb.smartnav.service.ActivityService;
 import com.sdu.fwwb.smartnav.service.CommentService;
 import com.sdu.fwwb.smartnav.service.DiscountService;
 import com.sdu.fwwb.smartnav.service.EntertainmentService;
@@ -70,6 +73,9 @@ public class JsonQueryController {
 	
 	@Autowired
 	OtherPlaceService otherPlaceService;
+	
+	@Autowired
+	ActivityService activityService;
 	
 	@Autowired
 	ServletContext sc;
@@ -141,6 +147,23 @@ public class JsonQueryController {
 		if(img != null) scenic.setImg(sc.getContextPath()+scenic.getImg());
 		log.debug("scenic:"+scenic);
 		return gson.toJson(scenic);
+	}
+	
+	@RequestMapping("/activity")
+	@ResponseBody
+	public String activityQuery(@RequestParam("latitude")double latitude,@RequestParam("longitude")double longitude){
+		double range = 0.01;
+		List<Place> place = placeService.queryByBoundsAndLevel(latitude +range, latitude-range, longitude+range ,longitude-range, 19);
+		log.debug("place:"+place);
+		List<PlaceAndActivity> paa = new ArrayList<PlaceAndActivity>();
+		for(Place p :place){
+			List<Activity> activities = activityService.getActivityByPlaceId(p.getId());
+			if(activities != null && activities.size() > 0){
+				paa.add(new PlaceAndActivity(p,activities));
+			}
+		}
+		log.debug("paa:"+paa);
+		return gson.toJson(paa);
 	}
 	
 	public String discountQuery(@RequestParam("latitude")double latitude,@RequestParam("longitude") double longitude){

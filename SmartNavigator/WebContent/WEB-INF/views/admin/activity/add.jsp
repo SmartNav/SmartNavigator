@@ -14,14 +14,26 @@
 	</style>
 	<script type="text/javascript">
 	 	$(function() {
-		    $( "#start-time" ).datepicker();
-		    $( "#end-time" ).datepicker();
+		    $( "#start-time" ).datepicker({ 
+		    	dateFormat:"yy-mm-dd",
+		    		defaultDate: "+1w",
+		    	      changeMonth: true,
+		    	      onClose: function( selectedDate ) {
+		    	        $( "#end-time" ).datepicker( "option", "minDate", selectedDate );
+		    	  }});
+		    $( "#end-time" ).datepicker({
+		    	dateFormat:"yy-mm-dd",
+		    		defaultDate: "+1w",
+		    	      changeMonth: true,
+		    	      onClose: function( selectedDate ) {
+		    	        $( "#start-time" ).datepicker( "option", "maxDate", selectedDate );
+		    }});
 		  });
 	</script>
 	<title>控制台首页</title>
 </head>
 <body>
-<div class="container">
+<div class="body-container">
 	<c:set var="topnavselect" value="7"/>
 	<%@include file="/WEB-INF/views/admin/menu.jsp" %>
 	

@@ -13,6 +13,22 @@
 		.form-show-option{display:none;}
 	</style>
 	<script type="text/javascript">
+	$(function() {
+	    $( "#start-time" ).datepicker({ 
+	    	dateFormat:"yy-mm-dd",
+	    		defaultDate: "+1w",
+	    	      changeMonth: true,
+	    	      onClose: function( selectedDate ) {
+	    	        $( "#end-time" ).datepicker( "option", "minDate", selectedDate );
+	    	  }});
+	    $( "#end-time" ).datepicker({
+	    	dateFormat:"yy-mm-dd",
+	    		defaultDate: "+1w",
+	    	      changeMonth: true,
+	    	      onClose: function( selectedDate ) {
+	    	        $( "#start-time" ).datepicker( "option", "maxDate", selectedDate );
+	    }});
+	  });
 	</script>
 	<title>控制台首页</title>
 </head>
@@ -34,9 +50,10 @@
 					<div><label>内容</label><input name="content" type="text" value="${activity.content }"></div>
 					<input name="placeid" value="${activity.placeId }" type="hidden">
 					<input name="id" value="${activity.id }" type="hidden">
-					<div><label>开始时间</label><input name="start-time" type="text" value="${activity.startTime.time }"></div>
-					<div><label>结束时间</label><input name="end-time" type="text" value="${activity.endTime.time }"></div>
-					<div><input type="submit"></div>
+					
+					<div><label>开始时间</label><input name="start-time" id="start-time" type="text" value="<fmt:formatDate value="${activity.startTime}" type="date"/>"> </div>
+					<div><label>结束时间</label><input name="end-time" id="end-time" type="text" value="<fmt:formatDate value="${activity.endTime}" type="date"/>"> </div>
+					<div><input type="submit" class="btn"></div>
 				</form>
 			</div>
 		</div>

@@ -1,5 +1,6 @@
 package com.sdu.fwwb.smartnav.admin.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,9 +49,16 @@ public class AdminActivityController {
 	@RequestMapping("/modify/handle")
 	public String modifyHandle(@RequestParam("id") long id,@RequestParam("placeid") long placeId,
 			@RequestParam("title")String title,@RequestParam("content") String content,
-			@RequestParam("short-des")String shortDes,@RequestParam("start-time")long startTime,@RequestParam("end-time") long endTime){
-		SimpleDateFormat sdf = new SimpleDateFormat("YY/MM/DD");
-		Activity activity = new Activity(id,placeId, title, shortDes, content, new Date(startTime), new Date(endTime));
+			@RequestParam("short-des")String shortDes,@RequestParam("start-time")String startTime,@RequestParam("end-time") String endTime){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date startDate = null,endDate = null;
+		try {
+			 startDate= sdf.parse(startTime);
+			endDate = sdf.parse(endTime);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Activity activity = new Activity(id,placeId, title, shortDes, content, startDate, endDate);
 		activityService.saveActivity(activity);
 		return "redirect:/admin/activity/list?placeid="+placeId;
 	}
@@ -89,8 +97,16 @@ public class AdminActivityController {
 	@RequestMapping("/add/handle")
 	public String addHandle(@RequestParam("placeid") long placeId,
 	@RequestParam("title")String title,@RequestParam("content") String content,
-	@RequestParam("short-des")String shortDes,@RequestParam("start-time")long startTime,@RequestParam("end-time") long endTime){
-		Activity activity = new Activity(placeId, title, shortDes, content, new Date(startTime), new Date(endTime));
+	@RequestParam("short-des")String shortDes,@RequestParam("start-time")String startTime,@RequestParam("end-time") String endTime){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date startDate = null,endDate = null;
+		try {
+			 startDate= sdf.parse(startTime);
+			endDate = sdf.parse(endTime);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Activity activity = new Activity(placeId, title, shortDes, content, startDate,endDate);
 		activityService.saveActivity(activity);
 		return "redirect:/admin/activity/list?placeid="+placeId;
 	}

@@ -24,3 +24,4 @@ html{background: #F4F4F4;}
 .page-div a:hover{background:#75A7D5;cursor:pointer;}
 .page-div *,#input-page-div *{float:left;}
 .content-container{float:left;}
+.menu-group *{float:left; margin:0px 3px;}
