@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.sdu.fwwb.smartnav.dao.PointDao;
-import com.sdu.fwwb.smartnav.entity.Point;
+import com.sdu.fwwb.smartnav.json.model.Path;
 import com.sdu.fwwb.smartnav.service.PointService;
 
 @Controller
@@ -27,8 +27,9 @@ public class JsonPathController {
 	@ResponseBody
 	public String caculatePath(@RequestParam("la1") double la1,@RequestParam("lo1") double lo1,
 			@RequestParam("la2") double la2,@RequestParam("lo2") double lo2){
-		
-		return gson.toJson(pointService.getinitPoint(la1, lo1, la2, lo2));
+		Path path=pointService.getinitPoint(la1, lo1, la2, lo2);
+		System.out.println(path);
+		return gson.toJson(path);
 	}
 	
 }

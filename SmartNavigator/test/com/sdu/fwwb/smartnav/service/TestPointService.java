@@ -36,7 +36,7 @@ public class TestPointService extends SpringContextTestCase{
 	public void testFloyd(){
 	
 		double lat1 = 36.667382, lng1 = 117.148533, lat2 = 36.680032, lng2 = 117.142281;
-		Path p = pointService.getinitPoint(lat1, lng1, lat2, lng2);
-		System.out.println(p);
+		Path p = pointService.getinitPoint(lat2, lng2, lat1, lng1);
+		System.out.println(p.toString());
 	}
 }

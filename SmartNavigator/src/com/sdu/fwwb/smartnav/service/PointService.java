@@ -86,6 +86,7 @@ public class PointService {
 		while(it.hasNext()){
 			Dist d = it.next();			
 			map[d.getStart()][d.getEnd()] = d.getWeight();
+			map[d.getEnd()][d.getStart()] = d.getWeight();
 		}
 		
 		from = calMin(lat1, lng1);
