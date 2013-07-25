@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : local
 Source Server Version : 50527
 Source Host           : localhost:3306
 Source Database       : smartnav
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2013-07-23 19:43:03
+Date: 2013-07-25 20:18:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,6 +31,46 @@ CREATE TABLE `sn_admin` (
 -- Records of sn_admin
 -- ----------------------------
 INSERT INTO `sn_admin` VALUES ('1', 'admin', 'admin@smartnav.com', 'admin');
+
+-- ----------------------------
+-- Table structure for `sn_comments`
+-- ----------------------------
+DROP TABLE IF EXISTS `sn_comments`;
+CREATE TABLE `sn_comments` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `place_id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `star` int(1) NOT NULL,
+  `content` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sn_comments
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `sn_discount`
+-- ----------------------------
+DROP TABLE IF EXISTS `sn_discount`;
+CREATE TABLE `sn_discount` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `place_id` int(10) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `priority` int(2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sn_discount
+-- ----------------------------
+INSERT INTO `sn_discount` VALUES ('1', '12', 'te', 'wqeq', '10');
+INSERT INTO `sn_discount` VALUES ('4', '12', 'test', 'wqeq', '90');
+INSERT INTO `sn_discount` VALUES ('5', '12', 'tewrtw', 'rewrw', '233');
+INSERT INTO `sn_discount` VALUES ('6', '13', 'terte', 'dsadasd', '12');
+INSERT INTO `sn_discount` VALUES ('7', '14', 'tetr', 'dada', '22');
+INSERT INTO `sn_discount` VALUES ('8', '15', 'ds', 'dsada', '11');
 
 -- ----------------------------
 -- Table structure for `sn_dist`
@@ -84,12 +124,17 @@ CREATE TABLE `sn_place_entertainment` (
   `valuation` int(1) unsigned DEFAULT NULL,
   `notice` text,
   `description` text,
+  `level` int(11) NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sn_place_entertainment
 -- ----------------------------
+INSERT INTO `sn_place_entertainment` VALUES ('20', 'dsdas', '32131', '32131', '0', null, '321', '22', '321', '3231', '/up/place/1374580025451-f00a68229c580bb4abf54130a90c0d3c.png');
 
 -- ----------------------------
 -- Table structure for `sn_place_hotel`
@@ -107,12 +152,18 @@ CREATE TABLE `sn_place_hotel` (
   `tel` varchar(15) DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
   `description` text,
+  `level` int(11) NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sn_place_hotel
 -- ----------------------------
+INSERT INTO `sn_place_hotel` VALUES ('12', 'test', '5', '321', '21321231', '1290', '0', null, '23123213', '1231', 'tete', '15', '1231.3232', '1232.134', null);
+INSERT INTO `sn_place_hotel` VALUES ('18', 'dasd', '2121', '321', '3213', '32', '0', null, '32', '321', '2121', '121', '2121', '212', '/up/place/1374569511968-j.png');
 
 -- ----------------------------
 -- Table structure for `sn_place_meta`
@@ -128,7 +179,7 @@ CREATE TABLE `sn_place_meta` (
   `place_longitude` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sn_place_meta
@@ -143,6 +194,13 @@ INSERT INTO `sn_place_meta` VALUES ('7', '齐鲁软件园创业广场', '17', '1
 INSERT INTO `sn_place_meta` VALUES ('8', ' 济南奥体中心', '12', '12', '全运会举办地，健身运动首选', '36.66321', '117.129126');
 INSERT INTO `sn_place_meta` VALUES ('9', '雨滴广场', '18', '13', '集娱乐美食于一身', '36.678357', '117.136748');
 INSERT INTO `sn_place_meta` VALUES ('10', '山东一卡通', '18', '14', '便利全民', '36.678031', '117.143364');
+INSERT INTO `sn_place_meta` VALUES ('12', 'test', '15', '10', 'tete', '1231.3232', '1232.134');
+INSERT INTO `sn_place_meta` VALUES ('14', '喜洋洋', '121', '11', '121', '222.32', '43252.4324');
+INSERT INTO `sn_place_meta` VALUES ('15', 'scenic', '0', '11', '没什么', '0', '0');
+INSERT INTO `sn_place_meta` VALUES ('16', 'scenicsdsa', '231', '12', '43234', '32.3221', '3232.12');
+INSERT INTO `sn_place_meta` VALUES ('17', 'sdsa', '21', '10', '3123', '3213', '321');
+INSERT INTO `sn_place_meta` VALUES ('18', 'dasd', '121', '10', '2121', '2121', '212');
+INSERT INTO `sn_place_meta` VALUES ('20', 'dsdas', '22', '11', '321', '321', '3231');
 
 -- ----------------------------
 -- Table structure for `sn_place_other`
@@ -153,6 +211,10 @@ CREATE TABLE `sn_place_other` (
   `name` varchar(50) NOT NULL,
   `place` varchar(100) DEFAULT NULL,
   `description` text,
+  `level` int(11) NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -174,12 +236,17 @@ CREATE TABLE `sn_place_restaurant` (
   `tel` varchar(15) DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
   `description` text,
+  `level` int(11) NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sn_place_restaurant
 -- ----------------------------
+INSERT INTO `sn_place_restaurant` VALUES ('14', '喜洋洋', '2222', null, '0', null, '3342', '34242', '121', '121', '222.32', '43252.4324', null);
 
 -- ----------------------------
 -- Table structure for `sn_place_scenic`
@@ -188,16 +255,22 @@ DROP TABLE IF EXISTS `sn_place_scenic`;
 CREATE TABLE `sn_place_scenic` (
   `id` int(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `level` int(1) unsigned DEFAULT NULL,
+  `star` int(1) unsigned DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
   `valuation` int(1) unsigned DEFAULT NULL,
   `description` text,
+  `level` int(11) NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sn_place_scenic
 -- ----------------------------
+INSERT INTO `sn_place_scenic` VALUES ('15', 'scenic', '21', 'DASDAS', '0', '没什么', '0', '0', '0', null);
+INSERT INTO `sn_place_scenic` VALUES ('16', 'scenicsdsa', '3', '313', '0', '43234', '231', '32.3221', '3232.12', null);
 
 -- ----------------------------
 -- Table structure for `sn_point`
@@ -244,10 +317,13 @@ CREATE TABLE `sn_user` (
   `user_name` varchar(25) NOT NULL,
   `user_email` varchar(50) NOT NULL,
   `user_pw` varchar(100) NOT NULL,
+  `user_avatar` varchar(200) NOT NULL,
+  `user_sex` char(1) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sn_user
 -- ----------------------------
-INSERT INTO `sn_user` VALUES ('1', 'test', 'test@test.com', 'test');
+INSERT INTO `sn_user` VALUES ('1', 'test', 'test@test.com', 'test', '', '男');
+INSERT INTO `sn_user` VALUES ('2', 'fsdf', 'das@121.com', 'dsad', '/up/place/1374630413438-koala_cube.png', '男');
