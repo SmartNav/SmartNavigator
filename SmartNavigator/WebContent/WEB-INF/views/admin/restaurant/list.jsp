@@ -33,8 +33,7 @@
 					<th>描述</th>
 					<th>经度</th>
 					<th>纬度</th>
-					<th>修改</th>
-					<th>优惠信息</th>
+					<th>操作</th>
 				</tr>
 				<c:forEach items="${list}" var="restaurant">
 				<tr>
@@ -44,14 +43,16 @@
 					<td>${restaurant.description }</td>
 					<td>${restaurant.latitude }</td>
 					<td>${restaurant.longitude }</td>
-					<td><a href="${ctx }/admin/restaurant/modify?id=${restaurant.id}">修改</a></td>
-					<td><a href="${ctx }/admin/discount/list?placeid=${restaurant.id}">优惠</a></td>
+					<td>
+						<a href="${ctx }/admin/restaurant/modify?id=${restaurant.id}" class="btn">修改</a>
+						<a href="${ctx }/admin/discount/list?placeid=${restaurant.id}" class="btn">优惠</a>
+					</td>
 				</tr>
 				</c:forEach>
 			</table>
 			<div id="table-menu">
-				<ul>
-					<li><input type="submit" value="删除"></li>
+				<ul class="menu-group">
+					<li><input type="submit" value="删除" class="btn btn-danger"></li>
 				</ul>
 			</div>
 			</form>

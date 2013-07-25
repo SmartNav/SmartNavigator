@@ -59,7 +59,7 @@
 					<th>标题</th>
 					<th>优先级</th>
 					<th>内容</th>
-					<th>修改</th>
+					<th>操作</th>
 				</tr>
 				<c:forEach items="${discounts}" var="discount">
 				<tr>
@@ -67,15 +67,15 @@
 					<td>${discount.title }</td>
 					<td>${discount.priority }</td>
 					<td>${discount.content }</td>
-					<td><a href="${ctx }/admin/discount/modify?id=${discount.id}">修改</a></td>
+					<td><a href="${ctx }/admin/discount/modify?id=${discount.id}" class="btn">修改</a></td>
 				</tr>
 				</c:forEach>
 			</table>
 			<div id="table-menu">
 				<input name="placeid" type="hidden" value="${place.id }">
-				<ul>
-					<li><input type="submit" value="删除"></li>
-					<li><a href="${ctx }/admin/discount/add?placeid=${place.id}">增加</a></li>
+				<ul class="menu-group">
+					<li><input type="submit" value="删除" class="btn btn-danger"></li>
+					<li><a href="${ctx }/admin/discount/add?placeid=${place.id}" class="btn btn-primary">增加</a></li>
 				</ul>
 			</div>
 			</form>

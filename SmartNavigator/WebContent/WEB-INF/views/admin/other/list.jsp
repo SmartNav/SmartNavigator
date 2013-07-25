@@ -33,7 +33,7 @@
 					<th>描述</th>
 					<th>经度</th>
 					<th>纬度</th>
-					<th>修改</th>
+					<th>操作</th>
 				</tr>
 				<c:forEach items="${list}" var="other">
 				<tr>
@@ -43,13 +43,13 @@
 					<td>${other.description }</td>
 					<td>${other.latitude }</td>
 					<td>${other.longitude }</td>
-					<td><a href="${ctx }/admin/other/modify?id=${other.id}">修改</a></td>
+					<td><a href="${ctx }/admin/other/modify?id=${other.id}" class="btn">修改</a></td>
 				</tr>
 				</c:forEach>
 			</table>
 			<div id="table-menu">
-				<ul>
-					<li><input type="submit" value="删除"></li>
+				<ul class="menu-group">
+					<li><input type="submit" value="删除" class="btn btn-danger"></li>
 				</ul>
 			</div>
 			</form>

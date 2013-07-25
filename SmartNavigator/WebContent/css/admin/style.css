@@ -1,4 +1,4 @@
-html{background: #F4F4F4;}
+html,body{background: #F4F4F4;}
 .no-float{clear: both;}
 .top-part{width: 80%;margin: 0px auto;}
 #top-logo h2{float: left;line-height: 5rem;font-size: 2rem;}

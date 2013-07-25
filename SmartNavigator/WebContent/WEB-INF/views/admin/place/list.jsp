@@ -57,23 +57,23 @@
 					<td>${place.longitude }</td>
 					<td>
 						<c:if test="${place.type==10 }">
-							<a href="${ctx }/admin/hotel/modify?id=${place.id}" class="btn btn-primary">修改</a>
+							<a href="${ctx }/admin/hotel/modify?id=${place.id}" class="btn">修改</a>
 						</c:if>
 						<c:if test="${place.type==11 }">
-							<a href="${ctx }/admin/restaurant/modify?id=${place.id}" class="btn btn-primary">修改</a>
+							<a href="${ctx }/admin/restaurant/modify?id=${place.id}" class="btn">修改</a>
 						</c:if>
 						<c:if test="${place.type==12 }">
-							<a href="${ctx }/admin/scenic/modify?id=${place.id}" class="btn btn-primary">修改</a>
+							<a href="${ctx }/admin/scenic/modify?id=${place.id}" class="btn">修改</a>
 						</c:if>
 						<c:if test="${place.type==13 }">
-							<a href="${ctx }/admin/entertainment/modify?id=${place.id}" class="btn btn-primary">修改</a>
+							<a href="${ctx }/admin/entertainment/modify?id=${place.id}" class="btn">修改</a>
 						</c:if>
 						<c:if test="${place.type==14 }">
-							<a href="${ctx }/admin/other/modify?id=${place.id}" class="btn btn-primary">修改</a>
+							<a href="${ctx }/admin/other/modify?id=${place.id}" class="btn">修改</a>
 						</c:if>
-						<a href="${ctx }/admin/activity/list?placeid=${place.id}" class="btn btn-primary">活动管理</a>
+						<a href="${ctx }/admin/activity/list?placeid=${place.id}" class="btn">活动管理</a>
 						<c:if test="${place.type==10 or place.type==11 or place.type==13}">
-							<a href="${ctx }/admin/discount/list?placeid=${place.id}" class="btn btn-primary">优惠</a>
+							<a href="${ctx }/admin/discount/list?placeid=${place.id}" class="btn">优惠</a>
 						</c:if>
 					</td>
 				</tr>

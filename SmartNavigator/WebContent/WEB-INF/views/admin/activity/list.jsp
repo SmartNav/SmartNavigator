@@ -33,7 +33,7 @@
 					<th>内容</th>
 					<th>开始时间</th>
 					<th>结束时间</th>
-					<th>修改</th>
+					<th>操作</th>
 				</tr>
 				<c:forEach items="${activities}" var="activity">
 				<tr>
@@ -43,7 +43,7 @@
 					<td>${activity.content }</td>
 					<td>${activity.startTime }</td>
 					<td>${activity.endTime }</td>
-					<td><a href="${ctx }/admin/activity/modify?id=${activity.id}">修改</a></td>
+					<td><a href="${ctx }/admin/activity/modify?id=${activity.id}" class="btn">修改</a></td>
 				</tr>
 				</c:forEach>
 			</table>
