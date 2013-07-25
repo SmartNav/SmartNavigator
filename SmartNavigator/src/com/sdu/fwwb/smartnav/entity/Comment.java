@@ -1,11 +1,15 @@
 package com.sdu.fwwb.smartnav.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="sn_comments")
@@ -16,6 +20,7 @@ public class Comment {
 	private long userId;
 	private int star;
 	private String content;
+	private Date postTime;
 	
 	public Comment(){};
 	
@@ -25,6 +30,16 @@ public class Comment {
 		this.userId = userId;
 		this.star = star;
 		this.content = content;
+	}
+	public Comment(long id, long placeId, long userId, int star,
+			String content, Date postTime) {
+		super();
+		this.id = id;
+		this.placeId = placeId;
+		this.userId = userId;
+		this.star = star;
+		this.content = content;
+		this.postTime = postTime;
 	}
 
 	@Id
@@ -70,12 +85,20 @@ public class Comment {
 		this.content = content;
 	}
 
+	@Column(name="post_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getPostTime() {
+		return postTime;
+	}
+	public void setPostTime(Date postTime) {
+		this.postTime = postTime;
+	}
+
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", placeId=" + placeId + ", userId="
-				+ userId + ", star=" + star + ", content=" + content + "]";
+				+ userId + ", star=" + star + ", content=" + content
+				+ ", postTime=" + postTime + "]";
 	}
-	
-	
 	
 }
