@@ -6,7 +6,7 @@
 		<div id="top-logo">
 			<h2>智慧导航|管理中心</h2>
 			<div class="user-show">
-				登录用户admin&nbsp;&nbsp;<a href="${ctx }/admin/logout">登出</a>
+				您好，欢迎进入智能导航管理中心。&nbsp;&nbsp;<a href="${ctx }/admin/logout"><img alt="退出" src="../../img/out.gif"></a>
 			</div>
 		</div>
 		
