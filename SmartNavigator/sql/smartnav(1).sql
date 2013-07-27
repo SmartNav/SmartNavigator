@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 07 月 24 日 16:26
+-- 生成日期: 2013 年 07 月 27 日 18:55
 -- 服务器版本: 5.1.58
 -- PHP 版本: 5.3.6-13ubuntu3.6
 
@@ -36,14 +36,31 @@ CREATE TABLE IF NOT EXISTS `sn_activity` (
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `sn_activity`
 --
 
 INSERT INTO `sn_activity` (`id`, `place_id`, `title`, `short_des`, `content`, `start_time`, `end_time`) VALUES
-(1, 1, 'dsa', 'dasd', 'dsa', '1970-01-01 06:25:31', '1970-01-01 08:55:31');
+(1, 1, 'dsa', 'dasd', 'dsa', '1970-01-14 16:00:00', '1970-01-21 16:00:00'),
+(2, 1, 'dsds', 'sdad', 'dsadasd', '2013-08-06 16:00:00', '2013-08-07 16:00:00'),
+(3, 8, 'dd', 'dd', 'dd', '2013-08-26 16:00:00', '2013-08-28 16:00:00'),
+(4, 4, '好吃的', '吃好的', '好吃', '2013-08-06 16:00:00', '2013-08-07 16:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sn_activity_user`
+--
+
+CREATE TABLE IF NOT EXISTS `sn_activity_user` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `activity_id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `post_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -78,15 +95,25 @@ CREATE TABLE IF NOT EXISTS `sn_comments` (
   `user_id` int(10) NOT NULL,
   `star` int(1) NOT NULL,
   `content` text NOT NULL,
+  `post_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- 转存表中的数据 `sn_comments`
 --
 
-INSERT INTO `sn_comments` (`id`, `place_id`, `user_id`, `star`, `content`) VALUES
-(1, 12, 1, 1, 'dadasfdassfasdfdsadad');
+INSERT INTO `sn_comments` (`id`, `place_id`, `user_id`, `star`, `content`, `post_time`) VALUES
+(1, 12, 1, 1, 'tstest', '2013-07-17 16:00:00'),
+(2, 21, 1, 2, '测试', '2013-07-25 03:53:53'),
+(3, 21, 1, 2, '测试', '2013-07-02 03:53:53'),
+(4, 21, 1, 2, '测试', '2013-07-31 03:53:53'),
+(5, 21, 1, 2, 'dsds', '2013-07-27 02:21:58'),
+(17, 21, 1, 5, 'sdad', '2013-07-27 02:52:47'),
+(18, 22, 1, 5, 'sdad', '2013-07-27 02:55:22'),
+(19, 23, 1, 2, 'dasda', '2013-07-27 05:31:36'),
+(20, 23, 1, 3, 'dasda', '2013-07-27 05:31:47'),
+(21, 23, 1, 4, 'dasda', '2013-07-27 05:31:55');
 
 -- --------------------------------------------------------
 
@@ -166,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `sn_place_hotel` (
   `longitude` double NOT NULL,
   `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- 转存表中的数据 `sn_place_hotel`
@@ -174,7 +201,8 @@ CREATE TABLE IF NOT EXISTS `sn_place_hotel` (
 
 INSERT INTO `sn_place_hotel` (`id`, `name`, `star_level`, `min_price`, `max_price`, `empty_room`, `valuation`, `notice`, `tel`, `place`, `description`, `level`, `latitude`, `longitude`, `img`) VALUES
 (12, 'test', 5, '321', '21321231', 1290, 0, NULL, '23123213', '1231', 'tete', 15, 1231.3232, 1232.134, NULL),
-(18, 'dasd', 2121, '321', '3213', 32, 0, NULL, '32', '321', '2121', 121, 2121, 212, '/up/place/1374569511968-j.png');
+(18, 'dasd', 2121, '321', '3213', 32, 0, NULL, '32', '321', '2121', 121, 2121, 212, '/up/place/1374569511968-j.png'),
+(24, 'dsad', 2, '2321', '321312', 33, 0, NULL, '321321', 'dasda', '2121', 1, 21, 11, NULL);
 
 -- --------------------------------------------------------
 
@@ -192,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `sn_place_meta` (
   `place_longitude` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- 转存表中的数据 `sn_place_meta`
@@ -210,7 +238,7 @@ INSERT INTO `sn_place_meta` (`id`, `place_name`, `place_level`, `place_type`, `p
 (9, '雨滴广场', 18, 13, '集娱乐美食于一身', 36.678357, 117.136748),
 (10, '山东一卡通', 18, 14, '便利全民', 36.678031, 117.143364),
 (12, 'test', 15, 10, 'tete', 1231.3232, 1232.134),
-(14, '喜洋洋', 121, 11, '121', 222.32, 43252.4324),
+(14, '喜洋洋', 12, 11, '121', 222.32, 43252.4324),
 (15, 'scenic', 0, 11, '没什么', 0, 0),
 (16, 'scenicsdsa', 231, 12, '43234', 32.3221, 3232.12),
 (17, 'sdsa', 21, 10, '3123', 3213, 321),
@@ -218,7 +246,9 @@ INSERT INTO `sn_place_meta` (`id`, `place_name`, `place_level`, `place_type`, `p
 (20, 'dsdas', 22, 11, '321', 321, 3231),
 (21, 'dsa', 11, 14, '11', 2121, 2121),
 (22, '测试', 232, 14, 'das', 123, 4324),
-(23, 'dsa', 1, 11, 'dad', 231, 234242);
+(23, 'dsa', 1, 11, 'dad', 231, 234242),
+(24, 'dsad', 1, 10, '2121', 21, 11),
+(25, 'dasdsa', 11, 12, 'dasd', 22, 22);
 
 -- --------------------------------------------------------
 
@@ -273,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `sn_place_restaurant` (
 --
 
 INSERT INTO `sn_place_restaurant` (`id`, `name`, `avg_price`, `flavor`, `valuation`, `notice`, `tel`, `place`, `description`, `level`, `latitude`, `longitude`, `img`) VALUES
-(14, '喜洋洋', '2222', NULL, 0, NULL, '3342', '34242', '121', 121, 222.32, 43252.4324, NULL),
+(14, '喜洋洋', 'dsad', 'dd', 0, NULL, '3342', '34242', '121', 12, 222.32, 43252.4324, NULL),
 (23, 'dsa', '121', '臭', 0, NULL, '32131', 'dsada', 'dad', 1, 231, 234242, NULL);
 
 -- --------------------------------------------------------
@@ -294,15 +324,57 @@ CREATE TABLE IF NOT EXISTS `sn_place_scenic` (
   `longitude` double NOT NULL,
   `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- 转存表中的数据 `sn_place_scenic`
 --
 
 INSERT INTO `sn_place_scenic` (`id`, `name`, `star`, `place`, `valuation`, `description`, `level`, `latitude`, `longitude`, `img`) VALUES
-(15, 'scenic', 21, 'DASDAS', 0, '没什么', 0, 0, 0, NULL),
-(16, 'scenicsdsa', 3, '313', 0, '43234', 231, 32.3221, 3232.12, NULL);
+(15, 'scenic', 21, 'DASDAS', 0, '修改一下', 0, 0, 0, NULL),
+(16, 'scenicsdsa', 3, '313', 0, '43234', 231, 32.3221, 3232.12, NULL),
+(25, 'dasdsa', 0, 'dsadad', 0, 'dsad', 11, 22, 22, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sn_point`
+--
+
+CREATE TABLE IF NOT EXISTS `sn_point` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `point_name` varchar(50) NOT NULL,
+  `point_latitude` double NOT NULL,
+  `point_longitude` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+
+--
+-- 转存表中的数据 `sn_point`
+--
+
+INSERT INTO `sn_point` (`id`, `point_name`, `point_latitude`, `point_longitude`) VALUES
+(1, 'v1', 36.665689, 117.117739),
+(2, 'v2', 36.666398, 117.132939),
+(3, 'v3', 36.665269, 117.141455),
+(4, 'v4', 36.667382, 117.148533),
+(5, 'v5', 36.673085, 117.167146),
+(6, 'v6', 36.676283, 117.141832),
+(7, 'v7', 36.676341, 117.139389),
+(8, 'v8', 36.678223, 117.143162),
+(9, 'v9', 36.677687, 117.137574),
+(10, 'v10', 36.680032, 117.142281),
+(11, 'v11', 36.679699, 117.137628),
+(12, 'v12', 36.680828, 117.140233),
+(13, 'v13', 36.679844, 117.133639),
+(14, 'v14', 36.683852, 117.142155),
+(15, 'v15', 36.68132, 117.13664),
+(16, 'v16', 36.68242, 117.139155),
+(17, 'v17', 36.682014, 117.137933),
+(18, 'v18', 36.683823, 117.130729),
+(19, 'v19', 36.68582, 117.135041),
+(20, 'v20', 36.687716, 117.139209),
+(21, 'v21', 111, 111);
 
 -- --------------------------------------------------------
 

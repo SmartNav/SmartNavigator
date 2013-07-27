@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.sdu.fwwb.smartnav.entity.Activity;
+import com.sdu.fwwb.smartnav.entity.ActivityUserRecord;
 import com.sdu.fwwb.smartnav.entity.Comment;
 import com.sdu.fwwb.smartnav.entity.Discount;
 import com.sdu.fwwb.smartnav.entity.Entertainment;
@@ -30,6 +31,7 @@ import com.sdu.fwwb.smartnav.json.model.PlaceAndActivity;
 import com.sdu.fwwb.smartnav.json.model.RestaurantAndDiscount;
 import com.sdu.fwwb.smartnav.service.AccountService;
 import com.sdu.fwwb.smartnav.service.ActivityService;
+import com.sdu.fwwb.smartnav.service.ActivityUserRecordService;
 import com.sdu.fwwb.smartnav.service.CommentService;
 import com.sdu.fwwb.smartnav.service.DiscountService;
 import com.sdu.fwwb.smartnav.service.EntertainmentService;
@@ -76,6 +78,9 @@ public class JsonQueryController {
 	
 	@Autowired
 	ActivityService activityService;
+	
+	@Autowired
+	ActivityUserRecordService aurService;
 	
 	@Autowired
 	ServletContext sc;
@@ -153,7 +158,7 @@ public class JsonQueryController {
 	
 	@RequestMapping("/activity")
 	@ResponseBody
-	public String activityQuery(@RequestParam("latitude")double latitude,@RequestParam("longitude")double longitude){
+	public String activityQuery(@RequestParam("latitude")double latitude,@RequestParam("longitude")double longitude,@RequestParam("userid")long userId){
 		double range = 0.01;
 		List<Place> place = placeService.queryByBoundsAndLevel(latitude +range, latitude-range, longitude+range ,longitude-range, 19);
 		log.debug("place:"+place);
@@ -161,7 +166,17 @@ public class JsonQueryController {
 		for(Place p :place){
 			List<Activity> activities = activityService.getActivityByPlaceId(p.getId());
 			if(activities != null && activities.size() > 0){
-				paa.add(new PlaceAndActivity(p,activities));
+				
+				List<Activity> tas = new ArrayList<Activity>();
+				for(Activity activity:activities){
+					if(!aurService.isExists(activity.getId(), userId)){
+						tas.add(activity);
+						aurService.save(new ActivityUserRecord(activity.getId(),userId));
+					}
+				}
+				if(tas.size() >0){
+					paa.add(new PlaceAndActivity(p,activities));	
+				}
 			}
 		}
 		log.debug("paa:"+paa);
