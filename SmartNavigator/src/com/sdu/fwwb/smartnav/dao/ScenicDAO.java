@@ -10,4 +10,5 @@ import com.sdu.fwwb.smartnav.entity.Scenic;
 @Repository
 public interface ScenicDAO extends CrudRepository<Scenic, Long>{
 	public Page<Scenic> findAll(Pageable pageable);
+
 }

@@ -97,6 +97,7 @@ public class JsonQueryController {
 		Hotel hotel = hotelService.getHotel(id);
 		String img = hotel.getImg();
 		if(img != null)hotel.setImg(sc.getContextPath()+img);
+		hotel.setValuation(commentService.getStar(hotel.getId()));
 		List<Discount> discounts = discountService.getDiscountByPlaceId(hotel.getId());
 		HotelAndDiscount had = new HotelAndDiscount(hotel, discounts);
 		log.debug("hotel:"+hotel);
@@ -109,7 +110,7 @@ public class JsonQueryController {
 		Restaurant restaurant = restaurantService.getRestaurant(id);
 		String img = restaurant.getImg();
 		if(img != null) restaurant.setImg(sc.getContextPath()+restaurant.getImg());
-		
+		restaurant.setValuation(commentService.getStar(restaurant.getId()));
 		List<Discount> discounts = discountService.getDiscountByPlaceId(restaurant.getId());
 		RestaurantAndDiscount rad = new RestaurantAndDiscount(restaurant, discounts);
 		log.debug("restaurant:"+restaurant);
@@ -122,7 +123,7 @@ public class JsonQueryController {
 		Entertainment entertainment = entertainmentService.getEntertainment(id);
 		String img = entertainment.getImg();
 		if(img != null) entertainment.setImg(sc.getContextPath()+entertainment.getImg());
-		
+		entertainment.setValuation(commentService.getStar(entertainment.getId()));
 		List<Discount> discounts = discountService.getDiscountByPlaceId(entertainment.getId());
 		EntertainmentAndDiscount ead = new EntertainmentAndDiscount(entertainment, discounts);
 		log.debug("entertainment:"+entertainment);
@@ -144,6 +145,7 @@ public class JsonQueryController {
 	public String scenicQuery(@RequestParam("id")long id){
 		Scenic scenic = scenicService.getScenic(id);
 		String img = scenic.getImg();
+		scenic.setValuation(commentService.getStar(scenic.getId()));
 		if(img != null) scenic.setImg(sc.getContextPath()+scenic.getImg());
 		log.debug("scenic:"+scenic);
 		return gson.toJson(scenic);

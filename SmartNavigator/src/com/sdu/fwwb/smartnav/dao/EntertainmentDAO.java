@@ -12,5 +12,5 @@ import com.sdu.fwwb.smartnav.entity.Entertainment;
 public interface EntertainmentDAO extends CrudRepository<Entertainment, Long>{
 	
 	public Page<Entertainment> findAll(Pageable pageable);
-	
+
 }
