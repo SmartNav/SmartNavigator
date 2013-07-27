@@ -12,9 +12,14 @@
 	<script type="text/javascript">
 		$(document).ready(function (){
 			var success = ${not empty param.success};
+			var fail = ${not empty param.fail};
 			if(success){
 				show_toast("添加成功");
 			}
+			if(fail){
+				alert("添加失败,请检查数据并重试");
+			}
+			$(".form-show-option").css({"display":"none"});
 			$("#form-hotel-show").css({"display":"block"});
 			listenChanges();
 		});
@@ -75,44 +80,7 @@
 				break;
 			}
 		}
-		function commonValidate(){
-			if($("#name").val() == null || $("#name").val() ==""){
-				alert("名称不能为空");
-				return false;
-			}
-			if($("#level").val() == null ||$("#level").val()==""){
-				alert("请填写显示级别");
-				return false;
-			}
-			var level = parseInt($("#level").val());
-			if(!(level >0 & level <19)){
-				alert("显示级别介于1到19之间");
-				return false;
-			}
-			if($("#descript").val() == null ||$("#descript").val()==""){
-				alert("请填写简介");
-				return false;
-			}
-			if($("#description").val() == null ||$("#description").val()==""){
-				alert("请填写详细描述");
-				return false;
-			}
-		}
-		function hotelValidate(){
-			
-		}
-		function restValidate(){
-			
-		}
-		function scenicValidate(){
-			
-		}
-		function enterValidate(){
-			
-		}
-		function otherValidate(){
-			
-		}
+		
 	</script>
 	<title>控制台首页</title>
 </head>
@@ -142,10 +110,10 @@
 					</select>
 					</div>
 					</div>
-					<div class="control-group"><label class="control-label" >简介</label><div class="controls"><input name="descript" type="text" data-required="true"><span class="icon-asterisk"></span></div></div>
-					<div class="control-group"><label class="control-label" >详细描述</label><div class="controls"><textarea name="description" rows="4" data-required="true"></textarea><span class="icon-asterisk"></span></div></div>
-					<div class="control-group"><label class="control-label" >经纬度</label><div class="controls"><input name="lalong" type="text"><span class="icon-asterisk"></span></div></div>
-					<div class="control-group"><label class="control-label" >地址</label><div class="controls"><input name="local" type="text"><span class="icon-asterisk"></span></div></div>
+					<div class="control-group"><label class="control-label" >简介</label><div class="controls"><input name="descript" id="descript" type="text" ><span class="icon-asterisk"></span></div></div>
+					<div class="control-group"><label class="control-label" >详细描述</label><div class="controls"><textarea name="description" id="description" rows="4" ></textarea><span class="icon-asterisk"></span></div></div>
+					<div class="control-group"><label class="control-label" >经纬度</label><div class="controls"><input name="lalong" id="lalong" type="text"><span class="icon-asterisk"></span></div></div>
+					<div class="control-group"><label class="control-label" >地址</label><div class="controls"><input name="local" id="local" type="text"><span class="icon-asterisk"></span></div></div>
 					<div id="form-hotel-show" class="form-show-option">
 						<div class="control-group"><label class="control-label" >星级</label><div class="controls"><input name="hotel-star" id="hotel-star" type="number"><span class="icon-asterisk"></span></div></div>
 						<div class="control-group"><label class="control-label" >最高价格</label><div class="controls"><input name="hotel-max-price" id="hotel-max-price" type="text"><span class="icon-asterisk"></span></div></div>
@@ -166,7 +134,7 @@
 						<div class="control-group"><label class="control-label" >联系方式</label><div class="controls"><input name="enter-phone" id="enter-phone" type="number"><span class="icon-asterisk"></span></div></div>
 					</div>
 					<div class="control-group"><label class="control-label" >图片</label><div class="controls"><input name="img" type="file" id="img"></div></div>
-					<div class="control-group"><div class="controls"><input type="submit" class="btn" onclick="return validateForm();"></div></div>
+					<div class="control-group"><div class="controls"><input type="submit" class="btn" onclick="return validateForm()"></div></div>
 				</form>
 			</div>
 		</div>

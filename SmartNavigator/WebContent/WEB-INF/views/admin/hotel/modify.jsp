@@ -13,6 +13,12 @@
 		.form-show-option{display:none;}
 	</style>
 	<script type="text/javascript">
+	function validateForm(){
+		if(commonValidate() && hotelValidate()){
+			return true;
+		}
+		return false;
+	}
 	</script>
 	<title>控制台首页</title>
 </head>
@@ -29,19 +35,19 @@
 		<div class="content-container">
 			<div id="place-add-form">
 				<form method="post" action="${ctx }/admin/hotel/modify/handle" id="place-add-form-form" enctype="multipart/form-data">
-					<div><label>地点名</label><input name="name" type="text" value="${hotel.name }"></div>
-					<div><label>显示最低级别</label><input name="level" type="number" value="${hotel.level }"></div>
+					<div><label>地点名</label><input name="name" type="text" id="name"value="${hotel.name }"></div>
+					<div><label>显示最低级别</label><input name="level" type="number"id="level" value="${hotel.level }"></div>
 					<input name="type" value="10" type="hidden">
 					
-					<div><label>短描述</label><input name="descript" type="text" value="${place.description }"></div>
-					<div><label>详细描述</label><textarea name="description" >${hotel.description }</textarea></div>
-					<div><label>经纬度</label><input name="lalong" type="text" value="${hotel.latitude },${hotel.longitude}"></div>
-					<div><label>星级</label><input name="hotel-star" type="number" value="${hotel.star_level }"></div>
-					<div><label>最高价格</label><input name="hotel-max-price" type="text" value="${hotel.max_price }"></div>
-					<div><label>最低价格</label><input name="hotel-min-price" type="text" value="${hotel.min_price }"></div>
-					<div><label>剩余房间</label><input name="hotel-rest-rooms" type="number" value="${hotel.empty_room }"></div>
-					<div><label>联系方式</label><input name="hotel-phone" type="number" value="${hotel.tel }"></div>
-					<div><label>地址</label><input name="local" type="text" value="${hotel.place }"></div>
+					<div><label>短描述</label><input name="descript" id="descript" type="text" value="${place.description }"></div>
+					<div><label>详细描述</label><textarea name="description" id="description" >${hotel.description }</textarea></div>
+					<div><label>经纬度</label><input name="lalong" id="lalong" type="text" value="${hotel.latitude },${hotel.longitude}"></div>
+					<div><label>星级</label><input name="hotel-star" id="hotel-star" type="number" value="${hotel.star_level }"></div>
+					<div><label>最高价格</label><input name="hotel-max-price" id="hotel-max-price" type="text" value="${hotel.max_price }"></div>
+					<div><label>最低价格</label><input name="hotel-min-price" id="hotel-min-price" type="text" value="${hotel.min_price }"></div>
+					<div><label>剩余房间</label><input name="hotel-rest-rooms" id="hotel-rest-rooms" type="number" value="${hotel.empty_room }"></div>
+					<div><label>联系方式</label><input name="hotel-phone" id="hotel-phone" type="number" value="${hotel.tel }"></div>
+					<div><label>地址</label><input name="local" id="local" type="text" value="${hotel.place }"></div>
 					<div><label>图片</label>
 						<c:if test="${not empty hotel.img }">
 							<img src="${ctx }${hotel.img}" width="100px;">
@@ -50,7 +56,7 @@
 						<input name="deleteimg" type="checkbox">删除图片
 					</div>
 					<input name="id" value="${hotel.id }" type="hidden">
-					<div><input type="submit"></div>
+					<div><input type="submit" class="btn btn-primary" onclick="return validateForm()"></div>
 				</form>
 			</div>
 		</div>

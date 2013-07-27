@@ -29,6 +29,29 @@
 	    	        $( "#start-time" ).datepicker( "option", "maxDate", selectedDate );
 	    }});
 	  });
+	function validateForm(){
+ 		if(isEmpty($("title").val())){
+ 			alert("请输入标题");
+ 			return false;
+ 		}
+ 		if(isEmpty($("short-des").val())){
+ 			alert("请输入短描述");
+ 			return false;
+ 		}
+ 		if(isEmpty($("content").val())){
+ 			alert("请输入内容");
+ 			return false;
+ 		}
+ 		if(isEmpty($("start-time").val())){
+ 			alert("请选择开始时间");
+ 			return false;
+ 		}
+ 		if(isEmpty($("end-time").val())){
+ 			alert("请选择结束时间");
+ 			return false;
+ 		}
+ 		return true;
+ 	}
 	</script>
 	<title>控制台首页</title>
 </head>
@@ -53,7 +76,7 @@
 					
 					<div><label>开始时间</label><input name="start-time" id="start-time" type="text" value="<fmt:formatDate value="${activity.startTime}" type="date"/>"> </div>
 					<div><label>结束时间</label><input name="end-time" id="end-time" type="text" value="<fmt:formatDate value="${activity.endTime}" type="date"/>"> </div>
-					<div><input type="submit" class="btn"></div>
+					<div><input type="submit" class="btn" onclick="return validateForm()"></div>
 				</form>
 			</div>
 		</div>

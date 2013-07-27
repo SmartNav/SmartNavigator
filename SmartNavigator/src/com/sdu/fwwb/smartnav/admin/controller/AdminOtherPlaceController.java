@@ -65,13 +65,14 @@ public class AdminOtherPlaceController {
 		try{
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
-			num = 0;
+			num = 1;
 		}
+		num--;
 		Page<OtherPlace> page = otherPlaceService.list(num, size);
 		List<OtherPlace> list = page.getContent();
 		
 		mav.addObject("list", list);
-		mav.addObject("totalPages",page.getTotalPages());
+		mav.addObject("page",page);
 		return mav;
 	}
 	

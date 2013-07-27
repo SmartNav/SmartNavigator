@@ -29,6 +29,30 @@
 		    	        $( "#start-time" ).datepicker( "option", "maxDate", selectedDate );
 		    }});
 		  });
+	 	function validateForm(){
+	 		if(isEmpty($("title").val())){
+	 			alert("请输入标题");
+	 			return false;
+	 		}
+	 		if(isEmpty($("short-des").val())){
+	 			alert("请输入短描述");
+	 			return false;
+	 		}
+	 		if(isEmpty($("content").val())){
+	 			alert("请输入内容");
+	 			return false;
+	 		}
+	 		if(isEmpty($("start-time").val())){
+	 			alert("请选择开始时间");
+	 			return false;
+	 		}
+	 		if(isEmpty($("end-time").val())){
+	 			alert("请选择结束时间");
+	 			return false;
+	 		}
+	 		return true;
+	 	}
+
 	</script>
 	<title>控制台首页</title>
 </head>
@@ -45,13 +69,13 @@
 		<div class="content-container">
 			<div id="place-add-form">
 				<form method="post" action="${ctx }/admin/activity/add/handle" id="place-add-form-form">
-					<div><label>标题</label><input name="title" type="text" ></div>
-					<div><label>短描述</label><input name="short-des" type="text"></div>
-					<div><label>内容</label><input name="content" type="text"></div>
+					<div><label>标题</label><input name="title" id="title" type="text" ></div>
+					<div><label>短描述</label><input name="short-des" id="short-des" type="text"></div>
+					<div><label>内容</label><input name="content" id="content" type="text"></div>
 					<input name="placeid" value="${placeid }" type="hidden">
 					<div><label>开始日期</label><input name="start-time" id="start-time" type="text"></div>
 					<div><label>结束日期</label><input name="end-time" id="end-time" type="text"></div>
-					<div><input type="submit"></div>
+					<div><input type="submit" onclick="return validateForm()"></div>
 				</form>
 			</div>
 		</div>

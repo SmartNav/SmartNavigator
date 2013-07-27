@@ -11,6 +11,24 @@
 		#place-list-table{padding-top:30px;}
 		#place-list-table th{padding:10px;}
 	</style>
+	<script type="text/javascript">
+		function jumpPage(){
+			var now = ${page.number +1};
+			var max= ${page.totalPages};
+			var page =  $("#input-page").val();
+			if(isNaN(page)){
+				alert("输入页数应为数字");
+				return;
+			}
+			page = parseInt(page);
+			if(page > 0 && page <= max){
+				location.href = "${ctx}/admin/other/list?num="+page;	
+			}else{
+				alert("没有第"+page+"页");
+				$("#input-page").val(now);
+			}
+		}
+	</script>
 	<title>控制台首页</title>
 </head>
 <body>
@@ -53,6 +71,21 @@
 				</ul>
 			</div>
 			</form>
+			
+			<div class="page-div">
+				<c:if test="${page.number > 0 }">
+					<a href="${ctx }/admin/place/list?num=${page.number}" class="btn">上一页</a>
+				</c:if>
+				<div id="input-page-div">
+					<input type="number" id="input-page" value="${page.number+1 }">
+					<a href="#" id="page-jump" class="btn  btn-info" onclick="jumpPage()">跳转</a>
+					<div>第${page.number+1 }页[共有${page.totalPages }页]</div>
+				</div>
+				<c:if test="${page.number+1 <  page.totalPages}">
+					<a href="${ctx }/admin/place/list?num=${page.number+2}" class="btn">下一页</a>
+				</c:if>
+				<div class="no-float"></div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -69,13 +69,14 @@ public class AdminHotelController {
 		try{
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
-			num = 0;
+			num = 1;
 		}
+		num--;
 		Page<Hotel> page = hotelService.list(num, size);
 		List<Hotel> list = page.getContent();
 		
 		mav.addObject("list", list);
-		mav.addObject("totalPages",page.getTotalPages());
+		mav.addObject("page",page);
 		return mav;
 	}
 	

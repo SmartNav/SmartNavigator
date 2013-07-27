@@ -8,3 +8,4 @@
 <link rel="stylesheet" href="${ctx }/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${ctx }/css/common/toast.css" />
 <script src="${ctx }/js/common/toast.js"></script>
+<script src="${ctx }/js/common/validate.js"></script>

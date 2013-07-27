@@ -1,9 +1,9 @@
 html,body{background: #F4F4F4;}
 .no-float{clear: both;}
-.top-part{width: 80%;margin: 0px auto;}
+.top-part{width: 85%;margin: 0px auto;}
 #top-logo h2{float: left;line-height: 5rem;font-size: 2rem;}
 #top-nav-ul-wrapper{background: #3879D9;}
-#top-nav-ul{line-height:3rem;background: #3879D9; height: 3rem;width: 80%;margin: 0px auto; }
+#top-nav-ul{line-height:3rem;background: #3879D9; height: 3rem;width: 85%;margin: 0px auto; }
 .user-show{float:right; line-height: 5rem;}
 #top-nav-ul li a{ display:block;float: left;padding:0px 10px; list-style: none; line-height: 3rem;font-size: 1rem;color: #ffffff; text-decoration: none;}
 #top-nav-ul li a:hover,#top-nav-ul-selected{ background: #75A7D5;cursor: pointer;}
@@ -13,7 +13,7 @@ html,body{background: #F4F4F4;}
 #left-nav-ul li a{padding-left: 10px; text-decoration: none;color: #0F0F0F; display:block;}
 #left-nav-ul li a:hover,#left-nav-ul-selected{color: #ffffff !important; border-left: solid #3679D7 5px;cursor: pointer;background: #699BE1;}
 .main-container{width: 80%;margin: 0px auto;}
-.content-container{overflow: auto;float:left;max-width:80%;margin-top:1.5rem;}
+.content-container{overflow: auto;float:left;width:75%;margin-top:1.5rem;}
 #place-list-table{font-size: 0.85rem; }
 #place-list-table td{border:1px solid #ccc;}
 #place-list-table th{background:#75A7D5; line-height: 2rem;border:1px solid #fff;}
@@ -23,5 +23,7 @@ html,body{background: #F4F4F4;}
 .page-div a{text-align:center;text-decoration: none;background: #4C87DB; line-height: 1.5rem;display:block;color:#fff; margin:3px;padding:2px 5px;}
 .page-div a:hover{background:#75A7D5;cursor:pointer;}
 .page-div *,#input-page-div *{float:left;}
+.page-div{float:right;}
+#place-list-table{width:100%;}
 .content-container{float:left;}
 .menu-group *{float:left; margin:0px 3px;}

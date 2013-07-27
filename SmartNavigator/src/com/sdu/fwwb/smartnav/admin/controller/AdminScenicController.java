@@ -64,13 +64,14 @@ public class AdminScenicController {
 		try{
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
-			num = 0;
+			num = 1;
 		}
+		num--;
 		Page<Scenic> page = scenicService.list(num, size);
 		List<Scenic> list = page.getContent();
 		
 		mav.addObject("list", list);
-		mav.addObject("totalPages",page.getTotalPages());
+		mav.addObject("page",page);
 		return mav;
 	}
 	

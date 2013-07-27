@@ -10,6 +10,24 @@
 	<style>
 		#place-list-table{padding-top:30px;}
 	</style>
+	<script type="text/javascript">
+		function jumpPage(){
+			var now = ${page.number +1};
+			var max= ${page.totalPages};
+			var page =  $("#input-page").val();
+			if(isNaN(page)){
+				alert("输入页数应为数字");
+				return;
+			}
+			page = parseInt(page);
+			if(page > 0 && page <= max){
+				location.href = "${ctx}/admin/place/list?num="+page;	
+			}else{
+				alert("没有第"+page+"页");
+				$("#input-page").val(now);
+			}
+		}
+	</script>
 	<title>控制台首页</title>
 </head>
 <body>
@@ -85,7 +103,7 @@
 				</c:if>
 				<div id="input-page-div">
 					<input type="number" id="input-page" value="${page.number+1 }">
-					<a href="#" id="page-jump" class="btn  btn-info">跳转</a>
+					<a href="#" id="page-jump" class="btn  btn-info" onclick="jumpPage()">跳转</a>
 					<div>第${page.number+1 }页[共有${page.totalPages }页]</div>
 				</div>
 				<c:if test="${page.number+1 <  page.totalPages}">

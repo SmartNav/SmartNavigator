@@ -13,6 +13,35 @@
 		.form-show-option{display:none;}
 	</style>
 	<script type="text/javascript">
+	function validateForm(){
+ 		if(isEmpty($("title").val())){
+ 			alert("请输入标题");
+ 			return false;
+ 		}
+ 		if(isEmpty($("priority").val())){
+ 			alert("请输入优先级");
+ 			return false;
+ 		}
+ 		if(!isIntBetween($("priority").val())){
+ 			alert("优先级应从1到10");
+ 			return false;
+ 		}
+ 		if(isEmpty($("content").val())){
+ 			alert("请输入内容");
+ 			return false;
+ 		}
+ 		return true;
+ 	}
+
+	function isIntBetween(min,max,value){
+		if(isEmpty(value)) return false;
+		if(isNaN(value))return false;
+		return value >= min && value <= max;
+	}
+	
+	function isEmpty(value){
+		return value == null || value.trim()=="";
+	}
 	</script>
 	<title>控制台首页</title>
 </head>
@@ -29,11 +58,11 @@
 		<div class="content-container">
 			<div id="place-add-form">
 				<form method="post" action="${ctx }/admin/discount/add/handle" id="place-add-form-form">
-					<div><label>标题</label><input name="title" type="text" ></div>
-					<div><label>优先级</label><input name="priority" type="number"></div>
+					<div><label>标题</label><input name="title" id="title" type="text" ></div>
+					<div><label>优先级</label><input name="priority" id="priority" type="number"></div>
 					<input name="placeid" value="${placeid }" type="hidden">
-					<div><label>打折信息</label><input name="content" type="text"></div>
-					<div><input type="submit"></div>
+					<div><label>打折信息</label><input name="content" id="content" type="text"></div>
+					<div><input type="submit" onclick="return validateForm()" class="btn btn-primary"></div>
 				</form>
 			</div>
 		</div>

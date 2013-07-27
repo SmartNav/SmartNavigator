@@ -64,13 +64,15 @@ public class AdminEntertainmentController {
 		try{
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
-			num = 0;
+			num = 1;
 		}
+		//num start with 1
+		num--;
 		Page<Entertainment> page = entertainmentService.list(num, size);
 		List<Entertainment> list = page.getContent();
 		
 		mav.addObject("list", list);
-		mav.addObject("totalPages",page.getTotalPages());
+		mav.addObject("page",page);
 		return mav;
 	}
 	
