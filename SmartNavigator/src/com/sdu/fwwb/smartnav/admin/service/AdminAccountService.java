@@ -39,4 +39,9 @@ public class AdminAccountService {
 		}
 		return false;
 	}
+	
+	public void updatePassword(Admin admin,String password){
+		admin.setPassword(password);
+		adminDao.save(admin);
+	}
 }
