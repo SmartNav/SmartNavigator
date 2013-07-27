@@ -22,6 +22,7 @@
 			alert("操作失败,请检查数据并重试");
 		}
 	});
+	
 		function jumpPage(){
 			var now = ${page.number +1};
 			var max= ${page.totalPages};

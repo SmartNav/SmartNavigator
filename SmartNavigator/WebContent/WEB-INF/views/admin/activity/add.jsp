@@ -30,23 +30,23 @@
 		    }});
 		  });
 	 	function validateForm(){
-	 		if(isEmpty($("title").val())){
+	 		if(isEmpty($("#title").val())){
 	 			alert("请输入标题");
 	 			return false;
 	 		}
-	 		if(isEmpty($("short-des").val())){
+	 		if(isEmpty($("#short-des").val())){
 	 			alert("请输入短描述");
 	 			return false;
 	 		}
-	 		if(isEmpty($("content").val())){
+	 		if(isEmpty($("#content").val())){
 	 			alert("请输入内容");
 	 			return false;
 	 		}
-	 		if(isEmpty($("start-time").val())){
+	 		if(isEmpty($("#start-time").val())){
 	 			alert("请选择开始时间");
 	 			return false;
 	 		}
-	 		if(isEmpty($("end-time").val())){
+	 		if(isEmpty($("#end-time").val())){
 	 			alert("请选择结束时间");
 	 			return false;
 	 		}

@@ -26,7 +26,7 @@
 	<title>控制台首页</title>
 </head>
 <body>
-<div class="container">
+<div class="body-container">
 	<c:if test="${place.type == 10 }">
 		<c:set var="topnavselect" value="2"/>
 	</c:if>

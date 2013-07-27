@@ -10,7 +10,14 @@
 	<style>
 	</style>
 	<script type="text/javascript">
-	
+
+	function validateForm(){
+		if(!isLalong($("#lalong").val())){
+			alert("请按格式输入，以逗号分隔\n经度,维度");
+			return false;
+		}
+		return true;
+	}
 	</script>
 	<title>控制台首页</title>
 </head>
@@ -21,14 +28,11 @@
 	
 	
 	<div class="main-container">
-		<c:set var="leftnavselect" value="2"/>
-		<%@include file="/WEB-INF/views/admin/place/menu.jsp" %>
-		
 		<div class="content-container">
 			<div id="place-add-form" > 
 				<form  class="form-horizontal" method="post" action="${ctx }/admin/path/add/handle" id="place-add-form-form" enctype="multipart/form-data">
 					<div class="control-group"><label class="control-label" >添加点的经纬度</label><div class="controls"><input name="lalong" id="lalong" type="text" data-required="true"><span class="icon-asterisk"></span></div></div>
-					<div class="control-group"><div class="controls"><input type="submit" class="btn"></div></div>
+					<div class="control-group"><div class="controls"><input type="submit" onclick="return validateForm()" class="btn"></div></div>
 				</form>
 			</div>
 		</div>

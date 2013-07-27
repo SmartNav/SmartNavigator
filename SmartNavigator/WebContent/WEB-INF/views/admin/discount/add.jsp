@@ -14,19 +14,19 @@
 	</style>
 	<script type="text/javascript">
 	function validateForm(){
- 		if(isEmpty($("title").val())){
+ 		if(isEmpty($("#title").val())){
  			alert("请输入标题");
  			return false;
  		}
- 		if(isEmpty($("priority").val())){
+ 		if(isEmpty($("#priority").val())){
  			alert("请输入优先级");
  			return false;
  		}
- 		if(!isIntBetween($("priority").val())){
+ 		if(!isIntBetween(1,10,$("#priority").val())){
  			alert("优先级应从1到10");
  			return false;
  		}
- 		if(isEmpty($("content").val())){
+ 		if(isEmpty($("#content").val())){
  			alert("请输入内容");
  			return false;
  		}
