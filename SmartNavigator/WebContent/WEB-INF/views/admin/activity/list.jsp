@@ -11,6 +11,18 @@
 		#place-list-table{padding-top:30px;}
 		#place-list-table th{padding:10px;}
 	</style>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var success = ${not empty param.success};
+		var error = ${not empty param.error};
+		if(success){
+			show_toast("操作成功");
+		}
+		if(error){
+			alert("操作失败,请检查数据并重试");
+		}
+	});
+	</script>
 	<title>控制台首页</title>
 </head>
 <body>

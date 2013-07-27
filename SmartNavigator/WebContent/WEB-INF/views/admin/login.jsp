@@ -6,7 +6,15 @@
 <%@ include file="/common/global.jsp"%>
 <%@ include file="/common/meta.jsp"%>
 <title>智慧导航管理登录</title>
-
+<script type="text/javascript" src="${ctx }/js/common/jquery-1.10.2.min.js" ></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var error = ${not empty param.error};
+	if(error){
+		alert("用户名或密码错误");
+	}
+});
+</script>
 <link rel="stylesheet" type="text/css" href="${ctx }/css/admin/login.css" />
 </head>
 

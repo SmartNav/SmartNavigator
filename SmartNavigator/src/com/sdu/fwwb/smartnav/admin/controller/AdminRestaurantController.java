@@ -57,7 +57,7 @@ public class AdminRestaurantController {
 			e.printStackTrace();
 		}
 		restaurantService.add(name, level, type,flavor,descript, description, latitude, longitude, avgPrice, tel, location,imgPath);
-		return "redirect:/admin/place/add";
+		return "redirect:/admin/place/add?success=true";
 	}
 	
 	@RequestMapping(value="/list")
@@ -97,7 +97,7 @@ public class AdminRestaurantController {
 			
 		}
 		restaurantService.delete(ids);
-		return "redirect:/admin/restaurant/list";
+		return "redirect:/admin/restaurant/list?success=true";
 	}
 	
 	@RequestMapping(value="/modify")
@@ -128,7 +128,7 @@ public class AdminRestaurantController {
 			e.printStackTrace();
 		}
 		restaurantService.modify(id, name, level, type,flavor,descript, description, latitude, longitude, avgPrice, tel, location,imgPath,request.getParameter("deleteimg") != null);
-		return "redirect:/admin/restaurant/list";
+		return "redirect:/admin/restaurant/list?success=true";
 	}
 	
 }

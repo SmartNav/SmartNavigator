@@ -53,7 +53,7 @@ public class AdminDiscountController {
 			@RequestParam("title")String title,@RequestParam("content") String content,@RequestParam("priority")int priority){
 		Discount discount = new Discount(id, placeId, title, content, priority);
 		discountService.saveDiscount(discount);
-		return "redirect:/admin/discount/list?placeid="+placeId;
+		return "redirect:/admin/discount/list?placeid="+placeId+"&success=true";
 	}
 	
 	@RequestMapping(value="/delete/handle")
@@ -92,6 +92,6 @@ public class AdminDiscountController {
 	@RequestParam("title")String title,@RequestParam("content") String content,@RequestParam("priority")int priority){
 		Discount discount = new Discount(placeId, title, content, priority);
 		discountService.saveDiscount(discount);
-		return "redirect:/admin/discount/list?placeid="+placeId;
+		return "redirect:/admin/discount/list?placeid="+placeId+"&success=true";
 	}
 }

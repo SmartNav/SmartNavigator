@@ -54,7 +54,7 @@ public class AdminScenicController {
 			e.printStackTrace();
 		}
 		scenicService.add(name, level, type,descript, description, latitude, longitude, star, location,imgPath);
-		return "redirect:/admin/place/add";
+		return "redirect:/admin/place/add?success=true";
 	}
 	
 	@RequestMapping(value="/list")
@@ -94,7 +94,7 @@ public class AdminScenicController {
 			
 		}
 		scenicService.delete(ids);
-		return "redirect:/admin/scenic/list";
+		return "redirect:/admin/scenic/list?success=true";
 	}
 	
 	@RequestMapping(value="/modify")
@@ -124,7 +124,7 @@ public class AdminScenicController {
 			e.printStackTrace();
 		}
 		scenicService.modify(id, name, level, type,descript, description, latitude, longitude, star, location,imgPath,request.getParameter("deleteimg") != null);
-		return "redirect:/admin/scenic/list";
+		return "redirect:/admin/scenic/list?success=true";
 	}
 	
 }

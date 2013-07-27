@@ -59,7 +59,7 @@ public class AdminHotelController {
 		}
 		
 		hotelService.add(name, level, type,descript, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location,imgPath);
-		return "redirect:/admin/place/add";
+		return "redirect:/admin/place/add?success=true";
 	}
 	
 	@RequestMapping(value="/list")
@@ -99,7 +99,7 @@ public class AdminHotelController {
 			
 		}
 		hotelService.delete(ids);
-		return "redirect:/admin/hotel/list";
+		return "redirect:/admin/hotel/list?success=true";
 	}
 	
 	@RequestMapping(value="/modify")
@@ -129,7 +129,7 @@ public class AdminHotelController {
 			e.printStackTrace();
 		}
 		hotelService.modify(id,name, level, type,descript, description, latitude, longitude, star, maxPrice, minPrice, leftRooms, tel, location,imgPath,request.getParameter("deleteimg") !=null);
-		return "redirect:/admin/hotel/list";
+		return "redirect:/admin/hotel/list?success=true";
 	}
 	
 }

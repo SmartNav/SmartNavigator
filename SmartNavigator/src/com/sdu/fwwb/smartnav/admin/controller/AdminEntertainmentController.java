@@ -54,7 +54,7 @@ public class AdminEntertainmentController {
 			e.printStackTrace();
 		}
 		entertainmentService.add(name, level, type, descript,description, latitude, longitude, tel, location,imgPath);
-		return "redirect:/admin/place/add";
+		return "redirect:/admin/place/add?success=true";
 	}
 	
 	@RequestMapping(value="/list")
@@ -95,7 +95,7 @@ public class AdminEntertainmentController {
 			
 		}
 		entertainmentService.delete(ids);
-		return "redirect:/admin/entertainment/list";
+		return "redirect:/admin/entertainment/list?success=true";
 	}
 	
 	@RequestMapping(value="/modify")
@@ -124,7 +124,7 @@ public class AdminEntertainmentController {
 			e.printStackTrace();
 		}
 		entertainmentService.modify(id, name, level, type, descript,description, latitude, longitude, tel, location,imgPath,request.getParameter("deleteimg") != null);
-		return "redirect:/admin/entertainment/list";
+		return "redirect:/admin/entertainment/list?succes=true";
 	}
 	
 }

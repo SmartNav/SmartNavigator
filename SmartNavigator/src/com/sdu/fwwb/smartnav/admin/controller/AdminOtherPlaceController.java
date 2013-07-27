@@ -55,7 +55,7 @@ public class AdminOtherPlaceController {
 		}
 		
 		otherPlaceService.add(name, level, type,descript, description, latitude, longitude, location, imgPath);
-		return "redirect:/admin/place/add";
+		return "redirect:/admin/place/add?success=true";
 	}
 	
 	@RequestMapping(value="/list")
@@ -95,7 +95,7 @@ public class AdminOtherPlaceController {
 			
 		}
 		otherPlaceService.delete(ids);
-		return "redirect:/admin/other/list";
+		return "redirect:/admin/other/list?success=true";
 	}
 	
 	@RequestMapping(value="/modify")
@@ -123,7 +123,7 @@ public class AdminOtherPlaceController {
 			e.printStackTrace();
 		}
 		otherPlaceService.modify(id, name, level, type, descript,description, latitude, longitude, location, imgPath, request.getParameter("deleteimg") !=null);
-		return "redirect:/admin/other/list";
+		return "redirect:/admin/other/list?success=true";
 	}
 	
 }

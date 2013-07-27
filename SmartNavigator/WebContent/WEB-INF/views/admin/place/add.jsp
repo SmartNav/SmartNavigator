@@ -12,12 +12,12 @@
 	<script type="text/javascript">
 		$(document).ready(function (){
 			var success = ${not empty param.success};
-			var fail = ${not empty param.fail};
+			var error = ${not empty param.error};
 			if(success){
-				show_toast("添加成功");
+				show_toast("操作成功");
 			}
-			if(fail){
-				alert("添加失败,请检查数据并重试");
+			if(error){
+				alert("操作失败,请检查数据并重试");
 			}
 			$(".form-show-option").css({"display":"none"});
 			$("#form-hotel-show").css({"display":"block"});

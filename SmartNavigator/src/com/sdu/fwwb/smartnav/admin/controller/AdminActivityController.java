@@ -60,7 +60,7 @@ public class AdminActivityController {
 		}
 		Activity activity = new Activity(id,placeId, title, shortDes, content, startDate, endDate);
 		activityService.saveActivity(activity);
-		return "redirect:/admin/activity/list?placeid="+placeId;
+		return "redirect:/admin/activity/list?placeid="+placeId+"&success=true";
 	}
 	
 	@RequestMapping(value="/delete/handle")
@@ -84,7 +84,7 @@ public class AdminActivityController {
 		activityService.deleteActivityByIds(ids);
 		String placeId= request.getParameter("placeid");
 		log.debug("placeId:"+placeId);
-		return "redirect:/admin/activity/list?placeid="+placeId;
+		return "redirect:/admin/activity/list?placeid="+placeId+"&success=true";
 	}
 
 	@RequestMapping("/add")
@@ -108,6 +108,6 @@ public class AdminActivityController {
 		}
 		Activity activity = new Activity(placeId, title, shortDes, content, startDate,endDate);
 		activityService.saveActivity(activity);
-		return "redirect:/admin/activity/list?placeid="+placeId;
+		return "redirect:/admin/activity/list?placeid="+placeId+"&success=true";
 	}
 }
