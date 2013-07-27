@@ -62,6 +62,13 @@
 				<li><a href="#">活动管理</a></li>
 			</c:if>
 			</c:if>
+			
+			<c:if test="${topnavselect eq 9 }">
+				<li><a href="${ctx }/admin/path/add" id="top-nav-ul-selected">道路管理</a></li>
+			</c:if>
+			<c:if test="${topnavselect ne 9 }">
+				<li><a href="${ctx }/admin/path/add">道路管理</a></li>
+			</c:if>
 			<c:if test="${topnavselect eq 8 }">
 				<li><a href="${ctx }/admin/modify" id="top-nav-ul-selected">账户设置</a></li>
 			</c:if>

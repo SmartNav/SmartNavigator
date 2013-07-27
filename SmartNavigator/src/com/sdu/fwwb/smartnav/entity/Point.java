@@ -29,6 +29,13 @@ public class Point implements Serializable{
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+	
+	public Point(String name,double latitude, double longitude) {
+		this.name = name;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+	
 
 	@Id
 	@Column(name="id")

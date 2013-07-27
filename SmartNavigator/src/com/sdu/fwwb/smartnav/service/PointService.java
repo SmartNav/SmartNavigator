@@ -25,6 +25,12 @@ public class PointService {
 	@Autowired
 	PointDao pointDao;
 
+	public void add(double latitude,double longitude){
+		pointDao.save(new Point("", latitude, longitude));
+		Point p = pointDao.findByLatitudeAndLongitude(latitude, longitude);
+		p.setName("v"+p.getId());
+		pointDao.save(p);
+	}
 	
 	
 	private final double eps = 1E-8;
