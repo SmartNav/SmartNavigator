@@ -49,7 +49,7 @@
 					<th>描述</th>
 					<th>经度</th>
 					<th>纬度</th>
-					<th>操作</th>
+					<th width="70">操作</th>
 				</tr>
 				<c:forEach items="${list}" var="place">
 				<tr>
