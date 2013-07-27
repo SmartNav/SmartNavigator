@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2013-07-25 20:18:17
+Date: 2013-07-27 10:31:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -87,30 +87,52 @@ CREATE TABLE `sn_dist` (
 -- ----------------------------
 -- Records of sn_dist
 -- ----------------------------
-INSERT INTO `sn_dist` VALUES ('1', '1', '2', '1357.80697');
-INSERT INTO `sn_dist` VALUES ('2', '2', '3', '769.75116');
-INSERT INTO `sn_dist` VALUES ('3', '3', '4', '673.50285');
-INSERT INTO `sn_dist` VALUES ('4', '4', '5', '1776.77474');
-INSERT INTO `sn_dist` VALUES ('5', '4', '6', '1156.00433');
-INSERT INTO `sn_dist` VALUES ('6', '6', '7', '217.93004');
-INSERT INTO `sn_dist` VALUES ('7', '6', '8', '246.13699');
-INSERT INTO `sn_dist` VALUES ('8', '7', '9', '220.41912');
-INSERT INTO `sn_dist` VALUES ('9', '8', '10', '215.91636');
-INSERT INTO `sn_dist` VALUES ('10', '9', '11', '223.74089');
-INSERT INTO `sn_dist` VALUES ('11', '9', '13', '424.98441');
-INSERT INTO `sn_dist` VALUES ('12', '10', '12', '202.91859');
-INSERT INTO `sn_dist` VALUES ('13', '10', '14', '424.84652');
+INSERT INTO `sn_dist` VALUES ('1', '1', '21', '745.24503');
+INSERT INTO `sn_dist` VALUES ('2', '2', '22', '227.13967');
+INSERT INTO `sn_dist` VALUES ('3', '3', '23', '363.71034');
+INSERT INTO `sn_dist` VALUES ('4', '4', '24', '568.69847');
+INSERT INTO `sn_dist` VALUES ('5', '4', '25', '185.30056');
+INSERT INTO `sn_dist` VALUES ('6', '6', '28', '147.64623');
+INSERT INTO `sn_dist` VALUES ('7', '6', '31', '84.70123');
+INSERT INTO `sn_dist` VALUES ('8', '7', '32', '94.55734');
+INSERT INTO `sn_dist` VALUES ('9', '8', '29', '113.86793');
+INSERT INTO `sn_dist` VALUES ('10', '9', '33', '112.65668');
+INSERT INTO `sn_dist` VALUES ('11', '9', '34', '295.12985');
+INSERT INTO `sn_dist` VALUES ('12', '10', '30', '97.5076');
+INSERT INTO `sn_dist` VALUES ('13', '10', '35', '283.7516');
 INSERT INTO `sn_dist` VALUES ('14', '11', '15', '200.59656');
 INSERT INTO `sn_dist` VALUES ('15', '12', '16', '201.40806');
-INSERT INTO `sn_dist` VALUES ('16', '13', '15', '313.88604');
-INSERT INTO `sn_dist` VALUES ('17', '13', '18', '512.84859');
-INSERT INTO `sn_dist` VALUES ('18', '14', '16', '311.27231');
-INSERT INTO `sn_dist` VALUES ('19', '14', '20', '503.52166');
+INSERT INTO `sn_dist` VALUES ('16', '13', '36', '154.95705');
+INSERT INTO `sn_dist` VALUES ('17', '13', '40', '256.29625');
+INSERT INTO `sn_dist` VALUES ('18', '14', '37', '165.73849');
+INSERT INTO `sn_dist` VALUES ('19', '14', '39', '265.95899');
 INSERT INTO `sn_dist` VALUES ('20', '15', '17', '138.722');
 INSERT INTO `sn_dist` VALUES ('21', '16', '17', '117.93354');
-INSERT INTO `sn_dist` VALUES ('22', '17', '19', '495.51263');
-INSERT INTO `sn_dist` VALUES ('23', '18', '19', '443.94979');
-INSERT INTO `sn_dist` VALUES ('24', '19', '20', '427.22096');
+INSERT INTO `sn_dist` VALUES ('22', '17', '38', '261.32216');
+INSERT INTO `sn_dist` VALUES ('23', '18', '41', '240.79383');
+INSERT INTO `sn_dist` VALUES ('24', '19', '42', '238.21366');
+INSERT INTO `sn_dist` VALUES ('25', '21', '2', '612.68792');
+INSERT INTO `sn_dist` VALUES ('26', '22', '3', '543.35264');
+INSERT INTO `sn_dist` VALUES ('27', '23', '4', '310.5256');
+INSERT INTO `sn_dist` VALUES ('28', '24', '5', '1208.23928');
+INSERT INTO `sn_dist` VALUES ('29', '25', '26', '335.22468');
+INSERT INTO `sn_dist` VALUES ('30', '26', '27', '433.43002');
+INSERT INTO `sn_dist` VALUES ('31', '27', '6', '202.5732');
+INSERT INTO `sn_dist` VALUES ('32', '28', '8', '103.36783');
+INSERT INTO `sn_dist` VALUES ('33', '31', '7', '137.13754');
+INSERT INTO `sn_dist` VALUES ('34', '32', '9', '129.47455');
+INSERT INTO `sn_dist` VALUES ('35', '29', '10', '104.5695');
+INSERT INTO `sn_dist` VALUES ('36', '33', '11', '111.32459');
+INSERT INTO `sn_dist` VALUES ('37', '34', '13', '135.75429');
+INSERT INTO `sn_dist` VALUES ('38', '30', '12', '105.41738');
+INSERT INTO `sn_dist` VALUES ('39', '35', '14', '150.68062');
+INSERT INTO `sn_dist` VALUES ('40', '36', '15', '158.9748');
+INSERT INTO `sn_dist` VALUES ('41', '40', '18', '256.56025');
+INSERT INTO `sn_dist` VALUES ('42', '37', '16', '145.53609');
+INSERT INTO `sn_dist` VALUES ('43', '39', '20', '237.56285');
+INSERT INTO `sn_dist` VALUES ('44', '38', '19', '234.25746');
+INSERT INTO `sn_dist` VALUES ('45', '41', '19', '203.21069');
+INSERT INTO `sn_dist` VALUES ('46', '42', '20', '189.06766');
 
 -- ----------------------------
 -- Table structure for `sn_place_entertainment`
@@ -282,7 +304,7 @@ CREATE TABLE `sn_point` (
   `point_latitude` double NOT NULL,
   `point_longitude` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sn_point
@@ -307,6 +329,28 @@ INSERT INTO `sn_point` VALUES ('17', 'v17', '36.682014', '117.137933');
 INSERT INTO `sn_point` VALUES ('18', 'v18', '36.683823', '117.130729');
 INSERT INTO `sn_point` VALUES ('19', 'v19', '36.68582', '117.135041');
 INSERT INTO `sn_point` VALUES ('20', 'v20', '36.687716', '117.139209');
+INSERT INTO `sn_point` VALUES ('21', 'v21', '36.666161', '117.126075');
+INSERT INTO `sn_point` VALUES ('22', 'v22', '36.665929', '117.135418');
+INSERT INTO `sn_point` VALUES ('23', 'v23', '36.666277', '117.145335');
+INSERT INTO `sn_point` VALUES ('24', 'v24', '36.669113', '117.154534');
+INSERT INTO `sn_point` VALUES ('25', 'v25', '36.668824', '117.147491');
+INSERT INTO `sn_point` VALUES ('26', 'v26', '36.671371', '117.145479');
+INSERT INTO `sn_point` VALUES ('27', 'v27', '36.674671', '117.142891');
+INSERT INTO `sn_point` VALUES ('28', 'v28', '36.677326', '117.142857');
+INSERT INTO `sn_point` VALUES ('29', 'v29', '36.679221', '117.142875');
+INSERT INTO `sn_point` VALUES ('30', 'v30', '36.680408', '117.141293');
+INSERT INTO `sn_point` VALUES ('31', 'v31', '36.676124', '117.140903');
+INSERT INTO `sn_point` VALUES ('32', 'v32', '36.676775', '117.138477');
+INSERT INTO `sn_point` VALUES ('33', 'v33', '36.6787', '117.137543');
+INSERT INTO `sn_point` VALUES ('34', 'v34', '36.678931', '117.13465');
+INSERT INTO `sn_point` VALUES ('35', 'v35', '36.682564', '117.142681');
+INSERT INTO `sn_point` VALUES ('36', 'v36', '36.680552', '117.135136');
+INSERT INTO `sn_point` VALUES ('37', 'v37', '36.683085', '117.140561');
+INSERT INTO `sn_point` VALUES ('38', 'v38', '36.68404', '117.136447');
+INSERT INTO `sn_point` VALUES ('39', 'v39', '36.685892', '117.140597');
+INSERT INTO `sn_point` VALUES ('40', 'v40', '36.681826', '117.132171');
+INSERT INTO `sn_point` VALUES ('41', 'v41', '36.684879', '117.133087');
+INSERT INTO `sn_point` VALUES ('42', 'v42', '36.686905', '117.137345');
 
 -- ----------------------------
 -- Table structure for `sn_user`

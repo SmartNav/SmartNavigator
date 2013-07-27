@@ -70,7 +70,7 @@ public class PointService {
 	PlaceDAO placeDao;
 
 	double map[][] = new double[50][50];
-	int n = 20;
+	int n = 42;
 	Point from, to;
 	private static int inf = (1 << 29);
 	floyd f = new floyd(); 
