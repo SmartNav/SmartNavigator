@@ -1,5 +1,7 @@
 package com.sdu.fwwb.smartnav.service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.sdu.fwwb.smartnav.dao.CommentDAO;
@@ -18,7 +20,9 @@ public class CommentService {
 	CommentDAO commentDao;
 	
 	public List<Comment> listByPlaceId(long placeId){
-		return commentDao.findByPlaceId(placeId);
+		 List<Comment> comments = commentDao.findByPlaceId(placeId);
+		 Collections.sort(comments, new DateComparator());
+		 return comments;
 	}
 	
 	public void save(Comment comment){
@@ -36,5 +40,13 @@ public class CommentService {
 	
 	public Comment get(long id){
 		return commentDao.findOne(id);
+	}
+	
+	public static class DateComparator implements Comparator<Comment>{
+		//compare result:newest comment > older comment
+		@Override
+		public int compare(Comment o1, Comment o2) {
+			return o2.getPostTime().compareTo(o1.getPostTime());
+		}
 	}
 }
