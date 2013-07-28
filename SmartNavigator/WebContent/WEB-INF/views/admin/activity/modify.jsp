@@ -68,9 +68,9 @@
 		<div class="content-container">
 			<div id="place-add-form">
 				<form method="post" action="${ctx }/admin/activity/modify/handle" id="place-add-form-form">
-					<div><label>标题</label><input name="title" type="text" value="${activity.title }"></div>
-					<div><label>短描述</label><input name="short-des" type="text" value="${activity.shortDes }"></div>
-					<div><label>内容</label><input name="content" type="text" value="${activity.content }"></div>
+					<div><label>标题</label><input name="title" id="title" type="text" value="${activity.title }"></div>
+					<div><label>短描述</label><input name="short-des" id="short-des" type="text" value="${activity.shortDes }"></div>
+					<div><label>内容</label><input name="content" id="content" type="text" value="${activity.content }"></div>
 					<input name="placeid" value="${activity.placeId }" type="hidden">
 					<input name="id" value="${activity.id }" type="hidden">
 					

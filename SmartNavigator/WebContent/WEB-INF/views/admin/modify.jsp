@@ -34,7 +34,7 @@
 			alert("重复新密码");
 			return false;
 		}
-		if(!$("#password1").val() == ($("#password2").val())){
+		if(!($("#password1").val() == $("#password2").val())){
 			alert("两次输入密码不一致");
 			return false;
 		}
